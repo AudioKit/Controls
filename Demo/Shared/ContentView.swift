@@ -2,21 +2,27 @@ import SwiftUI
 import DraggableControl
 
 struct ContentView: View {
+
     var body: some View {
         ZStack {
             Rectangle().foregroundColor(.white)
-            Rectangle()
-                .foregroundColor(.black)
-                .frame(width: 200, height: 200)
-                .draggable { x, y in
-                    print(x, y)
-                }
+            VStack {
+                Spacer()
+                Rectangle()
+                    .foregroundColor(.black)
+                    .draggable(layout: .rectilinear) { x, y in
+                        print("x: \(x), y: \(y)")
+                    }
+                    .frame(width: 600, height: 200)
+                Spacer()
+                Circle()
+                    .foregroundColor(.black)
+                    .draggable(layout: .polar(anchor: .bottomLeading)) { r, theta in
+                        print("r \(r), theta \(theta)")
+                    }
+                    .frame(width: 200, height: 200)
+                Spacer()
+            }
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
