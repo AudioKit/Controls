@@ -15,10 +15,9 @@ public enum ControlLayout {
 
     /// Larger knobs with a more skeumorphic drag and twist motif.
     /// For non relative the values change immediately to match the touch.
-    case polar(anchor: Alignment = .center)
+    case polar
 
     /// This version gives the user more control in the radial direction
-    /// and doesn't
-    case relativePolar(anchor: Alignment = .center,
-                       radialSensitivity: Double = 1.0)
+    /// and doesn't change immediately to match the touch
+    case relativePolar(radialSensitivity: Double = 1.0)
 }
