@@ -1,9 +1,17 @@
 import SwiftUI
+import DraggableControl
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Rectangle().foregroundColor(.white)
+            Rectangle()
+                .foregroundColor(.black)
+                .frame(width: 200, height: 200)
+                .draggable { x, y in
+                    print(x, y)
+                }
+        }
     }
 }
 
