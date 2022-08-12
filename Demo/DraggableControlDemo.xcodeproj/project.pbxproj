@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1AF69A728A609AD00472E04 /* DraggableControl in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69A628A609AD00472E04 /* DraggableControl */; };
 		F1D9CD2E28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* DraggableControlDemoApp.swift */; };
 		F1D9CD2F28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* DraggableControlDemoApp.swift */; };
 		F1D9CD3028A5D9EF00C2B893 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */; };
 		F1D9CD3128A5D9EF00C2B893 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */; };
 		F1D9CD3228A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
 		F1D9CD3328A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
+		F1D9CD4028A600AD00C2B893 /* DraggableControl in Frameworks */ = {isa = PBXBuildFile; productRef = F1D9CD3F28A600AD00C2B893 /* DraggableControl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1D9CD4028A600AD00C2B893 /* DraggableControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1AF69A728A609AD00472E04 /* DraggableControl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +54,7 @@
 				F1D9CD1D28A5D9EE00C2B893 /* Shared */,
 				F1D9CD2C28A5D9EF00C2B893 /* macOS */,
 				F1D9CD2628A5D9EF00C2B893 /* Products */,
+				F1D9CD3E28A600AD00C2B893 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +93,13 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
+		F1D9CD3E28A600AD00C2B893 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -104,6 +116,9 @@
 			dependencies = (
 			);
 			name = "DraggableControlDemo (iOS)";
+			packageProductDependencies = (
+				F1D9CD3F28A600AD00C2B893 /* DraggableControl */,
+			);
 			productName = "DraggableControlDemo (iOS)";
 			productReference = F1D9CD2528A5D9EF00C2B893 /* DraggableControlDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +136,9 @@
 			dependencies = (
 			);
 			name = "DraggableControlDemo (macOS)";
+			packageProductDependencies = (
+				F1AF69A628A609AD00472E04 /* DraggableControl */,
+			);
 			productName = "DraggableControlDemo (macOS)";
 			productReference = F1D9CD2B28A5D9EF00C2B893 /* DraggableControlDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -460,6 +478,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1AF69A628A609AD00472E04 /* DraggableControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DraggableControl;
+		};
+		F1D9CD3F28A600AD00C2B893 /* DraggableControl */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DraggableControl;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1D9CD1928A5D9EE00C2B893 /* Project object */;
 }
