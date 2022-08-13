@@ -14,9 +14,7 @@ class DraggableModel: ObservableObject {
 
     var touchLocation: CGPoint = .zero {
         didSet {
-            guard touchLocation != oldValue,
-                  touchLocation != .zero,
-                  oldValue != .zero else { return }
+            guard touchLocation != .zero else { return }
 
             switch layout {
             case .rectilinear:
