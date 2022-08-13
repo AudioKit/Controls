@@ -1,5 +1,10 @@
 import SwiftUI
 
+struct PolarCoordinate {
+    var r: Double
+    var theta: Angle
+}
+
 class DraggableModel: ObservableObject {
     @Published var value1: Double = 0.0
     @Published var value2: Double = 0.0
@@ -12,12 +17,11 @@ class DraggableModel: ObservableObject {
             guard touchLocation != oldValue,
                   touchLocation != .zero,
                   oldValue != .zero else { return }
+            
             switch layout {
             case .rectilinear:
-                let nonDimensionalX = max(0.0, min(1.0, touchLocation.x / rect.size.width))
-                let nonDimensionalY = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
-                value1 = nonDimensionalX
-                value2 = nonDimensionalY
+                value1 = max(0.0, min(1.0, touchLocation.x / rect.size.width))
+                value2 = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
 
             case .relativeRectilinear(xSensitivity: let xSensitivity, ySensitivity: let ySensitivity):
                 let temp1 = value1 + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
@@ -27,52 +31,32 @@ class DraggableModel: ObservableObject {
                 value2 = max(0, min(1, temp2))
 
             case .polar:
-                let rTheta = calculateRadiusTheta(point: touchLocation,
-                                                  frame: rect)
-                value1 = rTheta.0
-                value2 = rTheta.1
+                let polar = polarCoordinate(point: touchLocation)
+                value1 = polar.r
+                value2 = max(0.0, min(1.0, polar.theta.radians / (2.0 * .pi)))
 
             case .relativePolar(radialSensitivity: let radialSensitivity):
-                let oldRTheta = calculateRadiusTheta(point: oldValue,
-                                                     frame: rect)
-                let rTheta = calculateRadiusTheta(point: touchLocation,
-                                                  frame: rect)
+                let oldPolar = polarCoordinate(point: oldValue)
+                let newPolar = polarCoordinate(point: touchLocation)
 
-                let temp1 = value1 + (rTheta.0 - oldRTheta.0) * radialSensitivity
-                let temp2 = value2 + (rTheta.1 - oldRTheta.1)
+                let temp1 = value1 + (newPolar.r - oldPolar.r) * radialSensitivity
+                let temp2 = value2 + (newPolar.theta.radians - oldPolar.theta.radians) / (2.0 * .pi)
 
                 value1 = max(0, min(1, temp1))
                 value2 = max(0, min(1, temp2))
-                print(value1, value2)
             }
         }
     }
 
-    func delta(point: CGPoint, frame: CGRect) -> CGPoint  {
-        var center = CGPoint.zero
+    func polarCoordinate(point: CGPoint) -> PolarCoordinate {
+        let deltaX = (point.x - rect.midX) / (rect.width / 2.0)
+        let deltaY = (point.y - rect.midY) / (rect.height / 2.0)
 
-        var deltaX = 0.0
-        var deltaY = 0.0
+        let r = max(0.0, min(1.0, sqrt(pow(deltaX, 2) + pow(deltaY, 2))))
 
-        center = CGPoint(x: frame.midX, y: frame.midY)
-        deltaX = (point.x - center.x) / (frame.width / 2.0)
-        deltaY = (point.y - center.y) / (frame.height / 2.0)
+        var theta = atan(deltaY / deltaX) + 0.5 * .pi
+        if deltaX > 0 { theta += .pi }
 
-        return CGPoint(x: deltaX, y: deltaY)
-    }
-
-    func calculateRadiusTheta(point: CGPoint, frame: CGRect) -> (Double, Double) {
-
-        let delta = delta(point: point, frame: frame)
-
-        let r = max(0.0, min(1.0, sqrt(pow(delta.x, 2) + pow(delta.y, 2))))
-
-        var theta = 0.0
-        theta = atan(delta.y / delta.x) / (2.0 * .pi) + 0.25
-        if delta.x > 0 { theta += 0.5 }
-
-        theta = max(0.0, min(1.0, theta))
-
-        return (r, theta)
+        return PolarCoordinate(r: r, theta: Angle(radians: theta))
     }
 }
