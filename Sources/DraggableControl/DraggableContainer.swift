@@ -5,9 +5,7 @@ struct DraggableContainer<Content: View>: View {
 
     @ObservedObject var model: DraggableModel
 
-    init(model: DraggableModel,
-         @ViewBuilder content: @escaping (Double, Double) -> Content)
-    {
+    init(model: DraggableModel, @ViewBuilder content: @escaping (Double, Double) -> Content) {
         self.model = model
         self.content = content
     }

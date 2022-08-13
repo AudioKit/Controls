@@ -1,6 +1,3 @@
-import Foundation
-import SwiftUI
-
 import SwiftUI
 
 /// Layouts define how the touch point's location affect the control values
@@ -17,7 +14,7 @@ public enum ControlLayout {
     /// For non relative the values change immediately to match the touch.
     case polar
 
-    /// This version gives the user more control in the radial direction
-    /// and doesn't change immediately to match the touch
+    /// This version gives the user control in the radial direction
+    /// and doesn't change the angle immediately to match the touch
     case relativePolar(radialSensitivity: Double = 1.0)
 }
