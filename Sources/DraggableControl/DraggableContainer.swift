@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct DraggableContainer<Content: View>: View {
-    let content: (Double, Double) -> Content
+    let content: () -> Content
 
     @ObservedObject var model: DraggableModel
 
-    init(model: DraggableModel, @ViewBuilder content: @escaping (Double, Double) -> Content) {
+    init(model: DraggableModel, @ViewBuilder content: @escaping ()  -> Content) {
         self.model = model
         self.content = content
     }
@@ -13,7 +13,7 @@ struct DraggableContainer<Content: View>: View {
     @GestureState var touchLocation: CGPoint?
 
     func rect(rect: CGRect) -> some View {
-        content(model.value1, model.value2)
+        content()
             .contentShape(Rectangle()) // Added to improve tap/click reliability
             .background(Color.gray.opacity(0.1))
             .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)

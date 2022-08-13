@@ -1,15 +1,21 @@
 import SwiftUI
 
 public struct Draggable<Content: View>: View {
-    let content: (Double, Double) -> Content
+    let content: () -> Content
     var layout: ControlLayout
+    @Binding var value1: Double
+    @Binding var value2: Double
 
-    @StateObject var model: DraggableModel = .init()
+    @StateObject var model = DraggableModel()
 
     public init(layout: ControlLayout = .rectilinear,
-                @ViewBuilder content: @escaping (Double, Double) -> Content)
+                value1: Binding<Double>,
+                value2: Binding<Double>,
+                @ViewBuilder content: @escaping () -> Content)
     {
         self.layout = layout
+        self._value1 = value1
+        self._value2 = value2
         self.content = content
     }
 
@@ -23,6 +29,8 @@ public struct Draggable<Content: View>: View {
             }
             .onAppear {
                 model.layout = layout
+                model.value1 = _value1
+                model.value2 = _value2
             }
     }
 }

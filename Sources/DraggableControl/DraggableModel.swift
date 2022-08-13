@@ -6,8 +6,8 @@ struct PolarCoordinate {
 }
 
 class DraggableModel: ObservableObject {
-    @Published var value1: Double = 0.0
-    @Published var value2: Double = 0.0
+    var value1: Binding<Double> = .constant(0)
+    var value2: Binding<Double> = .constant(0)
 
     var layout: ControlLayout = .rectilinear
     var rect: CGRect = .zero
@@ -20,30 +20,30 @@ class DraggableModel: ObservableObject {
 
             switch layout {
             case .rectilinear:
-                value1 = max(0.0, min(1.0, touchLocation.x / rect.size.width))
-                value2 = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
+                value1.wrappedValue = max(0.0, min(1.0, touchLocation.x / rect.size.width))
+                value2.wrappedValue = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
 
             case .relativeRectilinear(xSensitivity: let xSensitivity, ySensitivity: let ySensitivity):
-                let temp1 = value1 + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
-                let temp2 = value2 - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
+                let temp1 = value1.wrappedValue + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
+                let temp2 = value2.wrappedValue - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
 
-                value1 = max(0, min(1, temp1))
-                value2 = max(0, min(1, temp2))
+                value1.wrappedValue = max(0, min(1, temp1))
+                value2.wrappedValue = max(0, min(1, temp2))
 
             case .polar:
                 let polar = polarCoordinate(point: touchLocation)
-                value1 = polar.radius
-                value2 = max(0.0, min(1.0, polar.angle.radians / (2.0 * .pi)))
+                value1.wrappedValue = polar.radius
+                value2.wrappedValue = max(0.0, min(1.0, polar.angle.radians / (2.0 * .pi)))
 
             case .relativePolar(radialSensitivity: let radialSensitivity):
                 let oldPolar = polarCoordinate(point: oldValue)
                 let newPolar = polarCoordinate(point: touchLocation)
 
-                let temp1 = value1 + (newPolar.radius - oldPolar.radius) * radialSensitivity
-                let temp2 = value2 + (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
+                let temp1 = value1.wrappedValue + (newPolar.radius - oldPolar.radius) * radialSensitivity
+                let temp2 = value2.wrappedValue + (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
 
-                value1 = max(0, min(1, temp1))
-                value2 = max(0, min(1, temp2))
+                value1.wrappedValue = max(0, min(1, temp1))
+                value2.wrappedValue = max(0, min(1, temp2))
             }
         }
     }
