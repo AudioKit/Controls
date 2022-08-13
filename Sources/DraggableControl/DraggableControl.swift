@@ -5,7 +5,8 @@ import SwiftUI
 public struct Draggable<Content: View>: View {
     let content: () -> Content
     var layout: ControlLayout
-    var ended: () -> Void
+    var onStarted: () -> Void
+    var onEnded: () -> Void
     @Binding var value1: Double
     @Binding var value2: Double
 
@@ -16,24 +17,27 @@ public struct Draggable<Content: View>: View {
     ///   - layout: Gesture movement geometry specification
     ///   - value1: First value that is controlled
     ///   - value2: Second value that is controlled
+    ///   - onEnded: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
     public init(layout: ControlLayout = .rectilinear,
                 value1: Binding<Double>,
                 value2: Binding<Double>,
+                onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping () -> Content)
     {
         self.layout = layout
         self._value1 = value1
         self._value2 = value2
-        self.ended = onEnded
+        self.onStarted = onStarted
+        self.onEnded = onEnded
         self.content = content
     }
 
     /// Body enclosing the draggable container
     public var body: some View {
-        DraggableContainer(model: model, ended: ended, content: content)
+        DraggableContainer(model: model, onStarted: onStarted, onEnded: onEnded, content: content)
             .onPreferenceChange(TouchLocationKey.self) { touchLocation in
                 model.touchLocation = touchLocation
             }

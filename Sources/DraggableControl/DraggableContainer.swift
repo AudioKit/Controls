@@ -2,20 +2,24 @@ import SwiftUI
 
 struct DraggableContainer<Content: View>: View {
     let content: () -> Content
-    let ended: () -> Void
+    let onStarted: () -> Void
+    let onEnded: () -> Void
 
     @ObservedObject var model: DraggableModel
 
     init(model: DraggableModel,
-         ended: @escaping () -> Void = {},
+         onStarted: @escaping () -> Void = {},
+         onEnded: @escaping () -> Void = {},
          @ViewBuilder content: @escaping ()  -> Content)
     {
         self.model = model
         self.content = content
-        self.ended = ended
+        self.onStarted = onStarted
+        self.onEnded = onEnded
     }
 
     @GestureState var touchLocation: CGPoint?
+    @State var hasStarted = false
 
     func rect(rect: CGRect) -> some View {
         content()
@@ -24,7 +28,8 @@ struct DraggableContainer<Content: View>: View {
                 .updating($touchLocation) { value, state, _ in
                     state = value.location
                 }
-                .onEnded { _ in ended() }
+                .onChanged { _ in if !hasStarted { onStarted() } }
+                .onEnded { _ in onEnded(); hasStarted = false }
             )
             .preference(key: TouchLocationKey.self,
                         value: touchLocation != nil ? touchLocation! : .zero)
