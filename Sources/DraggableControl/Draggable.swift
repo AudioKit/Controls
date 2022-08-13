@@ -35,19 +35,36 @@ public struct Draggable<Content: View>: View {
         self.content = content
     }
 
-    /// Body enclosing the draggable container
-    public var body: some View {
-        DraggableContainer(model: model, onStarted: onStarted, onEnded: onEnded, content: content)
+    @GestureState var touchLocation: CGPoint?
+    @State var hasStarted = false
+
+    func rect(rect: CGRect) -> some View {
+        content()
+            .contentShape(Rectangle()) // Added to improve tap/click reliability
+            .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                .updating($touchLocation) { value, state, _ in
+                    state = value.location
+                }
+                .onChanged { _ in if !hasStarted { onStarted() } }
+                .onEnded { _ in onEnded(); hasStarted = false }
+            )
+            .preference(key: TouchLocationKey.self,
+                        value: touchLocation != nil ? touchLocation! : .zero)
             .onPreferenceChange(TouchLocationKey.self) { touchLocation in
                 model.touchLocation = touchLocation
-            }
-            .onPreferenceChange(RectKey.self) { rect in
-                model.rect = rect
             }
             .onAppear {
                 model.layout = layout
                 model.value1 = _value1
                 model.value2 = _value2
+                model.rect = rect
             }
     }
+
+    public var body: some View {
+        GeometryReader { proxy in
+            rect(rect: proxy.frame(in: .local))
+        }
+    }
+
 }
