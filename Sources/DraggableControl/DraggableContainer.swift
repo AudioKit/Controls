@@ -31,7 +31,7 @@ struct DraggableContainer<Content: View>: View {
             .preference(key: RectKey.self, value: rect)
     }
 
-    public var body: some View {
+    var body: some View {
         GeometryReader { proxy in
             rect(rect: proxy.frame(in: .local))
         }

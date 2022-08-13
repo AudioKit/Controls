@@ -47,13 +47,16 @@ class DraggableModel: ObservableObject {
     }
 
     func polarCoordinate(point: CGPoint) -> PolarCoordinate {
+        // Calculate the x and y distances from the center
         let deltaX = (point.x - rect.midX) / (rect.width / 2.0)
         let deltaY = (point.y - rect.midY) / (rect.height / 2.0)
 
+        // Convert to polar
         let radius = max(0.0, min(1.0, sqrt(pow(deltaX, 2) + pow(deltaY, 2))))
+        var theta = atan(deltaY / deltaX)
 
-        var theta = atan(deltaY / deltaX) + 0.5 * .pi
-        if deltaX > 0 { theta += .pi }
+        // Math to rotate to traditional knob orientiation
+        theta += .pi * (deltaX > 0 ? 1.5 : 0.5)
 
         return PolarCoordinate(radius: radius, angle: Angle(radians: theta))
     }
