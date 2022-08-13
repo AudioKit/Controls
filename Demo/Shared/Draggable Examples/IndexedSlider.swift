@@ -6,11 +6,11 @@ class IndexedSliderModel: ObservableObject {
     init(indexCount: Int) {
         self.indexCount = indexCount
     }
-    @Published var index = 0.0
+    @Published var index = 0
 
     @Published var normalValue = 0.0 {
         didSet {
-            index = floor(normalValue * Double(indexCount)) / Double(indexCount)
+            index = Int(normalValue * Double(indexCount))
         }
     }
 }
@@ -24,9 +24,12 @@ struct IndexedSlider: View {
             Draggable(layout: .rectilinear, value1: $model.normalValue, value2: .constant(0)) {
                 ZStack(alignment: .bottomLeading) {
                     Rectangle().foregroundColor(.gray)
-                    Rectangle().foregroundColor(.red)
+                    ZStack {
+                        Rectangle().foregroundColor(.red)
+                        Text("\(model.index + 1)").font(.largeTitle)
+                    }
                         .frame(width: geo.size.width / CGFloat(model.indexCount))
-                        .offset(x: model.index * geo.size.width)
+                        .offset(x: CGFloat(model.index) * geo.size.width / CGFloat(model.indexCount))
                 }
             }
         }
