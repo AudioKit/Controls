@@ -4,7 +4,7 @@ import SwiftUI
 /// TODO: Is this a good name?
 public struct Draggable<Content: View>: View {
     let content: () -> Content
-    var layout: ControlLayout
+    var layout: DraggableLayout
     var onStarted: () -> Void
     var onEnded: () -> Void
     @Binding var value1: Double
@@ -20,7 +20,7 @@ public struct Draggable<Content: View>: View {
     ///   - onEnded: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
-    public init(layout: ControlLayout = .rectilinear,
+    public init(layout: DraggableLayout = .rectilinear,
                 value1: Binding<Double>,
                 value2: Binding<Double>,
                 onStarted: @escaping () -> Void = {},

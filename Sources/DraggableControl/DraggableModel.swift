@@ -9,7 +9,7 @@ class DraggableModel: ObservableObject {
     var value1: Binding<Double> = .constant(0)
     var value2: Binding<Double> = .constant(0)
 
-    var layout: ControlLayout = .rectilinear
+    var layout: DraggableLayout = .rectilinear
     var rect: CGRect = .zero
 
     var touchLocation: CGPoint = .zero {
