@@ -12,8 +12,8 @@
 		F1AF69B228A788C700472E04 /* XYPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B028A788C700472E04 /* XYPad.swift */; };
 		F1AF69B428A78B1300472E04 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B328A78B1300472E04 /* Joystick.swift */; };
 		F1AF69B528A78B1300472E04 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B328A78B1300472E04 /* Joystick.swift */; };
-		F1AF69B728A78D4B00472E04 /* Fader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B628A78D4B00472E04 /* Fader.swift */; };
-		F1AF69B828A78D4B00472E04 /* Fader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B628A78D4B00472E04 /* Fader.swift */; };
+		F1AF69B728A78D4B00472E04 /* PitchModWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B628A78D4B00472E04 /* PitchModWheel.swift */; };
+		F1AF69B828A78D4B00472E04 /* PitchModWheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B628A78D4B00472E04 /* PitchModWheel.swift */; };
 		F1AF69BA28A78E9B00472E04 /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B928A78E9B00472E04 /* Scrubber.swift */; };
 		F1AF69BB28A78E9B00472E04 /* Scrubber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B928A78E9B00472E04 /* Scrubber.swift */; };
 		F1AF69BD28A790EC00472E04 /* SimpleKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69BC28A790EC00472E04 /* SimpleKnob.swift */; };
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		F1AF69B028A788C700472E04 /* XYPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYPad.swift; sourceTree = "<group>"; };
 		F1AF69B328A78B1300472E04 /* Joystick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
-		F1AF69B628A78D4B00472E04 /* Fader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader.swift; sourceTree = "<group>"; };
+		F1AF69B628A78D4B00472E04 /* PitchModWheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchModWheel.swift; sourceTree = "<group>"; };
 		F1AF69B928A78E9B00472E04 /* Scrubber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrubber.swift; sourceTree = "<group>"; };
 		F1AF69BC28A790EC00472E04 /* SimpleKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleKnob.swift; sourceTree = "<group>"; };
 		F1AF69C028A7977900472E04 /* ArcKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcKnob.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			children = (
 				F1AF69C028A7977900472E04 /* ArcKnob.swift */,
 				F1AF69C328A79C7300472E04 /* DualArcKnob.swift */,
-				F1AF69B628A78D4B00472E04 /* Fader.swift */,
+				F1AF69B628A78D4B00472E04 /* PitchModWheel.swift */,
 				F1AF69B328A78B1300472E04 /* Joystick.swift */,
 				F1AF69B928A78E9B00472E04 /* Scrubber.swift */,
 				F1AF69C628A79EE700472E04 /* IndexedSlider.swift */,
@@ -250,7 +250,7 @@
 				F1AF69B428A78B1300472E04 /* Joystick.swift in Sources */,
 				F1AF69B128A788C700472E04 /* XYPad.swift in Sources */,
 				F1D9CD2E28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */,
-				F1AF69B728A78D4B00472E04 /* Fader.swift in Sources */,
+				F1AF69B728A78D4B00472E04 /* PitchModWheel.swift in Sources */,
 				F1AF69C428A79C7300472E04 /* DualArcKnob.swift in Sources */,
 				F1AF69BD28A790EC00472E04 /* SimpleKnob.swift in Sources */,
 				F1AF69BA28A78E9B00472E04 /* Scrubber.swift in Sources */,
@@ -267,7 +267,7 @@
 				F1AF69B528A78B1300472E04 /* Joystick.swift in Sources */,
 				F1AF69B228A788C700472E04 /* XYPad.swift in Sources */,
 				F1D9CD2F28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */,
-				F1AF69B828A78D4B00472E04 /* Fader.swift in Sources */,
+				F1AF69B828A78D4B00472E04 /* PitchModWheel.swift in Sources */,
 				F1AF69C528A79C7300472E04 /* DualArcKnob.swift in Sources */,
 				F1AF69BE28A790EC00472E04 /* SimpleKnob.swift in Sources */,
 				F1AF69BB28A78E9B00472E04 /* Scrubber.swift in Sources */,
