@@ -9,7 +9,9 @@ class DraggableModel: ObservableObject {
 
     var touchLocation: CGPoint = .zero {
         didSet {
-            guard touchLocation != .zero else { return }
+            guard touchLocation != oldValue,
+                  touchLocation != .zero,
+                  oldValue != .zero else { return }
             switch layout {
             case .rectilinear:
                 print(touchLocation, rect)
@@ -19,8 +21,12 @@ class DraggableModel: ObservableObject {
                 value2 = nonDimensionalY
 
             case .relativeRectilinear(xSensitivity: let xSensitivity, ySensitivity: let ySensitivity):
-                value1 = 0
-                value2 = 0
+                let temp1 = value1 + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
+                let temp2 = value2 - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
+
+                value1 = max(0, min(1, temp1))
+                value2 = max(0, min(1, temp2))
+                print(value1, value2)
 
             case .polar:
                 print(touchLocation, rect)
