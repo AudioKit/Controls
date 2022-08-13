@@ -5,9 +5,20 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             Rectangle().foregroundColor(.white)
-            HStack {
-                XYPad().frame(width: 400, height: 400)
-                TestingView()
+            VStack {
+                HStack {
+                    Spacer()
+                    Fader().frame(width: 100)
+                    Spacer()
+                    VStack {
+                        XYPad().frame(width: 400, height: 400)
+                        Spacer()
+                        Joystick().frame(width: 400, height: 400)
+                    }
+                    TestingView()
+                }
+                Spacer()
+                Scrubber()
             }
         }
     }

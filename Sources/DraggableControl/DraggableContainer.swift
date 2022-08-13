@@ -15,7 +15,6 @@ struct DraggableContainer<Content: View>: View {
     func rect(rect: CGRect) -> some View {
         content()
             .contentShape(Rectangle()) // Added to improve tap/click reliability
-            .background(Color.gray.opacity(0.1))
             .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                 .updating($touchLocation) { value, state, _ in
                     state = value.location
