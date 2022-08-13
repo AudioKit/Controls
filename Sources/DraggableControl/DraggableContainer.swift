@@ -2,12 +2,17 @@ import SwiftUI
 
 struct DraggableContainer<Content: View>: View {
     let content: () -> Content
+    let ended: () -> Void
 
     @ObservedObject var model: DraggableModel
 
-    init(model: DraggableModel, @ViewBuilder content: @escaping ()  -> Content) {
+    init(model: DraggableModel,
+         ended: @escaping () -> Void = {},
+         @ViewBuilder content: @escaping ()  -> Content)
+    {
         self.model = model
         self.content = content
+        self.ended = ended
     }
 
     @GestureState var touchLocation: CGPoint?
@@ -19,6 +24,7 @@ struct DraggableContainer<Content: View>: View {
                 .updating($touchLocation) { value, state, _ in
                     state = value.location
                 }
+                .onEnded { _ in ended() }
             )
             .preference(key: TouchLocationKey.self,
                         value: touchLocation != nil ? touchLocation! : .zero)

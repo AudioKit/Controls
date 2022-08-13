@@ -3,6 +3,7 @@ import SwiftUI
 public struct Draggable<Content: View>: View {
     let content: () -> Content
     var layout: ControlLayout
+    var ended: () -> Void
     @Binding var value1: Double
     @Binding var value2: Double
 
@@ -11,16 +12,18 @@ public struct Draggable<Content: View>: View {
     public init(layout: ControlLayout = .rectilinear,
                 value1: Binding<Double>,
                 value2: Binding<Double>,
+                onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping () -> Content)
     {
         self.layout = layout
         self._value1 = value1
         self._value2 = value2
+        self.ended = onEnded
         self.content = content
     }
 
     public var body: some View {
-        DraggableContainer(model: model, content: content)
+        DraggableContainer(model: model, ended: ended, content: content)
             .onPreferenceChange(TouchLocationKey.self) { touchLocation in
                 model.touchLocation = touchLocation
             }
