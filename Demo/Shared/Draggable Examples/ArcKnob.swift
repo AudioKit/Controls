@@ -32,7 +32,7 @@ struct ArcKnob: View {
                         .font(.largeTitle)
                         .foregroundColor(.gray)
 
-                }.contentShape(Rectangle())
+                }
 
             }
         }

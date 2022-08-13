@@ -43,7 +43,7 @@ struct DualArcKnob: View {
                         .stroke(.red, style: StrokeStyle(lineWidth: geo.size.width / 10, lineCap: .round))
                         .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.5)
 
-                }.contentShape(Rectangle())
+                }
 
             }
         }
