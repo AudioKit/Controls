@@ -14,7 +14,6 @@ class DraggableModel: ObservableObject {
                   oldValue != .zero else { return }
             switch layout {
             case .rectilinear:
-                print(touchLocation, rect)
                 let nonDimensionalX = max(0.0, min(1.0, touchLocation.x / rect.size.width))
                 let nonDimensionalY = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
                 value1 = nonDimensionalX
@@ -26,18 +25,25 @@ class DraggableModel: ObservableObject {
 
                 value1 = max(0, min(1, temp1))
                 value2 = max(0, min(1, temp2))
-                print(value1, value2)
 
             case .polar:
-                print(touchLocation, rect)
                 let rTheta = calculateRadiusTheta(point: touchLocation,
                                                   frame: rect)
                 value1 = rTheta.0
                 value2 = rTheta.1
 
             case .relativePolar(radialSensitivity: let radialSensitivity):
-                value1 = 0
-                value2 = 0
+                let oldRTheta = calculateRadiusTheta(point: oldValue,
+                                                     frame: rect)
+                let rTheta = calculateRadiusTheta(point: touchLocation,
+                                                  frame: rect)
+
+                let temp1 = value1 + (rTheta.0 - oldRTheta.0) * radialSensitivity
+                let temp2 = value2 + (rTheta.1 - oldRTheta.1)
+
+                value1 = max(0, min(1, temp1))
+                value2 = max(0, min(1, temp2))
+                print(value1, value2)
             }
         }
     }
