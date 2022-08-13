@@ -29,10 +29,12 @@ class DraggableModel: ObservableObject {
                 value1.wrappedValue = max(0, min(1, temp1))
                 value2.wrappedValue = max(0, min(1, temp2))
 
-            case .polar:
+            case .polar(angularRange: let angularRange):
                 let polar = polarCoordinate(point: touchLocation)
                 value1.wrappedValue = polar.radius
-                value2.wrappedValue = max(0.0, min(1.0, polar.angle.radians / (2.0 * .pi)))
+                let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
+                let value = (polar.angle.radians - angularRange.lowerBound.radians) / width
+                value2.wrappedValue = max(0.0, min(1.0, value))
 
             case .relativePolar(radialSensitivity: let radialSensitivity):
                 guard oldValue != .zero else { return }
@@ -57,7 +59,7 @@ class DraggableModel: ObservableObject {
         let radius = max(0.0, min(1.0, sqrt(pow(deltaX, 2) + pow(deltaY, 2))))
         var theta = atan(deltaY / deltaX)
 
-        // Math to rotate to traditional knob orientiation
+        // Math to rotate to clockwise polar from -y axis (most like a knob)
         theta += .pi * (deltaX > 0 ? 1.5 : 0.5)
 
         return PolarCoordinate(radius: radius, angle: Angle(radians: theta))
