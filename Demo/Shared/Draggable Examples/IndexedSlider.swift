@@ -23,9 +23,9 @@ struct IndexedSlider: View {
         GeometryReader { geo in
             Draggable(layout: .rectilinear, value1: $model.normalValue, value2: .constant(0)) {
                 ZStack(alignment: .bottomLeading) {
-                    Rectangle().foregroundColor(.gray)
+                    RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                     ZStack {
-                        Rectangle().foregroundColor(.red)
+                        RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                         Text("\(model.index + 1)").font(.largeTitle)
                     }
                         .frame(width: geo.size.width / CGFloat(model.indexCount))

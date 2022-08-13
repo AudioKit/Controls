@@ -14,7 +14,7 @@ struct XYPad: View {
         GeometryReader { geo in
             Draggable(layout: .rectilinear, value1: $model.x, value2: $model.y) {
                 ZStack(alignment: .bottomLeading) {
-                    Rectangle().foregroundColor(.gray)
+                    RoundedRectangle(cornerRadius: geo.size.width / 20).foregroundColor(.gray)
                     Circle().foregroundColor(.red)
                         .frame(width: geo.size.width / 10, height: geo.size.height / 10)
                         .offset(x: model.x * (geo.size.width - geo.size.width / 10),

@@ -13,8 +13,8 @@ struct Fader: View {
         GeometryReader { geo in
             Draggable(layout: .rectilinear, value1: .constant(0), value2: $model.volume) {
                 ZStack(alignment: .bottom) {
-                    Rectangle().foregroundColor(.gray)
-                    Rectangle().foregroundColor(.red)
+                    RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
+                    RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                         .frame(height: geo.size.height / 20)
                         .offset(y: -model.volume * geo.size.height)
                 }

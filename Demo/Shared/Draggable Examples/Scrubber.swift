@@ -13,8 +13,8 @@ struct Scrubber: View {
         GeometryReader { geo in
             Draggable(layout: .rectilinear, value1: $model.playhead, value2: .constant(0)) {
                 ZStack(alignment: .bottomLeading) {
-                    Rectangle().foregroundColor(.gray)
-                    Rectangle().foregroundColor(.red)
+                    RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
+                    RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                         .frame(width: geo.size.width / 20)
                         .offset(x: model.playhead * geo.size.width)
                 }
