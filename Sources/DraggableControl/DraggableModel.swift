@@ -22,6 +22,7 @@ class DraggableModel: ObservableObject {
                 value2.wrappedValue = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
 
             case .relativeRectilinear(xSensitivity: let xSensitivity, ySensitivity: let ySensitivity):
+                guard oldValue != .zero else { return }
                 let temp1 = value1.wrappedValue + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
                 let temp2 = value2.wrappedValue - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
 
@@ -34,6 +35,7 @@ class DraggableModel: ObservableObject {
                 value2.wrappedValue = max(0.0, min(1.0, polar.angle.radians / (2.0 * .pi)))
 
             case .relativePolar(radialSensitivity: let radialSensitivity):
+                guard oldValue != .zero else { return }
                 let oldPolar = polarCoordinate(point: oldValue)
                 let newPolar = polarCoordinate(point: touchLocation)
 
