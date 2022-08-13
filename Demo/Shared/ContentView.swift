@@ -1,7 +1,36 @@
 import SwiftUI
 import DraggableControl
 
+
 struct ContentView: View {
+    var body: some View {
+        ZStack {
+            Rectangle().foregroundColor(.white)
+            XYPad().frame(width: 400, height: 400)
+        }
+    }
+}
+
+struct XYPad: View {
+
+    let indicatorSize: CGFloat = 50
+    var body: some View {
+        GeometryReader { geo in
+            Draggable(layout: .rectilinear) { x, y in
+                ZStack(alignment: .bottomLeading) {
+                    Rectangle().foregroundColor(.gray)
+                    Circle().foregroundColor(.red)
+                        .frame(width: indicatorSize, height: indicatorSize)
+                        .offset(x: x * (geo.size.width - indicatorSize),
+                                y: -y * (geo.size.height - indicatorSize))
+                }
+            }
+        }
+    }
+}
+
+
+struct TestingView: View {
 
     var body: some View {
         ZStack {
