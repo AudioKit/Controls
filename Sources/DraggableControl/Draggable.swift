@@ -26,8 +26,8 @@ public struct Draggable<Content: View>: View {
                 @ViewBuilder content: @escaping () -> Content)
     {
         self.geometry = geometry
-        self._value1 = value1
-        self._value2 = value2
+        _value1 = value1
+        _value2 = value2
         self.onStarted = onStarted
         self.onEnded = onEnded
         self.content = content
@@ -42,8 +42,8 @@ public struct Draggable<Content: View>: View {
                 .onChanged { gesture in
                     if !hasStarted {
                         onStarted()
+                        hasStarted = true
                     }
-                    hasStarted = true
                     touchLocation = gesture.location
                 }
                 .onEnded { _ in
@@ -74,7 +74,7 @@ public struct Draggable<Content: View>: View {
                 value1 = max(0.0, min(1.0, touchLocation.x / rect.size.width))
                 value2 = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
 
-            case .relativeRectilinear(xSensitivity: let xSensitivity, ySensitivity: let ySensitivity):
+            case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
                 guard oldValue != .zero else { return }
                 let temp1 = value1 + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
                 let temp2 = value2 - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
@@ -82,14 +82,14 @@ public struct Draggable<Content: View>: View {
                 value1 = max(0, min(1, temp1))
                 value2 = max(0, min(1, temp2))
 
-            case .polar(angularRange: let angularRange):
+            case let .polar(angularRange: angularRange):
                 let polar = polarCoordinate(point: touchLocation)
                 value1 = polar.radius
                 let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
                 let value = (polar.angle.radians - angularRange.lowerBound.radians) / width
                 value2 = max(0.0, min(1.0, value))
 
-            case .relativePolar(radialSensitivity: let radialSensitivity):
+            case let .relativePolar(radialSensitivity: radialSensitivity):
                 guard oldValue != .zero else { return }
                 let oldPolar = polarCoordinate(point: oldValue)
                 let newPolar = polarCoordinate(point: touchLocation)
@@ -117,5 +117,4 @@ public struct Draggable<Content: View>: View {
 
         return PolarCoordinate(radius: radius, angle: Angle(radians: theta))
     }
-
 }

@@ -1,5 +1,5 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class DualArcKnobModel: ObservableObject {
     @Published var volume = 0.0
@@ -7,7 +7,6 @@ class DualArcKnobModel: ObservableObject {
 }
 
 struct DualArcKnob: View {
-
     @StateObject var model = DualArcKnobModel()
     var rangeDegrees = 270.0
 
@@ -18,7 +17,7 @@ struct DualArcKnob: View {
                     Circle()
                         .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)
                         .rotation(.degrees(-rangeDegrees))
-                        .stroke(Color.gray ,style: StrokeStyle(lineWidth: geo.size.width / 10, lineCap: .round))
+                        .stroke(Color.gray, style: StrokeStyle(lineWidth: geo.size.width / 10, lineCap: .round))
                         .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.8)
                         .foregroundColor(.red)
 
@@ -32,7 +31,7 @@ struct DualArcKnob: View {
                     Circle()
                         .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)
                         .rotation(.degrees(-rangeDegrees))
-                        .stroke(Color.gray ,style: StrokeStyle(lineWidth: geo.size.width / 10, lineCap: .round))
+                        .stroke(Color.gray, style: StrokeStyle(lineWidth: geo.size.width / 10, lineCap: .round))
                         .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.5)
                         .foregroundColor(.red)
 
@@ -42,14 +41,11 @@ struct DualArcKnob: View {
                         .rotation(.degrees(-rangeDegrees))
                         .stroke(.red, style: StrokeStyle(lineWidth: geo.size.width / 10, lineCap: .round))
                         .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.5)
-
                 }
-
             }
         }
     }
 }
-
 
 struct DualArcKnob_Previews: PreviewProvider {
     static var previews: some View {

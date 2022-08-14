@@ -1,11 +1,12 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class IndexedSliderModel: ObservableObject {
     var indexCount: Int
     init(indexCount: Int) {
         self.indexCount = indexCount
     }
+
     @Published var index = 0
 
     @Published var normalValue = 0.0 {
@@ -16,7 +17,6 @@ class IndexedSliderModel: ObservableObject {
 }
 
 struct IndexedSlider: View {
-
     @StateObject var model = IndexedSliderModel(indexCount: 5)
 
     var body: some View {
@@ -28,14 +28,13 @@ struct IndexedSlider: View {
                         RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                         Text("\(model.index + 1)").font(.largeTitle)
                     }
-                        .frame(width: geo.size.width / CGFloat(model.indexCount))
-                        .offset(x: CGFloat(model.index) * geo.size.width / CGFloat(model.indexCount))
+                    .frame(width: geo.size.width / CGFloat(model.indexCount))
+                    .offset(x: CGFloat(model.index) * geo.size.width / CGFloat(model.indexCount))
                 }
             }
         }
     }
 }
-
 
 struct IndexedSlider_Previews: PreviewProvider {
     static var previews: some View {

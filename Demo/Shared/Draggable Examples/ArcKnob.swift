@@ -1,12 +1,11 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class ArcKnobModel: ObservableObject {
     @Published var volume = 0.0
 }
 
 struct ArcKnob: View {
-
     @StateObject var model = ArcKnobModel()
     var rangeDegrees = 270.0
 
@@ -14,12 +13,11 @@ struct ArcKnob: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(geometry: .polar(angularRange: Angle(degrees: 45)...Angle(degrees: 315)),
+            Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                       value1: .constant(0),
                       value2: $model.volume,
                       onStarted: { isShowingValue = true },
-                      onEnded: { isShowingValue = false }
-            ) {
+                      onEnded: { isShowingValue = false }) {
                 ZStack(alignment: .center) {
                     Circle()
                         .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)
@@ -45,14 +43,11 @@ struct ArcKnob: View {
                         .font(.largeTitle)
                         .foregroundColor(.gray)
                         .animation(.easeIn(duration: 2), value: isShowingValue)
-
                 }
-
             }
         }
     }
 }
-
 
 struct ArcKnob_Previews: PreviewProvider {
     static var previews: some View {

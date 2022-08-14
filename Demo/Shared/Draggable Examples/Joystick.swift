@@ -1,5 +1,5 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class JoystickModel: ObservableObject {
     @Published var radius = 0.0
@@ -7,11 +7,10 @@ class JoystickModel: ObservableObject {
 }
 
 struct Joystick: View {
-
     @StateObject var model = JoystickModel()
 
     func ended() { model.radius = 0 }
-    
+
     var body: some View {
         GeometryReader { geo in
             Draggable(geometry: .polar(), value1: $model.radius, value2: $model.angle, onEnded: ended) {
@@ -27,7 +26,6 @@ struct Joystick: View {
         }
     }
 }
-
 
 struct Joystick_Previews: PreviewProvider {
     static var previews: some View {

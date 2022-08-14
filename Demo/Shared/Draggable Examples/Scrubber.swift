@@ -1,12 +1,11 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class ScrubberModel: ObservableObject {
     @Published var playhead = 0.0
 }
 
 struct Scrubber: View {
-
     @StateObject var model = ScrubberModel()
 
     var body: some View {
@@ -22,7 +21,6 @@ struct Scrubber: View {
         }
     }
 }
-
 
 struct Scrubber_Previews: PreviewProvider {
     static var previews: some View {

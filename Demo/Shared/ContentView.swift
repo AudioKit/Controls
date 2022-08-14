@@ -1,5 +1,5 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 struct ContentView: View {
     var body: some View {
@@ -24,6 +24,3 @@ struct ContentView: View {
         }
     }
 }
-
-
-

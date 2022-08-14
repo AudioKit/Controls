@@ -1,5 +1,5 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class PitchWheelModel: ObservableObject {
     @Published var location = 0.0
@@ -11,7 +11,6 @@ enum WheelType {
 }
 
 struct PitchModWheel: View {
-
     var type: WheelType
 
     @StateObject var model = PitchWheelModel()
@@ -21,8 +20,7 @@ struct PitchModWheel: View {
             Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
                       value1: .constant(0),
                       value2: $model.location,
-                      onEnded: { if type == .pitch { model.location = 0.5} })
-            {
+                      onEnded: { if type == .pitch { model.location = 0.5 } }) {
                 ZStack(alignment: .bottom) {
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
@@ -35,7 +33,6 @@ struct PitchModWheel: View {
         }
     }
 }
-
 
 struct Fader_Previews: PreviewProvider {
     static var previews: some View {

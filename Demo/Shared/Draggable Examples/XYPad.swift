@@ -1,5 +1,5 @@
-import SwiftUI
 import DraggableControl
+import SwiftUI
 
 class XYPadModel: ObservableObject {
     @Published var x = 0.0
@@ -7,7 +7,6 @@ class XYPadModel: ObservableObject {
 }
 
 struct XYPad: View {
-
     @StateObject var model = XYPadModel()
 
     var body: some View {
@@ -24,7 +23,6 @@ struct XYPad: View {
         }
     }
 }
-
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {

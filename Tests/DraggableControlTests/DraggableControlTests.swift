@@ -1,5 +1,5 @@
-import XCTest
 @testable import DraggableControl
+import XCTest
 
 final class DraggableControlTests: XCTestCase {
     func testExample() throws {
