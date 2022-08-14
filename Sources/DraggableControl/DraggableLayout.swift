@@ -18,3 +18,8 @@ public enum DraggableLayout {
     /// and doesn't change the angle immediately to match the touch
     case relativePolar(radialSensitivity: Double = 1.0)
 }
+
+struct PolarCoordinate {
+    var radius: Double
+    var angle: Angle
+}
