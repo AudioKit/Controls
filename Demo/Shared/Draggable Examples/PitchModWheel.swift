@@ -15,8 +15,18 @@ struct PitchModWheel: View {
 
     @StateObject var model = PitchWheelModel()
 
+    // XXX: the thumb height probably shouldn't be a
+    //      function of the view's height.
+    func thumbHeight(_ geo: GeometryProxy) -> CGFloat {
+        geo.size.height / 20
+    }
+
+    func maxOffset(_ geo: GeometryProxy) -> CGFloat {
+        geo.size.height - thumbHeight(geo)
+    }
+
     var body: some View {
-        GeometryReader { geo in
+        return GeometryReader { geo in
             Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
                       value1: .constant(0),
                       value2: $model.location,
@@ -24,8 +34,8 @@ struct PitchModWheel: View {
                 ZStack(alignment: .bottom) {
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
-                        .frame(height: geo.size.height / 20)
-                        .offset(y: -model.location * geo.size.height)
+                        .frame(height: thumbHeight(geo))
+                        .offset(y: -(maxOffset(geo) * model.location))
                 }.animation(.spring(response: 0.2), value: model.location)
             }
         }.onAppear {
