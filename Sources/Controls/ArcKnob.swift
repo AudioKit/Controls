@@ -1,13 +1,14 @@
-import Controls
 import SwiftUI
 
-struct ArcKnob: View {
+public struct ArcKnob: View {
     @State var volume = 0.0
     var rangeDegrees = 270.0
 
     @State var isShowingValue = false
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                   value2: $volume,
                   inRange2: 0...100,

@@ -1,12 +1,11 @@
-import Controls
 import SwiftUI
 
-enum WheelType {
+public enum WheelType {
     case pitch
     case mod
 }
 
-struct PitchModWheel: View {
+public struct PitchModWheel: View {
     var type: WheelType
 
     @State var location = 0.0
@@ -21,7 +20,11 @@ struct PitchModWheel: View {
         geo.size.height - thumbHeight(geo)
     }
 
-    var body: some View {
+    public init(type: WheelType) {
+        self.type = type
+    }
+
+    public var body: some View {
         Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
                   value2: $location,
                   onEnded: { if type == .pitch { location = 0.5 } }) { geo in

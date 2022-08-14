@@ -1,12 +1,13 @@
-import Controls
 import SwiftUI
 
-struct DualArcKnob: View {
+public struct DualArcKnob: View {
     @State var volume = 0.0
     @State var pan = 0.5
     var rangeDegrees = 270.0
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         Draggable(geometry: .relativePolar(radialSensitivity: 2),
                   value: $volume,
                   value2: $pan) { geo in

@@ -1,4 +1,3 @@
-import Controls
 import SwiftUI
 
 class IndexedSliderModel: ObservableObject {
@@ -16,10 +15,12 @@ class IndexedSliderModel: ObservableObject {
     }
 }
 
-struct IndexedSlider: View {
+public struct IndexedSlider: View {
     @StateObject var model = IndexedSliderModel(indexCount: 5)
 
-    var body: some View {
+    public init() {}
+
+    public var body: some View {
         Draggable(geometry: .rectilinear, value: $model.normalValue) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
