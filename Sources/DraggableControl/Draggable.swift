@@ -21,7 +21,7 @@ public struct Draggable<Content: View>: View {
     ///   - geometry: Gesture movement geometry specification
     ///   - value1: First value that is controlled
     ///   - value2: Second value that is controlled
-    ///   - onEnded: Closure to perform when the drag starts
+    ///   - onStarted: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
     public init(geometry: DraggableGeometry = .rectilinear,
