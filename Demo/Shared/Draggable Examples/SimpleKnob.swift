@@ -9,7 +9,9 @@ struct SimpleKnob: View {
     @StateObject var model = SimpleKnobModel()
 
     var body: some View {
-        Draggable(geometry: .relativeRectilinear(ySensitivity: 2), value1: .constant(0), value2: $model.volume) { geo in
+        Draggable(geometry: .relativeRectilinear(ySensitivity: 2),
+                  value1: .constant(0),
+                  value2: $model.volume) { geo in
             ZStack(alignment: .center) {
                 Ellipse().foregroundColor(.gray)
                 Rectangle().foregroundColor(.black)

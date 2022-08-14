@@ -11,7 +11,9 @@ struct DualArcKnob: View {
     var rangeDegrees = 270.0
 
     var body: some View {
-        Draggable(geometry: .relativePolar(radialSensitivity: 2), value1: $model.volume, value2: $model.pan) { geo in
+        Draggable(geometry: .relativePolar(radialSensitivity: 2),
+                  value1: $model.volume,
+                  value2: $model.pan) { geo in
             ZStack(alignment: .center) {
                 Circle()
                     .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)
