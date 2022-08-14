@@ -25,8 +25,8 @@ public struct Draggable<Content: View>: View {
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
     public init(geometry: DraggableGeometry = .rectilinear,
-                value1: Binding<Double>,
-                value2: Binding<Double>,
+                value1: Binding<Double> = .constant(0),
+                value2: Binding<Double> = .constant(0),
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping (GeometryProxy) -> Content)

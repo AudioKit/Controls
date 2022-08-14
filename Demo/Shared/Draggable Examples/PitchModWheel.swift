@@ -1,10 +1,6 @@
 import DraggableControl
 import SwiftUI
 
-class PitchWheelModel: ObservableObject {
-    @Published var location = 0.0
-}
-
 enum WheelType {
     case pitch
     case mod
@@ -13,7 +9,7 @@ enum WheelType {
 struct PitchModWheel: View {
     var type: WheelType
 
-    @StateObject var model = PitchWheelModel()
+    @State var location = 0.0
 
     // XXX: the thumb height probably shouldn't be a
     //      function of the view's height.
@@ -27,17 +23,16 @@ struct PitchModWheel: View {
 
     var body: some View {
         Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
-                  value1: .constant(0),
-                  value2: $model.location,
-                  onEnded: { if type == .pitch { model.location = 0.5 } }) { geo in
+                  value2: $location,
+                  onEnded: { if type == .pitch { location = 0.5 } }) { geo in
             ZStack(alignment: .bottom) {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                     .frame(height: thumbHeight(geo))
-                    .offset(y: -(maxOffset(geo) * model.location))
-            }.animation(.spring(response: 0.2), value: model.location)
+                    .offset(y: -(maxOffset(geo) * location))
+            }.animation(.spring(response: 0.2), value: location)
         }.onAppear {
-            if type == .pitch { model.location = 0.5 }
+            if type == .pitch { location = 0.5 }
         }
     }
 }

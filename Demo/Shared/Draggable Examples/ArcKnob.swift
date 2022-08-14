@@ -1,20 +1,15 @@
 import DraggableControl
 import SwiftUI
 
-class ArcKnobModel: ObservableObject {
-    @Published var volume = 0.0
-}
-
 struct ArcKnob: View {
-    @StateObject var model = ArcKnobModel()
+    @State var volume = 0.0
     var rangeDegrees = 270.0
 
     @State var isShowingValue = false
 
     var body: some View {
         Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
-                  value1: .constant(0),
-                  value2: $model.volume,
+                  value2: $volume,
                   onStarted: { isShowingValue = true },
                   onEnded: { isShowingValue = false }) { geo in
             ZStack(alignment: .center) {
@@ -30,7 +25,7 @@ struct ArcKnob: View {
 
                 // Stroke value trim of knob
                 Circle()
-                    .trim(from: 45 / 360.0, to: (45 + model.volume * rangeDegrees) / 360.0)
+                    .trim(from: 45 / 360.0, to: (45 + volume * rangeDegrees) / 360.0)
                     .rotation(.degrees(-rangeDegrees))
                     .stroke(.red,
                             style: StrokeStyle(lineWidth: geo.size.width / 10,
@@ -38,7 +33,7 @@ struct ArcKnob: View {
                     .frame(width: geo.size.width * 0.8,
                            height: geo.size.height * 0.8)
 
-                Text("\(isShowingValue ? String(format: "%0.2f", model.volume) : "VOL")")
+                Text("\(isShowingValue ? String(format: "%0.2f", volume) : "VOL")")
                     .font(.largeTitle)
                     .foregroundColor(.gray)
                     .animation(.easeIn(duration: 2), value: isShowingValue)

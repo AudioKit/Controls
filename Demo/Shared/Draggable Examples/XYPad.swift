@@ -1,22 +1,18 @@
 import DraggableControl
 import SwiftUI
 
-class XYPadModel: ObservableObject {
-    @Published var x = 0.0
-    @Published var y = 0.0
-}
-
 struct XYPad: View {
-    @StateObject var model = XYPadModel()
+    @State var x = 0.0
+    @State var y = 0.0
     
     var body: some View {
-        Draggable(geometry: .rectilinear, value1: $model.x, value2: $model.y) { geo in
+        Draggable(geometry: .rectilinear, value1: $x, value2: $y) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: geo.size.width / 20).foregroundColor(.gray)
                 Circle().foregroundColor(.red)
                     .frame(width: geo.size.width / 10, height: geo.size.height / 10)
-                    .offset(x: model.x * (geo.size.width - geo.size.width / 10),
-                            y: -model.y * (geo.size.height - geo.size.width / 10))
+                    .offset(x: x * (geo.size.width - geo.size.width / 10),
+                            y: -y * (geo.size.height - geo.size.width / 10))
             }
         }
     }

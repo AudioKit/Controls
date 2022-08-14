@@ -20,7 +20,7 @@ struct IndexedSlider: View {
     @StateObject var model = IndexedSliderModel(indexCount: 5)
 
     var body: some View {
-        Draggable(geometry: .rectilinear, value1: $model.normalValue, value2: .constant(0)) { geo in
+        Draggable(geometry: .rectilinear, value1: $model.normalValue) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 ZStack {
