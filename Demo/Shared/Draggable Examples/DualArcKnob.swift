@@ -8,7 +8,7 @@ struct DualArcKnob: View {
 
     var body: some View {
         Draggable(geometry: .relativePolar(radialSensitivity: 2),
-                  value1: $volume,
+                  value: $volume,
                   value2: $pan) { geo in
             ZStack(alignment: .center) {
                 Circle()

@@ -6,7 +6,7 @@ struct XYPad: View {
     @State var y = 0.0
     
     var body: some View {
-        Draggable(geometry: .rectilinear, value1: $x, value2: $y) { geo in
+        Draggable(geometry: .rectilinear, value: $x, value2: $y) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: geo.size.width / 20).foregroundColor(.gray)
                 Circle().foregroundColor(.red)

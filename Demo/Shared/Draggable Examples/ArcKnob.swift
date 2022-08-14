@@ -10,6 +10,7 @@ struct ArcKnob: View {
     var body: some View {
         Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                   value2: $volume,
+                  inRange2: 0...100,
                   onStarted: { isShowingValue = true },
                   onEnded: { isShowingValue = false }) { geo in
             ZStack(alignment: .center) {
@@ -25,7 +26,7 @@ struct ArcKnob: View {
 
                 // Stroke value trim of knob
                 Circle()
-                    .trim(from: 45 / 360.0, to: (45 + volume * rangeDegrees) / 360.0)
+                    .trim(from: 45 / 360.0, to: (45 + volume / 100.0 * rangeDegrees) / 360.0)
                     .rotation(.degrees(-rangeDegrees))
                     .stroke(.red,
                             style: StrokeStyle(lineWidth: geo.size.width / 10,
@@ -33,10 +34,10 @@ struct ArcKnob: View {
                     .frame(width: geo.size.width * 0.8,
                            height: geo.size.height * 0.8)
 
-                Text("\(isShowingValue ? String(format: "%0.2f", volume) : "VOL")")
+                Text("\(isShowingValue ? "\(Int(volume))" : "VOL")")
+                    .frame(width: geo.size.width * 0.8)
                     .font(.largeTitle)
                     .foregroundColor(.gray)
-                    .animation(.easeIn(duration: 2), value: isShowingValue)
             }
         }
     }

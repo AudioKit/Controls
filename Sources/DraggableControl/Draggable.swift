@@ -7,8 +7,10 @@ public struct Draggable<Content: View>: View {
     var geometry: DraggableGeometry
     var onStarted: () -> Void
     var onEnded: () -> Void
-    @Binding var value1: Double
+    @Binding var value: Double
     @Binding var value2: Double
+    var range1: ClosedRange<Double>
+    var range2: ClosedRange<Double>
 
     @State var hasStarted = false
     @State var rect: CGRect = .zero
@@ -19,21 +21,25 @@ public struct Draggable<Content: View>: View {
     /// Initialize the draggable
     /// - Parameters:
     ///   - geometry: Gesture movement geometry specification
-    ///   - value1: First value that is controlled
+    ///   - value: First value that is controlled
     ///   - value2: Second value that is controlled
     ///   - onStarted: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
     public init(geometry: DraggableGeometry = .rectilinear,
-                value1: Binding<Double> = .constant(0),
+                value: Binding<Double> = .constant(0),
+                in range1: ClosedRange<Double> = 0 ... 1,
                 value2: Binding<Double> = .constant(0),
+                inRange2 range2: ClosedRange<Double> = 0 ... 1,
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping (GeometryProxy) -> Content)
     {
         self.geometry = geometry
-        _value1 = value1
+        _value = value
         _value2 = value2
+        self.range1 = range1
+        self.range2 = range2
         self.onStarted = onStarted
         self.onEnded = onEnded
         self.content = content

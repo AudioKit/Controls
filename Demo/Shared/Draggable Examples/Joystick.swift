@@ -9,7 +9,7 @@ struct Joystick: View {
     func ended() { radius = 0 }
 
     var body: some View {
-        Draggable(geometry: .polar(), value1: $radius, value2: $angle, onEnded: ended) { geo in
+        Draggable(geometry: .polar(), value: $radius, value2: $angle, onEnded: ended) { geo in
             ZStack(alignment: .center) {
                 Circle().foregroundColor(.gray)
                 Circle().foregroundColor(.red)

@@ -28,37 +28,38 @@ extension Draggable {
     func calculateValuePairs(from oldValue: CGPoint) {
         guard touchLocation != .zero else { return }
 
+        var temp1 = 0.0
+        var temp2 = 0.0
+
         switch geometry {
         case .rectilinear:
-            value1 = max(0.0, min(1.0, touchLocation.x / rect.size.width))
-            value2 = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))
+            temp1 = touchLocation.x / rect.size.width
+            temp2 = 1.0 - touchLocation.y / rect.size.height
 
         case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
             guard oldValue != .zero else { return }
-            let temp1 = value1 + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
-            let temp2 = value2 - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
-
-            value1 = max(0, min(1, temp1))
-            value2 = max(0, min(1, temp2))
+            temp1 = value + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
+            temp2 = value2 - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
 
         case let .polar(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation)
-            value1 = polar.radius
+            value = polar.radius
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
-            let value = (polar.angle.radians - angularRange.lowerBound.radians) / width
-            value2 = max(0.0, min(1.0, value))
+            temp2 = (polar.angle.radians - angularRange.lowerBound.radians) / width
 
         case let .relativePolar(radialSensitivity: radialSensitivity):
             guard oldValue != .zero else { return }
             let oldPolar = polarCoordinate(point: oldValue)
             let newPolar = polarCoordinate(point: touchLocation)
 
-            let temp1 = value1 + (newPolar.radius - oldPolar.radius) * radialSensitivity
-            let temp2 = value2 + (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
+            temp1 += (newPolar.radius - oldPolar.radius) * radialSensitivity
+            temp2 += (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
 
-            value1 = max(0, min(1, temp1))
-            value2 = max(0, min(1, temp2))
         }
+
+        // Bound and convert to range
+        value = max(0.0, min(1.0, temp1)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
+        value2 = max(0.0, min(1.0, temp2)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
     }
 
     func polarCoordinate(point: CGPoint) -> PolarCoordinate {
