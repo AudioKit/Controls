@@ -35,24 +35,25 @@ public struct Draggable<Content: View>: View {
         self.content = content
     }
 
-    @GestureState var touchLocation: CGPoint?
     @State var hasStarted = false
 
     func rect(rect: CGRect) -> some View {
         content()
             .contentShape(Rectangle()) // Added to improve tap/click reliability
             .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                .updating($touchLocation) { value, state, _ in
-                    state = value.location
+                .onChanged { gesture in
+                    if !hasStarted {
+                        onStarted()
+                    }
+                    hasStarted = true
+                    model.touchLocation = gesture.location
                 }
-                .onChanged { _ in if !hasStarted { onStarted() } }
-                .onEnded { _ in onEnded(); hasStarted = false }
+                .onEnded { _ in
+                    model.touchLocation = .zero
+                    onEnded()
+                    hasStarted = false
+                }
             )
-            .preference(key: TouchLocationKey.self,
-                        value: touchLocation != nil ? touchLocation! : .zero)
-            .onPreferenceChange(TouchLocationKey.self) { touchLocation in
-                model.touchLocation = touchLocation
-            }
             .onAppear {
                 model.layout = layout
                 model.value1 = _value1
