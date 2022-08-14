@@ -28,8 +28,8 @@ extension Draggable {
     func calculateValuePairs(from oldValue: CGPoint) {
         guard touchLocation != .zero else { return }
 
-        var temp1 = 0.0
-        var temp2 = 0.0
+        var temp1 = (value - range1.lowerBound) / (range1.upperBound - range1.lowerBound)
+        var temp2 = (value2 - range2.lowerBound) / (range2.upperBound - range2.lowerBound)
 
         switch geometry {
         case .rectilinear:
@@ -38,13 +38,14 @@ extension Draggable {
 
         case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
             guard oldValue != .zero else { return }
-            temp1 = value + (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
-            temp2 = value2 - (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
+            temp1 += (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
+            temp2 -= (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
 
         case let .polar(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation)
-            value = polar.radius
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
+
+            temp1 = polar.radius
             temp2 = (polar.angle.radians - angularRange.lowerBound.radians) / width
 
         case let .relativePolar(radialSensitivity: radialSensitivity):
@@ -58,7 +59,7 @@ extension Draggable {
         }
 
         // Bound and convert to range
-        value = max(0.0, min(1.0, temp1)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
+        value = max(0.0, min(1.0, temp1)) * (range1.upperBound - range1.lowerBound) + range1.lowerBound
         value2 = max(0.0, min(1.0, temp2)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
     }
 
