@@ -17,21 +17,20 @@ public enum DraggableGeometry {
     /// This version gives the user control in the radial direction
     /// and doesn't change the angle immediately to match the touch
     case relativePolar(radialSensitivity: Double = 1.0)
-}
 
-struct PolarCoordinate {
-    var radius: Double
-    var angle: Angle
-}
-
-extension Draggable {
-    func calculateValuePairs(from oldValue: CGPoint) {
+    func calculateValuePair(value: inout Double,
+                            in range1: ClosedRange<Double>,
+                            value2: inout Double,
+                            inRange2 range2: ClosedRange<Double>,
+                            from oldValue: CGPoint,
+                            to touchLocation: CGPoint,
+                            inRect rect: CGRect) {
         guard touchLocation != .zero else { return }
 
         var temp1 = (value - range1.lowerBound) / (range1.upperBound - range1.lowerBound)
         var temp2 = (value2 - range2.lowerBound) / (range2.upperBound - range2.lowerBound)
 
-        switch geometry {
+        switch self {
         case .rectilinear:
             temp1 = touchLocation.x / rect.size.width
             temp2 = 1.0 - touchLocation.y / rect.size.height
@@ -42,7 +41,7 @@ extension Draggable {
             temp2 -= (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
 
         case let .polar(angularRange: angularRange):
-            let polar = polarCoordinate(point: touchLocation)
+            let polar = polarCoordinate(point: touchLocation, rect: rect)
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
 
             temp1 = polar.radius
@@ -50,8 +49,8 @@ extension Draggable {
 
         case let .relativePolar(radialSensitivity: radialSensitivity):
             guard oldValue != .zero else { return }
-            let oldPolar = polarCoordinate(point: oldValue)
-            let newPolar = polarCoordinate(point: touchLocation)
+            let oldPolar = polarCoordinate(point: oldValue, rect: rect)
+            let newPolar = polarCoordinate(point: touchLocation, rect: rect)
 
             temp1 += (newPolar.radius - oldPolar.radius) * radialSensitivity
             temp2 += (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
@@ -63,7 +62,7 @@ extension Draggable {
         value2 = max(0.0, min(1.0, temp2)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
     }
 
-    func polarCoordinate(point: CGPoint) -> PolarCoordinate {
+    func polarCoordinate(point: CGPoint, rect: CGRect) -> PolarCoordinate {
         // Calculate the x and y distances from the center
         let deltaX = (point.x - rect.midX) / (rect.width / 2.0)
         let deltaY = (point.y - rect.midY) / (rect.height / 2.0)
@@ -78,3 +77,9 @@ extension Draggable {
         return PolarCoordinate(radius: radius, angle: Angle(radians: theta))
     }
 }
+
+struct PolarCoordinate {
+    var radius: Double
+    var angle: Angle
+}
+

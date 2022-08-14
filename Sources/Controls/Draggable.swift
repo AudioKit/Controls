@@ -15,7 +15,13 @@ public struct Draggable<Content: View>: View {
     @State var hasStarted = false
     @State var rect: CGRect = .zero
     @State var touchLocation: CGPoint = .zero {
-        didSet { calculateValuePairs(from: oldValue) }
+        didSet { geometry.calculateValuePair(value: &value,
+                                             in: range1,
+                                             value2: &value2,
+                                             inRange2: range2,
+                                             from: oldValue,
+                                             to: touchLocation,
+                                             inRect: rect) }
     }
 
     /// Initialize the draggable
