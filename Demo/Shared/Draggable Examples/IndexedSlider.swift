@@ -29,6 +29,7 @@ struct IndexedSlider: View {
                 }
                 .frame(width: geo.size.width / CGFloat(model.indexCount))
                 .offset(x: CGFloat(model.index) * geo.size.width / CGFloat(model.indexCount))
+                .animation(.easeOut, value: model.index)
             }
         }
     }
