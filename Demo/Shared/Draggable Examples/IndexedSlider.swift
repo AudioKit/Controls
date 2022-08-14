@@ -21,7 +21,7 @@ struct IndexedSlider: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .rectilinear, value1: $model.normalValue, value2: .constant(0)) {
+            Draggable(geometry: .rectilinear, value1: $model.normalValue, value2: .constant(0)) {
                 ZStack(alignment: .bottomLeading) {
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                     ZStack {

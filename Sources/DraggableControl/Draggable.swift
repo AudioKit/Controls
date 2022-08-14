@@ -4,7 +4,7 @@ import SwiftUI
 /// TODO: Is this a good name?
 public struct Draggable<Content: View>: View {
     let content: () -> Content
-    var layout: DraggableLayout
+    var geometry: DraggableGeometry
     var onStarted: () -> Void
     var onEnded: () -> Void
     @Binding var value1: Double
@@ -12,20 +12,20 @@ public struct Draggable<Content: View>: View {
 
     /// Initialize the draggable
     /// - Parameters:
-    ///   - layout: Gesture movement geometry specification
+    ///   - geometry: Gesture movement geometry specification
     ///   - value1: First value that is controlled
     ///   - value2: Second value that is controlled
     ///   - onEnded: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
-    public init(layout: DraggableLayout = .rectilinear,
+    public init(geometry: DraggableGeometry = .rectilinear,
                 value1: Binding<Double>,
                 value2: Binding<Double>,
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping () -> Content)
     {
-        self.layout = layout
+        self.geometry = geometry
         self._value1 = value1
         self._value2 = value2
         self.onStarted = onStarted
@@ -69,7 +69,7 @@ public struct Draggable<Content: View>: View {
         didSet {
             guard touchLocation != .zero else { return }
 
-            switch layout {
+            switch geometry {
             case .rectilinear:
                 value1 = max(0.0, min(1.0, touchLocation.x / rect.size.width))
                 value2 = 1.0 - max(0.0, min(1.0, touchLocation.y / rect.size.height))

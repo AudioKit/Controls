@@ -13,7 +13,7 @@ struct DualArcKnob: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .relativePolar(radialSensitivity: 2), value1: $model.volume, value2: $model.pan) {
+            Draggable(geometry: .relativePolar(radialSensitivity: 2), value1: $model.volume, value2: $model.pan) {
                 ZStack(alignment: .center) {
                     Circle()
                         .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)

@@ -18,7 +18,7 @@ struct PitchModWheel: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: type == .mod ? .relativeRectilinear() : .rectilinear,
+            Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
                       value1: .constant(0),
                       value2: $model.location,
                       onEnded: { if type == .pitch { model.location = 0.5} })

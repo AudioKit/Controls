@@ -11,7 +11,7 @@ struct Scrubber: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .rectilinear, value1: $model.playhead, value2: .constant(0)) {
+            Draggable(geometry: .rectilinear, value1: $model.playhead, value2: .constant(0)) {
                 ZStack(alignment: .bottomLeading) {
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.red)

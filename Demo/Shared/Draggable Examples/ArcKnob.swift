@@ -14,7 +14,7 @@ struct ArcKnob: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .polar(angularRange: Angle(degrees: 45)...Angle(degrees: 315)),
+            Draggable(geometry: .polar(angularRange: Angle(degrees: 45)...Angle(degrees: 315)),
                       value1: .constant(0),
                       value2: $model.volume,
                       onStarted: { isShowingValue = true },

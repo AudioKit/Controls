@@ -12,7 +12,7 @@ struct XYPad: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .rectilinear, value1: $model.x, value2: $model.y) {
+            Draggable(geometry: .rectilinear, value1: $model.x, value2: $model.y) {
                 ZStack(alignment: .bottomLeading) {
                     RoundedRectangle(cornerRadius: geo.size.width / 20).foregroundColor(.gray)
                     Circle().foregroundColor(.red)

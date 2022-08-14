@@ -14,7 +14,7 @@ struct Joystick: View {
     
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .polar(), value1: $model.radius, value2: $model.angle, onEnded: ended) {
+            Draggable(geometry: .polar(), value1: $model.radius, value2: $model.angle, onEnded: ended) {
                 ZStack(alignment: .center) {
                     Circle().foregroundColor(.gray)
                     Circle().foregroundColor(.red)

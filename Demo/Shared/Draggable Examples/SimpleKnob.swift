@@ -11,7 +11,7 @@ struct SimpleKnob: View {
 
     var body: some View {
         GeometryReader { geo in
-            Draggable(layout: .relativeRectilinear(ySensitivity: 2), value1: .constant(0), value2: $model.volume) {
+            Draggable(geometry: .relativeRectilinear(ySensitivity: 2), value1: .constant(0), value2: $model.volume) {
                 ZStack(alignment: .center) {
                     Ellipse().foregroundColor(.gray)
                     Rectangle().foregroundColor(.black)
