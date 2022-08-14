@@ -1,7 +1,6 @@
 import SwiftUI
 
 /// A view in which dragging on it will change bound variables and perform closures
-/// TODO: Is this a good name?
 public struct Draggable<Content: View>: View {
     let content: (GeometryProxy) -> Content
     var geometry: DraggableGeometry
@@ -15,13 +14,15 @@ public struct Draggable<Content: View>: View {
     @State var hasStarted = false
     @State var rect: CGRect = .zero
     @State var touchLocation: CGPoint = .zero {
-        didSet { (value, value2) = geometry.calculateValuePair(value: value,
-                                                               in: range1,
-                                                               value2: value2,
-                                                               inRange2: range2,
-                                                               from: oldValue,
-                                                               to: touchLocation,
-                                                               inRect: rect) }
+        didSet {
+            (value, value2) = geometry.calculateValuePair(value: value,
+                                                          in: range1,
+                                                          value2: value2,
+                                                          inRange2: range2,
+                                                          from: oldValue,
+                                                          to: touchLocation,
+                                                          inRect: rect)
+        }
     }
 
     /// Initialize the draggable
