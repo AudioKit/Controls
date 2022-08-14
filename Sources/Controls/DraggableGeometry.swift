@@ -18,14 +18,14 @@ public enum DraggableGeometry {
     /// and doesn't change the angle immediately to match the touch
     case relativePolar(radialSensitivity: Double = 1.0)
 
-    func calculateValuePair(value: inout Double,
-                            in range1: ClosedRange<Double>,
-                            value2: inout Double,
-                            inRange2 range2: ClosedRange<Double>,
+    func calculateValuePair(value: Double,
+                            in range1: ClosedRange<Double> = 0 ... 1,
+                            value2: Double = 0,
+                            inRange2 range2: ClosedRange<Double> = 0 ... 1,
                             from oldValue: CGPoint,
                             to touchLocation: CGPoint,
-                            inRect rect: CGRect) {
-        guard touchLocation != .zero else { return }
+                            inRect rect: CGRect) -> (Double, Double) {
+        guard touchLocation != .zero else { return (value, value2) }
 
         var temp1 = (value - range1.lowerBound) / (range1.upperBound - range1.lowerBound)
         var temp2 = (value2 - range2.lowerBound) / (range2.upperBound - range2.lowerBound)
@@ -36,7 +36,7 @@ public enum DraggableGeometry {
             temp2 = 1.0 - touchLocation.y / rect.size.height
 
         case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
-            guard oldValue != .zero else { return }
+            guard oldValue != .zero else { return (value, value2) }
             temp1 += (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
             temp2 -= (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
 
@@ -48,7 +48,7 @@ public enum DraggableGeometry {
             temp2 = (polar.angle.radians - angularRange.lowerBound.radians) / width
 
         case let .relativePolar(radialSensitivity: radialSensitivity):
-            guard oldValue != .zero else { return }
+            guard oldValue != .zero else { return (value, value2) }
             let oldPolar = polarCoordinate(point: oldValue, rect: rect)
             let newPolar = polarCoordinate(point: touchLocation, rect: rect)
 
@@ -58,8 +58,10 @@ public enum DraggableGeometry {
         }
 
         // Bound and convert to range
-        value = max(0.0, min(1.0, temp1)) * (range1.upperBound - range1.lowerBound) + range1.lowerBound
-        value2 = max(0.0, min(1.0, temp2)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
+        let newValue = max(0.0, min(1.0, temp1)) * (range1.upperBound - range1.lowerBound) + range1.lowerBound
+        let newValue2 = max(0.0, min(1.0, temp2)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
+
+        return (newValue, newValue2)
     }
 
     func polarCoordinate(point: CGPoint, rect: CGRect) -> PolarCoordinate {
