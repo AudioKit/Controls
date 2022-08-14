@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct DraggableControlDemoApp: App {
+struct ControlsDemoApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

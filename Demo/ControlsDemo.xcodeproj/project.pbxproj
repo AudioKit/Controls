@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F1AF69A728A609AD00472E04 /* DraggableControl in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69A628A609AD00472E04 /* DraggableControl */; };
 		F1AF69B128A788C700472E04 /* XYPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B028A788C700472E04 /* XYPad.swift */; };
 		F1AF69B228A788C700472E04 /* XYPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B028A788C700472E04 /* XYPad.swift */; };
 		F1AF69B428A78B1300472E04 /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69B328A78B1300472E04 /* Joystick.swift */; };
@@ -24,13 +23,14 @@
 		F1AF69C528A79C7300472E04 /* DualArcKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69C328A79C7300472E04 /* DualArcKnob.swift */; };
 		F1AF69C728A79EE700472E04 /* IndexedSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69C628A79EE700472E04 /* IndexedSlider.swift */; };
 		F1AF69C828A79EE700472E04 /* IndexedSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AF69C628A79EE700472E04 /* IndexedSlider.swift */; };
-		F1D9CD2E28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* DraggableControlDemoApp.swift */; };
-		F1D9CD2F28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* DraggableControlDemoApp.swift */; };
+		F1AF69D528A986E700472E04 /* Controls in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69D428A986E700472E04 /* Controls */; };
+		F1AF69D728A986F500472E04 /* Controls in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69D628A986F500472E04 /* Controls */; };
+		F1D9CD2E28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */; };
+		F1D9CD2F28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */; };
 		F1D9CD3028A5D9EF00C2B893 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */; };
 		F1D9CD3128A5D9EF00C2B893 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */; };
 		F1D9CD3228A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
 		F1D9CD3328A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
-		F1D9CD4028A600AD00C2B893 /* DraggableControl in Frameworks */ = {isa = PBXBuildFile; productRef = F1D9CD3F28A600AD00C2B893 /* DraggableControl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,13 +42,13 @@
 		F1AF69C028A7977900472E04 /* ArcKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcKnob.swift; sourceTree = "<group>"; };
 		F1AF69C328A79C7300472E04 /* DualArcKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DualArcKnob.swift; sourceTree = "<group>"; };
 		F1AF69C628A79EE700472E04 /* IndexedSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedSlider.swift; sourceTree = "<group>"; };
-		F1D9CD1E28A5D9EE00C2B893 /* DraggableControlDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableControlDemoApp.swift; sourceTree = "<group>"; };
+		F1AF69D328A986D900472E04 /* Controls */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Controls; path = ..; sourceTree = "<group>"; };
+		F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsDemoApp.swift; sourceTree = "<group>"; };
 		F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F1D9CD2528A5D9EF00C2B893 /* DraggableControlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraggableControlDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1D9CD2B28A5D9EF00C2B893 /* DraggableControlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DraggableControlDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D9CD2D28A5D9EF00C2B893 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
-		F1D9CD3D28A5DA3700C2B893 /* DraggableControl */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = DraggableControl; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1D9CD4028A600AD00C2B893 /* DraggableControl in Frameworks */,
+				F1AF69D528A986E700472E04 /* Controls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1AF69A728A609AD00472E04 /* DraggableControl in Frameworks */,
+				F1AF69D728A986F500472E04 /* Controls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 				F1AF69BF28A7910F00472E04 /* Draggable Examples */,
 				F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */,
 				F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */,
-				F1D9CD1E28A5D9EE00C2B893 /* DraggableControlDemoApp.swift */,
+				F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -111,8 +111,8 @@
 		F1D9CD2628A5D9EF00C2B893 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1D9CD2528A5D9EF00C2B893 /* DraggableControlDemo.app */,
-				F1D9CD2B28A5D9EF00C2B893 /* DraggableControlDemo.app */,
+				F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */,
+				F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 		F1D9CD3C28A5DA3700C2B893 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				F1D9CD3D28A5DA3700C2B893 /* DraggableControl */,
+				F1AF69D328A986D900472E04 /* Controls */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -143,9 +143,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F1D9CD2428A5D9EF00C2B893 /* DraggableControlDemo (iOS) */ = {
+		F1D9CD2428A5D9EF00C2B893 /* ControlsDemo (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "DraggableControlDemo (iOS)" */;
+			buildConfigurationList = F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (iOS)" */;
 			buildPhases = (
 				F1D9CD2128A5D9EF00C2B893 /* Sources */,
 				F1D9CD2228A5D9EF00C2B893 /* Frameworks */,
@@ -155,17 +155,17 @@
 			);
 			dependencies = (
 			);
-			name = "DraggableControlDemo (iOS)";
+			name = "ControlsDemo (iOS)";
 			packageProductDependencies = (
-				F1D9CD3F28A600AD00C2B893 /* DraggableControl */,
+				F1AF69D428A986E700472E04 /* Controls */,
 			);
-			productName = "DraggableControlDemo (iOS)";
-			productReference = F1D9CD2528A5D9EF00C2B893 /* DraggableControlDemo.app */;
+			productName = "ControlsDemo (iOS)";
+			productReference = F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F1D9CD2A28A5D9EF00C2B893 /* DraggableControlDemo (macOS) */ = {
+		F1D9CD2A28A5D9EF00C2B893 /* ControlsDemo (macOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1D9CD3928A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "DraggableControlDemo (macOS)" */;
+			buildConfigurationList = F1D9CD3928A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (macOS)" */;
 			buildPhases = (
 				F1D9CD2728A5D9EF00C2B893 /* Sources */,
 				F1D9CD2828A5D9EF00C2B893 /* Frameworks */,
@@ -175,12 +175,12 @@
 			);
 			dependencies = (
 			);
-			name = "DraggableControlDemo (macOS)";
+			name = "ControlsDemo (macOS)";
 			packageProductDependencies = (
-				F1AF69A628A609AD00472E04 /* DraggableControl */,
+				F1AF69D628A986F500472E04 /* Controls */,
 			);
-			productName = "DraggableControlDemo (macOS)";
-			productReference = F1D9CD2B28A5D9EF00C2B893 /* DraggableControlDemo.app */;
+			productName = "ControlsDemo (macOS)";
+			productReference = F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -201,7 +201,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1D9CD1C28A5D9EE00C2B893 /* Build configuration list for PBXProject "DraggableControlDemo" */;
+			buildConfigurationList = F1D9CD1C28A5D9EE00C2B893 /* Build configuration list for PBXProject "ControlsDemo" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,8 +214,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1D9CD2428A5D9EF00C2B893 /* DraggableControlDemo (iOS) */,
-				F1D9CD2A28A5D9EF00C2B893 /* DraggableControlDemo (macOS) */,
+				F1D9CD2428A5D9EF00C2B893 /* ControlsDemo (iOS) */,
+				F1D9CD2A28A5D9EF00C2B893 /* ControlsDemo (macOS) */,
 			);
 		};
 /* End PBXProject section */
@@ -249,7 +249,7 @@
 				F1AF69C728A79EE700472E04 /* IndexedSlider.swift in Sources */,
 				F1AF69B428A78B1300472E04 /* Joystick.swift in Sources */,
 				F1AF69B128A788C700472E04 /* XYPad.swift in Sources */,
-				F1D9CD2E28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */,
+				F1D9CD2E28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */,
 				F1AF69B728A78D4B00472E04 /* PitchModWheel.swift in Sources */,
 				F1AF69C428A79C7300472E04 /* DualArcKnob.swift in Sources */,
 				F1AF69BD28A790EC00472E04 /* SimpleKnob.swift in Sources */,
@@ -266,7 +266,7 @@
 				F1AF69C828A79EE700472E04 /* IndexedSlider.swift in Sources */,
 				F1AF69B528A78B1300472E04 /* Joystick.swift in Sources */,
 				F1AF69B228A788C700472E04 /* XYPad.swift in Sources */,
-				F1D9CD2F28A5D9EF00C2B893 /* DraggableControlDemoApp.swift in Sources */,
+				F1D9CD2F28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */,
 				F1AF69B828A78D4B00472E04 /* PitchModWheel.swift in Sources */,
 				F1AF69C528A79C7300472E04 /* DualArcKnob.swift in Sources */,
 				F1AF69BE28A790EC00472E04 /* SimpleKnob.swift in Sources */,
@@ -407,8 +407,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.DraggableControlDemo;
-				PRODUCT_NAME = DraggableControlDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
+				PRODUCT_NAME = ControlsDemo;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -437,8 +437,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.DraggableControlDemo;
-				PRODUCT_NAME = DraggableControlDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
+				PRODUCT_NAME = ControlsDemo;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -467,8 +467,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.DraggableControlDemo;
-				PRODUCT_NAME = DraggableControlDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
+				PRODUCT_NAME = ControlsDemo;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -495,8 +495,8 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.DraggableControlDemo;
-				PRODUCT_NAME = DraggableControlDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
+				PRODUCT_NAME = ControlsDemo;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -506,7 +506,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1D9CD1C28A5D9EE00C2B893 /* Build configuration list for PBXProject "DraggableControlDemo" */ = {
+		F1D9CD1C28A5D9EE00C2B893 /* Build configuration list for PBXProject "ControlsDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D9CD3428A5D9EF00C2B893 /* Debug */,
@@ -515,7 +515,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "DraggableControlDemo (iOS)" */ = {
+		F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D9CD3728A5D9EF00C2B893 /* Debug */,
@@ -524,7 +524,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1D9CD3928A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "DraggableControlDemo (macOS)" */ = {
+		F1D9CD3928A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (macOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D9CD3A28A5D9EF00C2B893 /* Debug */,
@@ -536,13 +536,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F1AF69A628A609AD00472E04 /* DraggableControl */ = {
+		F1AF69D428A986E700472E04 /* Controls */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DraggableControl;
+			productName = Controls;
 		};
-		F1D9CD3F28A600AD00C2B893 /* DraggableControl */ = {
+		F1AF69D628A986F500472E04 /* Controls */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DraggableControl;
+			productName = Controls;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

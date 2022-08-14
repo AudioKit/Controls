@@ -3,12 +3,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "DraggableControl",
+    name: "Controls",
     platforms: [.macOS(.v12), .iOS(.v15)],
-    products: [.library(name: "DraggableControl",
-                        targets: ["DraggableControl"])],
+    products: [.library(name: "Controls", targets: ["Controls"])],
     targets: [
-        .target(name: "DraggableControl", dependencies: []),
-        .testTarget(name: "DraggableControlTests", dependencies: ["DraggableControl"]),
+        .target(name: "Controls", dependencies: []),
+        .testTarget(name: "ControlsTests", dependencies: ["Controls"]),
     ]
 )

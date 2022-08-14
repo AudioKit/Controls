@@ -1,4 +1,4 @@
-import DraggableControl
+import Controls
 import SwiftUI
 
 struct Joystick: View {
