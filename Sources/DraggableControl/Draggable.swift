@@ -3,7 +3,7 @@ import SwiftUI
 /// A view in which dragging on it will change bound variables and perform closures
 /// TODO: Is this a good name?
 public struct Draggable<Content: View>: View {
-    let content: () -> Content
+    let content: (GeometryProxy) -> Content
     var geometry: DraggableGeometry
     var onStarted: () -> Void
     var onEnded: () -> Void
@@ -29,7 +29,7 @@ public struct Draggable<Content: View>: View {
                 value2: Binding<Double>,
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
-                @ViewBuilder content: @escaping () -> Content)
+                @ViewBuilder content: @escaping (GeometryProxy) -> Content)
     {
         self.geometry = geometry
         _value1 = value1
@@ -41,7 +41,7 @@ public struct Draggable<Content: View>: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            content()
+            content(proxy)
                 .contentShape(Rectangle()) // Added to improve tap/click reliability
                 .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
                     .onChanged { gesture in

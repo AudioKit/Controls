@@ -26,18 +26,16 @@ struct PitchModWheel: View {
     }
 
     var body: some View {
-        return GeometryReader { geo in
-            Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
-                      value1: .constant(0),
-                      value2: $model.location,
-                      onEnded: { if type == .pitch { model.location = 0.5 } }) {
-                ZStack(alignment: .bottom) {
-                    RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
-                    RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
-                        .frame(height: thumbHeight(geo))
-                        .offset(y: -(maxOffset(geo) * model.location))
-                }.animation(.spring(response: 0.2), value: model.location)
-            }
+        Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
+                  value1: .constant(0),
+                  value2: $model.location,
+                  onEnded: { if type == .pitch { model.location = 0.5 } }) { geo in
+            ZStack(alignment: .bottom) {
+                RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
+                RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
+                    .frame(height: thumbHeight(geo))
+                    .offset(y: -(maxOffset(geo) * model.location))
+            }.animation(.spring(response: 0.2), value: model.location)
         }.onAppear {
             if type == .pitch { model.location = 0.5 }
         }

@@ -12,16 +12,14 @@ struct Joystick: View {
     func ended() { model.radius = 0 }
 
     var body: some View {
-        GeometryReader { geo in
-            Draggable(geometry: .polar(), value1: $model.radius, value2: $model.angle, onEnded: ended) {
-                ZStack(alignment: .center) {
-                    Circle().foregroundColor(.gray)
-                    Circle().foregroundColor(.red)
-                        .frame(width: geo.size.width / 10, height: geo.size.height / 10)
-                        .offset(x: -model.radius * sin(model.angle * 2.0 * .pi) * geo.size.width / 2.0,
-                                y: model.radius * cos(model.angle * 2.0 * .pi) * geo.size.height / 2.0)
-                        .animation(.spring(response: 0.1), value: model.radius)
-                }
+        Draggable(geometry: .polar(), value1: $model.radius, value2: $model.angle, onEnded: ended) { geo in
+            ZStack(alignment: .center) {
+                Circle().foregroundColor(.gray)
+                Circle().foregroundColor(.red)
+                    .frame(width: geo.size.width / 10, height: geo.size.height / 10)
+                    .offset(x: -model.radius * sin(model.angle * 2.0 * .pi) * geo.size.width / 2.0,
+                            y: model.radius * cos(model.angle * 2.0 * .pi) * geo.size.height / 2.0)
+                    .animation(.spring(response: 0.1), value: model.radius)
             }
         }
     }
