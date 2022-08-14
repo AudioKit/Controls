@@ -6,7 +6,7 @@ class SimpleKnobModel: ObservableObject {
 }
 
 struct SimpleKnob: View {
-    @StateObject var model = ArcKnobModel()
+    @StateObject var model = SimpleKnobModel()
 
     var body: some View {
         GeometryReader { geo in
