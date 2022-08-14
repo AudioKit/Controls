@@ -12,7 +12,7 @@ public enum DraggableGeometry {
 
     /// Larger knobs with a more skeumorphic drag and twist motif.
     /// For non relative the values change immediately to match the touch.
-    case polar(angularRange: ClosedRange<Angle> = Angle(radians: 0) ... Angle(radians: 2.0 * .pi))
+    case polar(angularRange: ClosedRange<Angle> = Angle.zero ... Angle(degrees: 360))
 
     /// This version gives the user control in the radial direction
     /// and doesn't change the angle immediately to match the touch
