@@ -1,10 +1,13 @@
 import SwiftUI
 
 public struct XYPad: View {
-    @State var x = 0.0
-    @State var y = 0.0
+    @Binding var x: Double
+    @Binding var y: Double
 
-    public init() {}
+    public init(x: Binding<Double>, y: Binding<Double>) {
+        _x = x
+        _y = y
+    }
 
     public var body: some View {
         Draggable(geometry: .rectilinear, value: $x, value2: $y) { geo in
@@ -21,6 +24,6 @@ public struct XYPad: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        XYPad()
+        XYPad(x: .constant(0.33), y: .constant(0.33))
     }
 }

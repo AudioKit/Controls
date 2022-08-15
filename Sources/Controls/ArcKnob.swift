@@ -1,12 +1,14 @@
 import SwiftUI
 
 public struct ArcKnob: View {
-    @State var volume = 0.0
+    @Binding var volume: Double
     var rangeDegrees = 270.0
 
     @State var isShowingValue = false
 
-    public init() {}
+    public init(value: Binding<Double>) {
+        _volume = value
+    }
 
     public var body: some View {
         Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
@@ -46,6 +48,6 @@ public struct ArcKnob: View {
 
 struct ArcKnob_Previews: PreviewProvider {
     static var previews: some View {
-        ArcKnob()
+        ArcKnob(value: .constant(0.33))
     }
 }

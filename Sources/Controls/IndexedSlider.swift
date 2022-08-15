@@ -1,43 +1,35 @@
 import SwiftUI
 
-class IndexedSliderModel: ObservableObject {
-    var indexCount: Int
-    init(indexCount: Int) {
-        self.indexCount = indexCount
-    }
-
-    @Published var index = 0
-
-    @Published var normalValue = 0.0 {
-        didSet {
-            index = Int(normalValue * Double(indexCount))
-        }
-    }
-}
-
 public struct IndexedSlider: View {
-    @StateObject var model = IndexedSliderModel(indexCount: 5)
+    @Binding var index: Int
+    @State var normalValue = 0.0
+    var count: Int
 
-    public init() {}
+    public init(index: Binding<Int>, count: Int) {
+        _index = index
+        self.count = count
+    }
 
     public var body: some View {
-        Draggable(geometry: .rectilinear, value: $model.normalValue) { geo in
+        Draggable(geometry: .rectilinear, value: $normalValue) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 ZStack {
                     RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
-                    Text("\(model.index + 1)").font(.largeTitle)
+                    Text("\(index + 1)").font(.largeTitle)
                 }
-                .frame(width: geo.size.width / CGFloat(model.indexCount))
-                .offset(x: CGFloat(model.index) * geo.size.width / CGFloat(model.indexCount))
-                .animation(.easeOut, value: model.index)
+                .frame(width: geo.size.width / CGFloat(count))
+                .offset(x: CGFloat(index) * geo.size.width / CGFloat(count))
+                .animation(.easeOut, value: index)
             }
+        }.onChange(of: normalValue) { newValue in
+            index = Int(newValue * Double(count))
         }
     }
 }
 
 struct IndexedSlider_Previews: PreviewProvider {
     static var previews: some View {
-        IndexedSlider()
+        IndexedSlider(index: .constant(2), count: 10)
     }
 }

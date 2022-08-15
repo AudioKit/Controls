@@ -1,9 +1,11 @@
 import SwiftUI
 
 public struct Scrubber: View {
-    @State var playhead = 0.0
+    @Binding var playhead: Double
 
-    public init() {}
+    public init(playhead: Binding<Double>) {
+        _playhead = playhead
+    }
 
     public var body: some View {
         Draggable(geometry: .rectilinear, value: $playhead) { geo in
@@ -19,6 +21,6 @@ public struct Scrubber: View {
 
 struct Scrubber_Previews: PreviewProvider {
     static var previews: some View {
-        Scrubber()
+        Scrubber(playhead: .constant(0.33))
     }
 }

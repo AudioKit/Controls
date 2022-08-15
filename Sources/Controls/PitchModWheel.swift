@@ -8,7 +8,7 @@ public enum WheelType {
 public struct PitchModWheel: View {
     var type: WheelType
 
-    @State var location = 0.0
+    @Binding var location: Double
 
     // XXX: the thumb height probably shouldn't be a
     //      function of the view's height.
@@ -20,8 +20,9 @@ public struct PitchModWheel: View {
         geo.size.height - thumbHeight(geo)
     }
 
-    public init(type: WheelType) {
+    public init(type: WheelType, value: Binding<Double>) {
         self.type = type
+        _location = value
     }
 
     public var body: some View {
@@ -42,6 +43,6 @@ public struct PitchModWheel: View {
 
 struct Fader_Previews: PreviewProvider {
     static var previews: some View {
-        PitchModWheel(type: .pitch)
+        PitchModWheel(type: .pitch, value: .constant(0.33))
     }
 }

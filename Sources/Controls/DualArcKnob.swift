@@ -1,11 +1,14 @@
 import SwiftUI
 
 public struct DualArcKnob: View {
-    @State var volume = 0.0
-    @State var pan = 0.5
+    @Binding var volume: Double
+    @Binding var pan: Double
     var rangeDegrees = 270.0
 
-    public init() {}
+    public init(volume: Binding<Double>, pan:Binding<Double>) {
+        _volume = volume
+        _pan = pan
+    }
 
     public var body: some View {
         Draggable(geometry: .relativePolar(radialSensitivity: 2),
@@ -46,6 +49,6 @@ public struct DualArcKnob: View {
 
 struct DualArcKnob_Previews: PreviewProvider {
     static var previews: some View {
-        DualArcKnob()
+        DualArcKnob(volume: .constant(0.33), pan: .constant(0.33))
     }
 }

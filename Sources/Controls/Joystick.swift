@@ -2,12 +2,15 @@ import SwiftUI
 
 public struct Joystick: View {
 
-    @State var radius = 0.0
-    @State var angle = 0.0
+    @Binding var radius: Double
+    @Binding var angle: Double
 
     func ended() { radius = 0 }
 
-    public init() {}
+    public init(radius: Binding<Double>, angle: Binding<Double>) {
+        _radius = radius
+        _angle = angle
+    }
 
     public var body: some View {
         Draggable(geometry: .polar(), value: $radius, value2: $angle, onEnded: ended) { geo in
@@ -25,6 +28,6 @@ public struct Joystick: View {
 
 struct Joystick_Previews: PreviewProvider {
     static var previews: some View {
-        Joystick()
+        Joystick(radius: .constant(0.33), angle: .constant(0.33))
     }
 }

@@ -1,9 +1,11 @@
 import SwiftUI
 
 public struct SimpleKnob: View {
-    @State var volume = 0.0
+    @Binding var volume: Double
 
-    public init() {}
+    public init(value: Binding<Double>) {
+        _volume = value
+    }
 
     public var body: some View {
         Draggable(geometry: .relativeRectilinear(ySensitivity: 2),
@@ -22,6 +24,6 @@ public struct SimpleKnob: View {
 
 struct SimpleKnob_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleKnob()
+        SimpleKnob(value: .constant(0.33))
     }
 }
