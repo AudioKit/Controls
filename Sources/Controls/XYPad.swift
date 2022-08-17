@@ -16,7 +16,7 @@ public struct XYPad: View {
                 Circle().foregroundColor(.red)
                     .frame(width: geo.size.width / 10, height: geo.size.height / 10)
                     .offset(x: x * (geo.size.width - geo.size.width / 10),
-                            y: -y * (geo.size.height - geo.size.width / 10))
+                            y: -y * (geo.size.height - geo.size.height / 10))
             }
         }
     }

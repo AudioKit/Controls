@@ -15,7 +15,6 @@ struct ContentView: View {
     @State var radius: Double = 0
     @State var angle: Double = 0
 
-
     @State var volume: Double = 0.33
     @State var pan: Double = 0.33
 
