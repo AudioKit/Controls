@@ -54,25 +54,26 @@ public struct Draggable<Content: View>: View {
 
     public var body: some View {
         GeometryReader { proxy in
-            content(proxy)
-                .contentShape(Rectangle()) // Added to improve tap/click reliability
-                .gesture(DragGesture(minimumDistance: 0, coordinateSpace: .local)
-                    .onChanged { gesture in
+            ZStack {
+                content(proxy)
+                SingleTouchView { touch in
+                    if let touch = touch {
                         if !hasStarted {
                             onStarted()
                             hasStarted = true
                         }
-                        touchLocation = gesture.location
-                    }
-                    .onEnded { _ in
+                        touchLocation = touch
+                    } else {
                         touchLocation = .zero
                         onEnded()
                         hasStarted = false
                     }
-                )
-                .onAppear {
-                    rect = proxy.frame(in: .local)
                 }
+            }
+            .onAppear {
+                rect = proxy.frame(in: .local)
+            }
         }
     }
 }
+
