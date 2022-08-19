@@ -13,7 +13,7 @@ public struct ArcKnob: View {
     public var body: some View {
         Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                   value2: $volume,
-                  inRange2: 0...100,
+                  inRange2: 0 ... 100,
                   onStarted: { isShowingValue = true },
                   onEnded: { isShowingValue = false }) { geo in
             ZStack(alignment: .center) {

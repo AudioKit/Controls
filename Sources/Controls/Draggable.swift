@@ -76,4 +76,3 @@ public struct Draggable<Content: View>: View {
         }
     }
 }
-

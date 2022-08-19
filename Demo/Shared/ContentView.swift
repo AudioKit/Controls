@@ -2,7 +2,6 @@ import Controls
 import SwiftUI
 
 struct ContentView: View {
-
     @State var pitchBend: Double = 0.5
     @State var modulation: Double = 0
 
@@ -20,7 +19,7 @@ struct ContentView: View {
 
     @State var playhead: Double = 0.33
     @State var index = 2
-    
+
     var body: some View {
         VStack(spacing: 10) {
             HStack(spacing: 100) {

@@ -24,7 +24,8 @@ public enum DraggableGeometry {
                             inRange2 range2: ClosedRange<Double> = 0 ... 1,
                             from oldValue: CGPoint,
                             to touchLocation: CGPoint,
-                            inRect rect: CGRect) -> (Double, Double) {
+                            inRect rect: CGRect) -> (Double, Double)
+    {
         guard touchLocation != .zero else { return (value, value2) }
 
         var temp1 = (value - range1.lowerBound) / (range1.upperBound - range1.lowerBound)
@@ -54,7 +55,6 @@ public enum DraggableGeometry {
 
             temp1 += (newPolar.radius - oldPolar.radius) * radialSensitivity
             temp2 += (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
-
         }
 
         // Bound and convert to range
@@ -84,4 +84,3 @@ struct PolarCoordinate {
     var radius: Double
     var angle: Angle
 }
-

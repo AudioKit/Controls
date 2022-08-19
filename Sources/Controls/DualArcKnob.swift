@@ -5,7 +5,7 @@ public struct DualArcKnob: View {
     @Binding var pan: Double
     var rangeDegrees = 270.0
 
-    public init(volume: Binding<Double>, pan:Binding<Double>) {
+    public init(volume: Binding<Double>, pan: Binding<Double>) {
         _volume = volume
         _pan = pan
     }

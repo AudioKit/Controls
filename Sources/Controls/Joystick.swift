@@ -1,7 +1,6 @@
 import SwiftUI
 
 public struct Joystick: View {
-
     @Binding var radius: Double
     @Binding var angle: Double
 
