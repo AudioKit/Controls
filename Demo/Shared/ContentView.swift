@@ -2,22 +2,22 @@ import Controls
 import SwiftUI
 
 struct ContentView: View {
-    @State var pitchBend: Double = 0.5
-    @State var modulation: Double = 0
+    @State var pitchBend: Float = 0.5
+    @State var modulation: Float = 0
 
-    @State var arcKnobValue: Double = 0.33
-    @State var knobValue: Double = 0.33
+    @State var arcKnobValue: Float = 0.33
+    @State var knobValue: Float = 0.33
 
-    @State var x: Double = 0.5
-    @State var y: Double = 0.5
+    @State var x: Float = 0.5
+    @State var y: Float = 0.5
 
-    @State var radius: Double = 0
-    @State var angle: Double = 0
+    @State var radius: Float = 0
+    @State var angle: Float = 0
 
-    @State var volume: Double = 0.33
-    @State var pan: Double = 0.33
+    @State var volume: Float = 0.33
+    @State var pan: Float = 0.33
 
-    @State var playhead: Double = 0.33
+    @State var playhead: Float = 0.33
     @State var index = 2
 
     var body: some View {

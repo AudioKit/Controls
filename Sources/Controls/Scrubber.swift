@@ -1,9 +1,9 @@
 import SwiftUI
 
 public struct Scrubber: View {
-    @Binding var playhead: Double
+    @Binding var playhead: Float
 
-    public init(playhead: Binding<Double>) {
+    public init(playhead: Binding<Float>) {
         _playhead = playhead
     }
 
@@ -13,7 +13,7 @@ public struct Scrubber: View {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                     .frame(width: geo.size.width / 20)
-                    .offset(x: playhead * geo.size.width)
+                    .offset(x: CGFloat(playhead) * geo.size.width)
             }
         }
     }

@@ -18,13 +18,13 @@ public enum DraggableGeometry {
     /// and doesn't change the angle immediately to match the touch
     case relativePolar(radialSensitivity: Double = 1.0)
 
-    func calculateValuePair(value: Double,
-                            in range1: ClosedRange<Double> = 0 ... 1,
-                            value2: Double = 0,
-                            inRange2 range2: ClosedRange<Double> = 0 ... 1,
+    func calculateValuePair(value: Float,
+                            in range1: ClosedRange<Float> = 0 ... 1,
+                            value2: Float = 0,
+                            inRange2 range2: ClosedRange<Float> = 0 ... 1,
                             from oldValue: CGPoint,
                             to touchLocation: CGPoint,
-                            inRect rect: CGRect) -> (Double, Double)
+                            inRect rect: CGRect) -> (Float, Float)
     {
         guard touchLocation != .zero else { return (value, value2) }
 
@@ -33,28 +33,28 @@ public enum DraggableGeometry {
 
         switch self {
         case .rectilinear:
-            temp1 = touchLocation.x / rect.size.width
-            temp2 = 1.0 - touchLocation.y / rect.size.height
+            temp1 = Float(touchLocation.x / rect.size.width)
+            temp2 = Float(1.0 - touchLocation.y / rect.size.height)
 
         case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
             guard oldValue != .zero else { return (value, value2) }
-            temp1 += (touchLocation.x - oldValue.x) * xSensitivity / rect.size.width
-            temp2 -= (touchLocation.y - oldValue.y) * ySensitivity / rect.size.height
+            temp1 += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
+            temp2 -= Float((touchLocation.y - oldValue.y) * ySensitivity / rect.size.height)
 
         case let .polar(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation, rect: rect)
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
 
             temp1 = polar.radius
-            temp2 = (polar.angle.radians - angularRange.lowerBound.radians) / width
+            temp2 = Float((polar.angle.radians - angularRange.lowerBound.radians) / width)
 
         case let .relativePolar(radialSensitivity: radialSensitivity):
             guard oldValue != .zero else { return (value, value2) }
             let oldPolar = polarCoordinate(point: oldValue, rect: rect)
             let newPolar = polarCoordinate(point: touchLocation, rect: rect)
 
-            temp1 += (newPolar.radius - oldPolar.radius) * radialSensitivity
-            temp2 += (newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi)
+            temp1 += (newPolar.radius - oldPolar.radius) * Float(radialSensitivity)
+            temp2 += Float((newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi))
         }
 
         // Bound and convert to range
@@ -76,11 +76,11 @@ public enum DraggableGeometry {
         // Rotate to clockwise polar from -y axis (most like a knob)
         theta += .pi * (deltaX > 0 ? 1.5 : 0.5)
 
-        return PolarCoordinate(radius: radius, angle: Angle(radians: theta))
+        return PolarCoordinate(radius: Float(radius), angle: Angle(radians: theta))
     }
 }
 
 struct PolarCoordinate {
-    var radius: Double
+    var radius: Float
     var angle: Angle
 }

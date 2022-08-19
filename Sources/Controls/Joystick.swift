@@ -1,12 +1,12 @@
 import SwiftUI
 
 public struct Joystick: View {
-    @Binding var radius: Double
-    @Binding var angle: Double
+    @Binding var radius: Float
+    @Binding var angle: Float
 
     func ended() { radius = 0 }
 
-    public init(radius: Binding<Double>, angle: Binding<Double>) {
+    public init(radius: Binding<Float>, angle: Binding<Float>) {
         _radius = radius
         _angle = angle
     }
@@ -17,8 +17,8 @@ public struct Joystick: View {
                 Circle().foregroundColor(.gray)
                 Circle().foregroundColor(.red)
                     .frame(width: geo.size.width / 10, height: geo.size.height / 10)
-                    .offset(x: -radius * sin(angle * 2.0 * .pi) * geo.size.width / 2.0,
-                            y: radius * cos(angle * 2.0 * .pi) * geo.size.height / 2.0)
+                    .offset(x: CGFloat(-radius * sin(angle * 2.0 * .pi)) * geo.size.width / 2.0,
+                            y: CGFloat(radius * cos(angle * 2.0 * .pi)) * geo.size.height / 2.0)
                     .animation(.spring(response: 0.1), value: radius)
             }
         }

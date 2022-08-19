@@ -1,16 +1,16 @@
 import SwiftUI
 
 public struct SimpleKnob: View {
-    @Binding var volume: Double
-    var range: ClosedRange<Double> = 0.0 ... 1.0
+    @Binding var volume: Float
+    var range: ClosedRange<Float> = 0.0 ... 1.0
 
-    public init(value: Binding<Double>, range: ClosedRange<Double> = 0.0 ... 1.0) {
+    public init(value: Binding<Float>, range: ClosedRange<Float> = 0.0 ... 1.0) {
         _volume = value
         self.range = range
     }
 
     var normalizedValue: Double {
-        (volume - range.lowerBound) / (range.upperBound - range.lowerBound)
+        Double((volume - range.lowerBound) / (range.upperBound - range.lowerBound))
     }
 
     public var body: some View {

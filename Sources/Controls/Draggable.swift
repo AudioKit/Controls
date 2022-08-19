@@ -6,10 +6,10 @@ public struct Draggable<Content: View>: View {
     var geometry: DraggableGeometry
     var onStarted: () -> Void
     var onEnded: () -> Void
-    @Binding var value: Double
-    @Binding var value2: Double
-    var range1: ClosedRange<Double>
-    var range2: ClosedRange<Double>
+    @Binding var value: Float
+    @Binding var value2: Float
+    var range1: ClosedRange<Float>
+    var range2: ClosedRange<Float>
 
     @State var hasStarted = false
     @State var rect: CGRect = .zero
@@ -34,10 +34,10 @@ public struct Draggable<Content: View>: View {
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
     public init(geometry: DraggableGeometry = .rectilinear,
-                value: Binding<Double> = .constant(0),
-                in range1: ClosedRange<Double> = 0 ... 1,
-                value2: Binding<Double> = .constant(0),
-                inRange2 range2: ClosedRange<Double> = 0 ... 1,
+                value: Binding<Float> = .constant(0),
+                in range1: ClosedRange<Float> = 0 ... 1,
+                value2: Binding<Float> = .constant(0),
+                inRange2 range2: ClosedRange<Float> = 0 ... 1,
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping (GeometryProxy) -> Content)

@@ -1,13 +1,13 @@
 import SwiftUI
 
 public struct ArcKnob: View {
-    @Binding var volume: Double
+    @Binding var volume: Float
     var rangeDegrees = 270.0
 
     @State var isShowingValue = false
-    var range = 0.0 ... 1.0
+    var range: ClosedRange<Float> = 0.0 ... 1.0
 
-    public init(value: Binding<Double>, range: ClosedRange<Double> = 0 ... 1) {
+    public init(value: Binding<Float>, range: ClosedRange<Float> = 0 ... 1) {
         _volume = value
         self.range = range
     }
@@ -31,7 +31,7 @@ public struct ArcKnob: View {
 
                 // Stroke value trim of knob
                 Circle()
-                    .trim(from: 45 / 360.0, to: (45 + volume / 100.0 * rangeDegrees) / 360.0)
+                    .trim(from: 45 / 360.0, to: (45 + Double(volume) / 100.0 * rangeDegrees) / 360.0)
                     .rotation(.degrees(-rangeDegrees))
                     .stroke(.red,
                             style: StrokeStyle(lineWidth: geo.size.width / 10,

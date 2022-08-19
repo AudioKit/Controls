@@ -19,8 +19,8 @@ Since every app has its own style you can use the Draggable wrapper around your 
 
 
 ```swift
-@State var volume: Double = 0
-var range: ClosedRange<Double> = 0 ... 11
+@State var volume: Float = 0
+var range: ClosedRange<Float> = 0 ... 11
 
 //... in your SwiftUI body ...
 Draggable(geometry: .relativeRectilinear(ySensitivity: 2),

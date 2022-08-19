@@ -8,7 +8,7 @@ public enum WheelType {
 public struct PitchModWheel: View {
     var type: WheelType
 
-    @Binding var location: Double
+    @Binding var location: Float
 
     // XXX: the thumb height probably shouldn't be a
     //      function of the view's height.
@@ -20,7 +20,7 @@ public struct PitchModWheel: View {
         geo.size.height - thumbHeight(geo)
     }
 
-    public init(type: WheelType, value: Binding<Double>) {
+    public init(type: WheelType, value: Binding<Float>) {
         self.type = type
         _location = value
     }
@@ -33,7 +33,7 @@ public struct PitchModWheel: View {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.red)
                     .frame(height: thumbHeight(geo))
-                    .offset(y: -(maxOffset(geo) * location))
+                    .offset(y: -(maxOffset(geo) * CGFloat(location)))
             }.animation(.spring(response: 0.2), value: location)
         }.onAppear {
             if type == .pitch { location = 0.5 }
