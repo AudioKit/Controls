@@ -5,15 +5,17 @@ public struct ArcKnob: View {
     var rangeDegrees = 270.0
 
     @State var isShowingValue = false
+    var range = 0.0 ... 1.0
 
-    public init(value: Binding<Double>) {
+    public init(value: Binding<Double>, range: ClosedRange<Double> = 0 ... 1) {
         _volume = value
+        self.range = range
     }
 
     public var body: some View {
         Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                   value2: $volume,
-                  inRange2: 0 ... 100,
+                  inRange2: range,
                   onStarted: { isShowingValue = true },
                   onEnded: { isShowingValue = false }) { geo in
             ZStack(alignment: .center) {
