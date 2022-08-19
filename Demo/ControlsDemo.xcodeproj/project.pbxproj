@@ -47,13 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F1AF69BF28A7910F00472E04 /* Draggable Examples */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Draggable Examples";
-			sourceTree = "<group>";
-		};
 		F1D9CD1828A5D9EE00C2B893 = {
 			isa = PBXGroup;
 			children = (
@@ -68,7 +61,6 @@
 		F1D9CD1D28A5D9EE00C2B893 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F1AF69BF28A7910F00472E04 /* Draggable Examples */,
 				F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */,
 				F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */,
 				F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */,
