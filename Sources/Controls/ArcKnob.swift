@@ -7,7 +7,7 @@ public struct ArcKnob: View {
     @State var isShowingValue = false
     var range: ClosedRange<Float> = 0.0 ... 1.0
 
-    public init(value: Binding<Float>, range: ClosedRange<Float> = 0 ... 1) {
+    public init(value: Binding<Float>, range: ClosedRange<Float> = 0 ... 100) {
         _volume = value
         self.range = range
     }
