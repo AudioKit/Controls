@@ -23,15 +23,15 @@ public struct Control<Content: View>: View {
 
     /// Initialize the draggable
     /// - Parameters:
-    ///   - geometry: Gesture movement geometry specification
     ///   - value: Value that is controlled
-    ///   - range: The limits of the value (defaults to 0-1)
+    ///   - in range: The limits of the value (defaults to 0-1)
+    ///   - geometry: Gesture movement geometry specification
     ///   - onStarted: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
-    public init(geometry: ControlGeometry = .twoDimensionalDrag(),
-                value: Binding<Float>,
-                range: ClosedRange<Float> = 0 ... 1,
+    public init(value: Binding<Float>,
+                in range: ClosedRange<Float> = 0 ... 1,
+                geometry: ControlGeometry = .twoDimensionalDrag(),
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping (GeometryProxy) -> Content)

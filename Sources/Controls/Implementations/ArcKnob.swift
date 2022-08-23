@@ -13,9 +13,8 @@ public struct ArcKnob: View {
     }
 
     public var body: some View {
-        Control(geometry: .angle(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
-                value: $volume,
-                range: range,
+        Control(value: $volume, in: range,
+                geometry: .angle(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                 onStarted: { isShowingValue = true },
                 onEnded: { isShowingValue = false }) { geo in
             ZStack(alignment: .center) {

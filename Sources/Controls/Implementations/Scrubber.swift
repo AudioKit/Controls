@@ -8,7 +8,7 @@ public struct Scrubber: View {
     }
 
     public var body: some View {
-        Control(geometry: .horizontalPoint, value: $playhead) { geo in
+        Control(value: $playhead, geometry: .horizontalPoint) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.red)

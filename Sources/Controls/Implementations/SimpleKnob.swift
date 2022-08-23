@@ -14,9 +14,8 @@ public struct SimpleKnob: View {
     }
 
     public var body: some View {
-        Control(geometry: .twoDimensionalDrag(xSensitivity: 2, ySensitivity: 2),
-                value: $volume,
-                range: range) { geo in
+        Control(value: $volume, in: range,
+                geometry: .twoDimensionalDrag(xSensitivity: 2, ySensitivity: 2)) { geo in
             ZStack(alignment: .center) {
                 Ellipse().foregroundColor(.gray)
                 Rectangle().foregroundColor(.black)
