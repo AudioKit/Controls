@@ -11,9 +11,9 @@ public struct DualArcKnob: View {
     }
 
     public var body: some View {
-        TwoParameterControl(geometry: .relativePolar(radialSensitivity: 2),
-                  value1: $volume,
-                  value2: $pan) { geo in
+        TwoParameterControl(value1: $volume,
+                            value2: $pan,
+                            geometry: .relativePolar(radialSensitivity: 2)) { geo in
             ZStack(alignment: .center) {
                 Circle()
                     .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)

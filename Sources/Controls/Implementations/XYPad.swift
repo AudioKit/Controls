@@ -10,7 +10,7 @@ public struct XYPad: View {
     }
 
     public var body: some View {
-        TwoParameterControl(geometry: .rectilinear, value1: $x, value2: $y) { geo in
+        TwoParameterControl(value1: $x, value2: $y, geometry: .rectilinear) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: geo.size.width / 20).foregroundColor(.gray)
                 Circle().foregroundColor(.red)
