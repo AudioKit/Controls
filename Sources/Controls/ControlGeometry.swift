@@ -2,21 +2,28 @@ import SwiftUI
 
 /// Geometry defines how the touch point's location affect the control values
 public enum ControlGeometry {
-    /// Most sliders, both horizontal and vertical, where you expect
-    /// your touch point to always represent the control point
-    case rectilinear
 
-    /// Knobs, or small control areas
-    case relativeRectilinear(xSensitivity: Double = 1.0,
-                             ySensitivity: Double = 1.0)
+    /// Horizontal slider controls in which you want the position to be exactly at the touch
+    case horizontalPoint
 
-    /// Larger knobs with a more skeumorphic drag and twist motif.
-    /// For non relative the values change immediately to match the touch.
-    case polar(angularRange: ClosedRange<Angle> = Angle.zero ... Angle(degrees: 360))
+    /// Vertical slider controls in which you want the position to be exactly at the touch
+    case verticalPoint
 
-    /// This version gives the user control in the radial direction
-    /// and doesn't change the angle immediately to match the touch
-    case relativePolar(radialSensitivity: Double = 1.0)
+    /// Knobs or controls that can start at any value and be changed with horizotal motion
+    case horizontalDrag(xSensitivity: Double = 1.0)
+
+    /// Knobs or controls that can start at any value and be changed with vertical motion
+    case verticalDrag(ySensitivity: Double = 1.0)
+
+    /// Controls that can change with either vertical or horizontal movement
+    /// This is the type of knob used on AudioKit SynthOne
+    case twoDimensionalDrag(xSensitivity: Double = 1.0, ySensitivity: Double = 1.0)
+
+    /// Larger knobs that you want to rotate immediately to the touch point
+    case angle(angularRange: ClosedRange<Angle> = Angle.zero ... Angle(degrees: 360))
+
+    /// This allows the user to drag around the center
+    case angularDrag(angularRange: ClosedRange<Angle> = Angle.zero ... Angle(degrees: 360))
 
     func calculateValue(value: Float,
                         in range: ClosedRange<Float> = 0 ... 1,
@@ -29,25 +36,40 @@ public enum ControlGeometry {
         var temp = (value - range.lowerBound) / (range.upperBound - range.lowerBound)
 
         switch self {
-        case .rectilinear:
+
+        case .horizontalPoint:
             temp = Float(touchLocation.x / rect.size.width)
 
-        case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
-            guard oldValue != .zero else { return value }
-            temp += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
+        case .verticalPoint:
+            temp = Float(1.0 - touchLocation.y / rect.size.height)
 
-        case let .polar(angularRange: angularRange):
+        case let .horizontalDrag(xSensitivity: xSensitivity):
+            if oldValue != .zero {
+                temp += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
+            }
+
+        case let .verticalDrag(ySensitivity: ySensitivity):
+            if oldValue != .zero {
+                temp -= Float((touchLocation.y - oldValue.y) * ySensitivity / rect.size.height)
+            }
+
+        case let .twoDimensionalDrag(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
+            if oldValue != .zero {
+                temp += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
+                temp -= Float((touchLocation.y - oldValue.y) * ySensitivity / rect.size.height)
+            }
+        case let .angle(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation, rect: rect)
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
 
             temp = Float((polar.angle.radians - angularRange.lowerBound.radians) / width)
 
-        case let .relativePolar(radialSensitivity: radialSensitivity):
-            guard oldValue != .zero else { return value }
-            let oldPolar = polarCoordinate(point: oldValue, rect: rect)
-            let newPolar = polarCoordinate(point: touchLocation, rect: rect)
-
-            temp += Float((newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi))
+        case .angularDrag(angularRange: _):
+            if oldValue != .zero {
+                let oldPolar = polarCoordinate(point: oldValue, rect: rect)
+                let newPolar = polarCoordinate(point: touchLocation, rect: rect)
+                temp += Float((newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi))
+            }
         }
 
         // Bound and convert to range

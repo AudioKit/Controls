@@ -14,7 +14,7 @@ public struct SimpleKnob: View {
     }
 
     public var body: some View {
-        Control(geometry: .relativeRectilinear(ySensitivity: 2),
+        Control(geometry: .twoDimensionalDrag(xSensitivity: 2, ySensitivity: 2),
                 value: $volume,
                 range: range) { geo in
             ZStack(alignment: .center) {

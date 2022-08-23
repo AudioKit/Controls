@@ -13,7 +13,7 @@ public struct MIDIKnob: View {
     }
 
     public var body: some View {
-        Control(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
+        Control(geometry: .angle(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                 value: $volume,
                 range: range,
                 onStarted: { isShowingValue = true },

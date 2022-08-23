@@ -29,7 +29,7 @@ public struct Control<Content: View>: View {
     ///   - onStarted: Closure to perform when the drag starts
     ///   - onEnded: Closure to perform when the drag finishes
     ///   - content: View to render
-    public init(geometry: ControlGeometry = .rectilinear,
+    public init(geometry: ControlGeometry = .twoDimensionalDrag(),
                 value: Binding<Float>,
                 range: ClosedRange<Float> = 0 ... 1,
                 onStarted: @escaping () -> Void = {},
