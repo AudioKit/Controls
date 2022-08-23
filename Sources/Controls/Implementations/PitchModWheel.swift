@@ -26,7 +26,7 @@ public struct PitchModWheel: View {
     }
 
     public var body: some View {
-        Draggable(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
+        TwoParameterControl(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
                   value2: $location,
                   onEnded: { if type == .pitch { location = 0.5 } }) { geo in
             ZStack(alignment: .bottom) {

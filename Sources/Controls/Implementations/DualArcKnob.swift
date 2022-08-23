@@ -11,7 +11,7 @@ public struct DualArcKnob: View {
     }
 
     public var body: some View {
-        Draggable(geometry: .relativePolar(radialSensitivity: 2),
+        TwoParameterControl(geometry: .relativePolar(radialSensitivity: 2),
                   value: $volume,
                   value2: $pan) { geo in
             ZStack(alignment: .center) {

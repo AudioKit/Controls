@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Geometry defines how the touch point's location affect the control values
-public enum DraggableGeometry {
+public enum PlanarGeometry {
     /// Most sliders, both horizontal and vertical, where you expect
     /// your touch point to always represent the control point
     case rectilinear

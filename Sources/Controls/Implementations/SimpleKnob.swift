@@ -14,7 +14,7 @@ public struct SimpleKnob: View {
     }
 
     public var body: some View {
-        Draggable(geometry: .relativeRectilinear(ySensitivity: 2),
+        TwoParameterControl(geometry: .relativeRectilinear(ySensitivity: 2),
                   value2: $volume, inRange2: range) { geo in
             ZStack(alignment: .center) {
                 Ellipse().foregroundColor(.gray)

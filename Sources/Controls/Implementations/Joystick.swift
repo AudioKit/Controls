@@ -12,7 +12,7 @@ public struct Joystick: View {
     }
 
     public var body: some View {
-        Draggable(geometry: .polar(), value: $radius, value2: $angle, onEnded: ended) { geo in
+        TwoParameterControl(geometry: .polar(), value: $radius, value2: $angle, onEnded: ended) { geo in
             ZStack(alignment: .center) {
                 Circle().foregroundColor(.gray)
                 Circle().foregroundColor(.red)

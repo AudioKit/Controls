@@ -13,7 +13,7 @@ public struct ArcKnob: View {
     }
 
     public var body: some View {
-        Draggable(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
+        TwoParameterControl(geometry: .polar(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
                   value2: $volume,
                   inRange2: range,
                   onStarted: { isShowingValue = true },
@@ -50,6 +50,6 @@ public struct ArcKnob: View {
 
 struct ArcKnob_Previews: PreviewProvider {
     static var previews: some View {
-        ArcKnob(value: .constant(0.33))
+        ArcKnob(value1: .constant(0.33), value2: .constant(0.5))
     }
 }
