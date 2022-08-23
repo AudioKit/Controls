@@ -14,8 +14,7 @@ struct ContentView: View {
     @State var radius: Float = 0
     @State var angle: Float = 0
 
-    @State var volume: Float = 0.33
-    @State var pan: Float = 0.33
+    @State var midiValue: Int = 0
 
     @State var playhead: Float = 0.33
     @State var index = 2
@@ -37,7 +36,7 @@ struct ContentView: View {
                     VStack(spacing: 10) {
                         SimpleKnob(value: $knobValue)
                         ArcKnob(value: $arcKnobValue)
-                        DualArcKnob(volume: $volume, pan: $pan)
+                        MIDIKnob(value: $midiValue)
                     }
                 }
                 Scrubber(playhead: $playhead)
