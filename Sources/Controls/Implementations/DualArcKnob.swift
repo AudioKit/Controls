@@ -12,7 +12,7 @@ public struct DualArcKnob: View {
 
     public var body: some View {
         TwoParameterControl(geometry: .relativePolar(radialSensitivity: 2),
-                  value: $volume,
+                  value1: $volume,
                   value2: $pan) { geo in
             ZStack(alignment: .center) {
                 Circle()

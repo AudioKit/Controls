@@ -3,21 +3,21 @@ import XCTest
 
 final class ControlsTests: XCTestCase {
     func testRectiLinear() throws {
-        let geometry = DraggableGeometry.rectilinear
+        let geometry = PlanarGeometry.rectilinear
 
-        var value = 0.0
-        var value2 = 0.0
+        var value1: Float = 0.0
+        var value2: Float = 0.0
 
         let rect = CGRect(x: 0, y: 0, width: 100, height: 100)
-        (value, value2) = geometry.calculateValuePair(value: value,
-                                                      in: 0 ... 100,
+        (value1, value2) = geometry.calculateValuePair(value1: value1,
+                                                      range1: 0 ... 100,
                                                       value2: value2,
-                                                      inRange2: -100 ... 0,
+                                                      range2: -100 ... 0,
                                                       from: CGPoint(x: rect.midX, y: rect.midY),
                                                       to: CGPoint(x: rect.maxX, y: rect.minY),
                                                       inRect: rect)
 
-        XCTAssertEqual(value, 100)
+        XCTAssertEqual(value1, 100)
         XCTAssertEqual(value2, 0)
     }
 }

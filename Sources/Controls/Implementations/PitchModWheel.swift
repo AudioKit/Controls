@@ -26,9 +26,9 @@ public struct PitchModWheel: View {
     }
 
     public var body: some View {
-        TwoParameterControl(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
-                  value2: $location,
-                  onEnded: { if type == .pitch { location = 0.5 } }) { geo in
+        Control(geometry: type == .mod ? .relativeRectilinear() : .rectilinear,
+                value: $location,
+                onEnded: { if type == .pitch { location = 0.5 } }) { geo in
             ZStack(alignment: .bottom) {
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.gray)
                 RoundedRectangle(cornerRadius: 10).foregroundColor(.red)

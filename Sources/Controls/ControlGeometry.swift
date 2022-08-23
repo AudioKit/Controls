@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Geometry defines how the touch point's location affect the control values
-public enum PlanarGeometry {
+public enum ControlGeometry {
     /// Most sliders, both horizontal and vertical, where you expect
     /// your touch point to always represent the control point
     case rectilinear
@@ -18,50 +18,42 @@ public enum PlanarGeometry {
     /// and doesn't change the angle immediately to match the touch
     case relativePolar(radialSensitivity: Double = 1.0)
 
-    func calculateValuePair(value1: Float,
-                            range1: ClosedRange<Float> = 0 ... 1,
-                            value2: Float = 0,
-                            range2: ClosedRange<Float> = 0 ... 1,
-                            from oldValue: CGPoint,
-                            to touchLocation: CGPoint,
-                            inRect rect: CGRect) -> (Float, Float)
+    func calculateValue(value: Float,
+                        in range: ClosedRange<Float> = 0 ... 1,
+                        from oldValue: CGPoint,
+                        to touchLocation: CGPoint,
+                        inRect rect: CGRect) -> Float
     {
-        guard touchLocation != .zero else { return (value1, value2) }
+        guard touchLocation != .zero else { return value }
 
-        var temp1 = (value1 - range1.lowerBound) / (range1.upperBound - range1.lowerBound)
-        var temp2 = (value2 - range2.lowerBound) / (range2.upperBound - range2.lowerBound)
+        var temp = (value - range.lowerBound) / (range.upperBound - range.lowerBound)
 
         switch self {
         case .rectilinear:
-            temp1 = Float(touchLocation.x / rect.size.width)
-            temp2 = Float(1.0 - touchLocation.y / rect.size.height)
+            temp = Float(touchLocation.x / rect.size.width)
 
         case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
-            guard oldValue != .zero else { return (value1, value2) }
-            temp1 += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
-            temp2 -= Float((touchLocation.y - oldValue.y) * ySensitivity / rect.size.height)
+            guard oldValue != .zero else { return value }
+            temp += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
 
         case let .polar(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation, rect: rect)
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
 
-            temp1 = polar.radius
-            temp2 = Float((polar.angle.radians - angularRange.lowerBound.radians) / width)
+            temp = Float((polar.angle.radians - angularRange.lowerBound.radians) / width)
 
         case let .relativePolar(radialSensitivity: radialSensitivity):
-            guard oldValue != .zero else { return (value1, value2) }
+            guard oldValue != .zero else { return value }
             let oldPolar = polarCoordinate(point: oldValue, rect: rect)
             let newPolar = polarCoordinate(point: touchLocation, rect: rect)
 
-            temp1 += (newPolar.radius - oldPolar.radius) * Float(radialSensitivity)
-            temp2 += Float((newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi))
+            temp += Float((newPolar.angle.radians - oldPolar.angle.radians) / (2.0 * .pi))
         }
 
         // Bound and convert to range
-        let newValue = max(0.0, min(1.0, temp1)) * (range1.upperBound - range1.lowerBound) + range1.lowerBound
-        let newValue2 = max(0.0, min(1.0, temp2)) * (range2.upperBound - range2.lowerBound) + range2.lowerBound
+        let newValue = max(0.0, min(1.0, temp)) * (range.upperBound - range.lowerBound) + range.lowerBound
 
-        return (newValue, newValue2)
+        return newValue
     }
 
     func polarCoordinate(point: CGPoint, rect: CGRect) -> PolarCoordinate {
@@ -78,9 +70,4 @@ public enum PlanarGeometry {
 
         return PolarCoordinate(radius: Float(radius), angle: Angle(radians: theta))
     }
-}
-
-struct PolarCoordinate {
-    var radius: Float
-    var angle: Angle
 }

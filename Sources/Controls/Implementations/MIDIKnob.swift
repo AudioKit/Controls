@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct ArcKnob: View {
+public struct MIDIKnob: View {
     @Binding var volume: Float
     var rangeDegrees = 270.0
 
@@ -48,7 +48,7 @@ public struct ArcKnob: View {
     }
 }
 
-struct ArcKnob_Previews: PreviewProvider {
+struct MIDIKnob_Previews: PreviewProvider {
     static var previews: some View {
         ArcKnob(value: .constant(0.33))
     }
