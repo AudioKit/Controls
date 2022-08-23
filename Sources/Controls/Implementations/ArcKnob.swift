@@ -23,7 +23,7 @@ public struct ArcKnob: View {
                     .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)
                     .rotation(.degrees(-rangeDegrees))
                     .stroke(Color.gray,
-                            style: StrokeStyle(lineWidth: geo.size.width / 10,
+                            style: StrokeStyle(lineWidth: geo.size.width / 20,
                                                lineCap: .round))
                     .frame(width: geo.size.width * 0.8,
                            height: geo.size.height * 0.8)
@@ -34,7 +34,7 @@ public struct ArcKnob: View {
                     .trim(from: 45 / 360.0, to: (45 + Double(volume) / 100.0 * rangeDegrees) / 360.0)
                     .rotation(.degrees(-rangeDegrees))
                     .stroke(.red,
-                            style: StrokeStyle(lineWidth: geo.size.width / 10,
+                            style: StrokeStyle(lineWidth: geo.size.width / 20,
                                                lineCap: .round))
                     .frame(width: geo.size.width * 0.8,
                            height: geo.size.height * 0.8)

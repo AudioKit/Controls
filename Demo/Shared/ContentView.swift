@@ -21,31 +21,30 @@ struct ContentView: View {
     @State var index = 2
 
     var body: some View {
-        VStack(spacing: 10) {
-            HStack(spacing: 100) {
-                HStack {
-                    PitchModWheel(type: .pitch, value: $pitchBend)
-                        .frame(width: 100)
-                    PitchModWheel(type: .mod, value: $modulation)
-                        .frame(width: 100)
+        GeometryReader { proxy in
+            VStack(spacing: 10) {
+                HStack(spacing: 10) {
+                    HStack {
+                        PitchModWheel(type: .pitch, value: $pitchBend)
+                            .frame(width: proxy.size.width / 10)
+                        PitchModWheel(type: .mod, value: $modulation)
+                            .frame(width: proxy.size.width / 10)
+                    }
+                    VStack(spacing: 10) {
+                        XYPad(x: $x, y: $y)
+                        Joystick(radius: $radius, angle: $angle)
+                    }
+                    VStack(spacing: 10) {
+                        SimpleKnob(value: $knobValue)
+                        ArcKnob(value: $arcKnobValue)
+                        DualArcKnob(volume: $volume, pan: $pan)
+                    }
                 }
-                VStack(spacing: 100) {
-                    XYPad(x: $x, y: $y)
-                        .frame(width: 200, height: 200)
-                    Joystick(radius: $radius, angle: $angle)
-                        .frame(width: 200, height: 200)
-                }
-                VStack(spacing: 100) {
-                    SimpleKnob(value: $knobValue)
-                        .frame(width: 200, height: 200)
-                    ArcKnob(value: $arcKnobValue)
-                        .frame(width: 200, height: 200)
-                    DualArcKnob(volume: $volume, pan: $pan)
-                        .frame(width: 200, height: 200)
-                }
+                Scrubber(playhead: $playhead)
+                    .frame(height: proxy.size.height / 10)
+                IndexedSlider(index: $index, count: 5)
+                    .frame(height: proxy.size.height / 10)
             }
-            Scrubber(playhead: $playhead)
-            IndexedSlider(index: $index, count: 5)
         }
     }
 }
