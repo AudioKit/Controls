@@ -19,19 +19,19 @@ struct DetailView: View {
 struct MasterView: View {
     var body: some View {
         Form {
-            Group {
+            List {
                 Section(header: Text("Single-Parameter")) {
                     NavigationLink("Scrubber",
                                    destination: ScrubberDemoView())
+                    NavigationLink("Indexed Slider",
+                                   destination: IndexedSliderDemoView())
+                    NavigationLink("Pitch/Mod Wheel",
+                                   destination: PitchModWheelDemoView())
                 }
-            }
-            Group {
                 Section(header: Text("Double-Parameter")) {
-                    NavigationLink("XYPad",
+                    NavigationLink("XY Pad",
                                    destination: XYPadDemoView())
                 }
-            }
-            Group {
                 Section(header: Text("Dev")) {
                     NavigationLink("Old",
                                    destination: OldContentView())
@@ -42,9 +42,6 @@ struct MasterView: View {
 }
 
 struct OldContentView: View {
-    @State var pitchBend: Float = 0.5
-    @State var modulation: Float = 0
-
     @State var arcKnobValue: Float = 0.33
     @State var knobValue: Float = 0.33
 
@@ -53,18 +50,10 @@ struct OldContentView: View {
 
     @State var midiValue: Int = 0
 
-    @State var index = 2
-
     var body: some View {
         GeometryReader { proxy in
             VStack(spacing: 10) {
                 HStack(spacing: 10) {
-                    HStack {
-                        PitchModWheel(type: .pitch, value: $pitchBend)
-                            .frame(width: proxy.size.width / 10)
-                        PitchModWheel(type: .mod, value: $modulation)
-                            .frame(width: proxy.size.width / 10)
-                    }
                     VStack(spacing: 10) {
                         Joystick(radius: $radius, angle: $angle)
                     }
@@ -74,8 +63,6 @@ struct OldContentView: View {
                         MIDIKnob(value: $midiValue)
                     }
                 }
-                IndexedSlider(index: $index, labels: ["1", "2", "3", "4", "FIVE"])
-                    .frame(height: proxy.size.height / 10)
             }
         }.navigationTitle("Old Demo")
     }

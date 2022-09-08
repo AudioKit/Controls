@@ -10,6 +10,11 @@ public struct PitchModWheel: View {
 
     @Binding var location: Float
 
+    var backgroundColor: Color = .gray
+    var foregroundColor: Color = .red
+    var cornerRadius: CGFloat = 0
+    var indicatorPadding: CGFloat = 0.07
+
     // XXX: the thumb height probably shouldn't be a
     //      function of the view's height.
     func thumbHeight(_ geo: GeometryProxy) -> CGFloat {
@@ -38,11 +43,5 @@ public struct PitchModWheel: View {
         }.onAppear {
             if type == .pitch { location = 0.5 }
         }
-    }
-}
-
-struct Fader_Previews: PreviewProvider {
-    static var previews: some View {
-        PitchModWheel(type: .pitch, value: .constant(0.33))
     }
 }

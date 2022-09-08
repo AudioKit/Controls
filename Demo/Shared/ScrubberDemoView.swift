@@ -35,9 +35,3 @@ struct ScrubberDemoView: View {
         .padding()
     }
 }
-
-struct ScrubberDemoView_Previews: PreviewProvider {
-    static var previews: some View {
-        ScrubberDemoView().previewDevice(.init("iPhone"))
-    }
-}
