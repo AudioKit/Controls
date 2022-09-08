@@ -3,48 +3,57 @@ import SwiftUI
 public struct Scrubber: View {
     @Binding var playhead: Float
 
-    var playheadWidth: CGFloat
     var backgroundColor: Color = .gray
     var foregroundColor: Color = .red
+    var cornerRadius: CGFloat = 0
 
-    public init(playhead: Binding<Float>, playheadWidth: CGFloat = 0.1) {
+    public init(playhead: Binding<Float>) {
         _playhead = playhead
-        self.playheadWidth = playheadWidth
     }
 
     internal init(playhead: Binding<Float>,
-                  playheadWidth: CGFloat,
                   backgroundColor: Color,
-                  foregroundColor: Color) {
+                  foregroundColor: Color,
+                  cornerRadius: CGFloat) {
         self._playhead = playhead
-        self.playheadWidth = playheadWidth
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
+        self.cornerRadius = cornerRadius
+        print(foregroundColor, backgroundColor)
     }
 
 
-    public func backgroundColor(_ newColor: Color) -> Scrubber {
+    public func backgroundColor(_ backgroundColor: Color) -> Scrubber {
         return .init(playhead: _playhead,
-                     playheadWidth: playheadWidth,
-                     backgroundColor: newColor,
-                     foregroundColor: foregroundColor)
-    }
-
-    public func foregroundColor(_ newColor: Color) -> Scrubber {
-        return .init(playhead: _playhead,
-                     playheadWidth: playheadWidth,
                      backgroundColor: backgroundColor,
-                     foregroundColor: newColor)
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius)
+    }
+
+    public func foregroundColor(_ foregroundColor: Color) -> Scrubber {
+        return .init(playhead: _playhead,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius)
+    }
+
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Scrubber {
+        return .init(playhead: _playhead,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius)
     }
 
 
     public var body: some View {
         Control(value: $playhead, geometry: .horizontalPoint) { geo in
             ZStack(alignment: .bottomLeading) {
-                RoundedRectangle(cornerRadius: 10).foregroundColor(backgroundColor)
-                RoundedRectangle(cornerRadius: 10).foregroundColor(foregroundColor)
-                    .frame(width: geo.size.width * playheadWidth)
-                    .offset(x: CGFloat(playhead) * geo.size.width * (1.0 - playheadWidth))
+                RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
+                RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(foregroundColor)
+                    .frame(width: geo.size.height, height: geo.size.height)
+                    .offset(x: CGFloat(playhead) * geo.size.width * (1.0 - geo.size.height / geo.size.width))
+            }.onAppear {
+                print(geo.size)
             }
         }
     }
