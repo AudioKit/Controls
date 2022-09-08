@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F155153828C96F6900E64E43 /* ScrubberDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153728C96F6900E64E43 /* ScrubberDemoView.swift */; };
 		F155153928C96F6900E64E43 /* ScrubberDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153728C96F6900E64E43 /* ScrubberDemoView.swift */; };
+		F155153B28C9C48400E64E43 /* XYPadDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153A28C9C48400E64E43 /* XYPadDemoView.swift */; };
+		F155153C28C9C48400E64E43 /* XYPadDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153A28C9C48400E64E43 /* XYPadDemoView.swift */; };
 		F1AF69D528A986E700472E04 /* Controls in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69D428A986E700472E04 /* Controls */; };
 		F1AF69D728A986F500472E04 /* Controls in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69D628A986F500472E04 /* Controls */; };
 		F1D9CD2E28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		F155153728C96F6900E64E43 /* ScrubberDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrubberDemoView.swift; sourceTree = "<group>"; };
+		F155153A28C9C48400E64E43 /* XYPadDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYPadDemoView.swift; sourceTree = "<group>"; };
 		F1AF69D328A986D900472E04 /* Controls */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Controls; path = ..; sourceTree = "<group>"; };
 		F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsDemoApp.swift; sourceTree = "<group>"; };
 		F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 				F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */,
 				F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */,
 				F155153728C96F6900E64E43 /* ScrubberDemoView.swift */,
+				F155153A28C9C48400E64E43 /* XYPadDemoView.swift */,
 				F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */,
 			);
 			path = Shared;
@@ -208,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F155153B28C9C48400E64E43 /* XYPadDemoView.swift in Sources */,
 				F1D9CD3028A5D9EF00C2B893 /* ContentView.swift in Sources */,
 				F1D9CD2E28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */,
 				F155153828C96F6900E64E43 /* ScrubberDemoView.swift in Sources */,
@@ -218,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F155153C28C9C48400E64E43 /* XYPadDemoView.swift in Sources */,
 				F1D9CD3128A5D9EF00C2B893 /* ContentView.swift in Sources */,
 				F1D9CD2F28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */,
 				F155153928C96F6900E64E43 /* ScrubberDemoView.swift in Sources */,

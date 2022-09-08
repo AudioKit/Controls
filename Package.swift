@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Controls",
-    platforms: [.macOS(.v12), .iOS(.v14)],
+    platforms: [.macOS(.v12), .iOS(.v15)],
     products: [.library(name: "Controls", targets: ["Controls"])],
     targets: [
         .target(name: "Controls", dependencies: []),

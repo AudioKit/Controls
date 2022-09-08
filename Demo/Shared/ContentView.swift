@@ -23,6 +23,16 @@ struct MasterView: View {
                 Section(header: Text("Single-Parameter")) {
                     NavigationLink("Scrubber",
                                    destination: ScrubberDemoView())
+                }
+            }
+            Group {
+                Section(header: Text("Double-Parameter")) {
+                    NavigationLink("XYPad",
+                                   destination: XYPadDemoView())
+                }
+            }
+            Group {
+                Section(header: Text("Dev")) {
                     NavigationLink("Old",
                                    destination: OldContentView())
                 }
@@ -38,15 +48,11 @@ struct OldContentView: View {
     @State var arcKnobValue: Float = 0.33
     @State var knobValue: Float = 0.33
 
-    @State var x: Float = 0.5
-    @State var y: Float = 0.5
-
     @State var radius: Float = 0
     @State var angle: Float = 0
 
     @State var midiValue: Int = 0
 
-    @State var playhead: Float = 0.33
     @State var index = 2
 
     var body: some View {
@@ -60,7 +66,6 @@ struct OldContentView: View {
                             .frame(width: proxy.size.width / 10)
                     }
                     VStack(spacing: 10) {
-                        XYPad(x: $x, y: $y)
                         Joystick(radius: $radius, angle: $angle)
                     }
                     VStack(spacing: 10) {
@@ -69,11 +74,9 @@ struct OldContentView: View {
                         MIDIKnob(value: $midiValue)
                     }
                 }
-                Scrubber(playhead: $playhead)
+                IndexedSlider(index: $index, labels: ["1", "2", "3", "4", "FIVE"])
                     .frame(height: proxy.size.height / 10)
-//                IndexedSlider(index: $index, count: 5)
-//                    .frame(height: proxy.size.height / 10)
             }
-        }
+        }.navigationTitle("Old Demo")
     }
 }
