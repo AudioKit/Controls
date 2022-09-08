@@ -7,7 +7,7 @@ struct XYPadDemoView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            VStack(alignment: .leading, spacing: 40) {
+            VStack(alignment: .leading, spacing: 20) {
                 Text("Controls two parameters in the x- and y-dimensions")
                 Slider(value: $x)
                 Slider(value: $y)
@@ -44,12 +44,7 @@ struct XYPadDemoView: View {
             }
         }
         .navigationTitle("XYPad")
+        .toolbar { Text("") }
         .padding()
-    }
-}
-
-struct XYPadDemoView_Previews: PreviewProvider {
-    static var previews: some View {
-        XYPadDemoView().previewDevice(.init("iPhone"))
     }
 }

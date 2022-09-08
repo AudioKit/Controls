@@ -27,11 +27,12 @@ struct ScrubberDemoView: View {
                     Scrubber(playhead: $playhead)
                         .foregroundColor(.white.opacity(0.5))
                         .cornerRadius(1000)
-                        .frame(height: proxy.size.height / 5)
+                        .frame(height: proxy.size.height / 10)
                 }
             }
         }
         .navigationTitle("Scrubber")
+        .toolbar { Text("") }
         .padding()
     }
 }

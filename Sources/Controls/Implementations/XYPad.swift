@@ -30,7 +30,8 @@ public struct XYPad: View {
                         .offset(by: CGSize(width: max(0, min(viewport.size.width - indicatorRect.size.width, CGFloat(x) * viewport.size.width - indicatorRect.width / 2)),
                                            height: max(0, min(viewport.size.height - indicatorRect.height,
                                                        (1 - CGFloat(y)) * viewport.size.height - indicatorRect.height / 2))))
-                    let ind = Path(roundedRect: offsetRect, cornerRadius: cornerRadius)
+                    let cr = min(indicatorRect.height / 2, cornerRadius)
+                    let ind = Path(roundedRect: offsetRect, cornerRadius: cr)
 
                     cx.fill(ind, with: .color(foregroundColor))
 

@@ -5,6 +5,11 @@ public struct IndexedSlider: View {
     @State var normalValue: Float = 0.0
     var labels: [String]
 
+    var backgroundColor: Color = .gray
+    var foregroundColor: Color = .red
+    var cornerRadius: CGFloat = 0
+    var indicatorPadding: CGFloat = 0.07
+
     public init(index: Binding<Int>, labels: [String]) {
         _index = index
         self.labels = labels
@@ -13,11 +18,13 @@ public struct IndexedSlider: View {
     public var body: some View {
         Control(value: $normalValue, geometry: .horizontalPoint) { geo in
             ZStack(alignment: .bottomLeading) {
-                RoundedRectangle(cornerRadius: 10).foregroundColor(.black.opacity(0.8))
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .foregroundColor(backgroundColor)
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10).foregroundColor(.white.opacity(0.2))
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .foregroundColor(foregroundColor)
                     Text(labels[index])
-                }.padding(2)
+                }.padding(indicatorPadding * geo.size.height)
                 .frame(width: geo.size.width / CGFloat(labels.count))
                 .offset(x: CGFloat(index) * geo.size.width / CGFloat(labels.count))
                 .animation(.easeOut, value: index)
@@ -28,3 +35,47 @@ public struct IndexedSlider: View {
     }
 }
 
+extension IndexedSlider {
+    internal init(index: Binding<Int>,
+                  labels: [String],
+                  backgroundColor: Color,
+                  foregroundColor: Color,
+                  cornerRadius: CGFloat) {
+        self._index = index
+        self.labels = labels
+        self.backgroundColor = backgroundColor
+        self.foregroundColor = foregroundColor
+        self.cornerRadius = cornerRadius
+    }
+
+
+    /// Modifer to change the background color of the slider
+    /// - Parameter backgroundColor: background color
+    public func backgroundColor(_ backgroundColor: Color) -> IndexedSlider {
+        return .init(index: _index,
+                     labels: labels,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius)
+    }
+
+    /// Modifer to change the foreground color of the slider
+    /// - Parameter foregroundColor: foreground color
+    public func foregroundColor(_ foregroundColor: Color) -> IndexedSlider {
+        return .init(index: _index,
+                     labels: labels,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius)
+    }
+
+    /// Modifer to change the corner radius of the slider bar and the indicator
+    /// - Parameter cornerRadius: radius (make very high for a circular scrubber indicator)
+    public func cornerRadius(_ cornerRadius: CGFloat) -> IndexedSlider {
+        return .init(index: _index,
+                     labels: labels,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius)
+    }
+}
