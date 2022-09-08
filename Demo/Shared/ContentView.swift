@@ -2,6 +2,36 @@ import Controls
 import SwiftUI
 
 struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            MasterView()
+            DetailView()
+        }.navigationViewStyle(DoubleColumnNavigationViewStyle())
+    }
+}
+
+struct DetailView: View {
+    var body: some View {
+        EmptyView()
+    }
+}
+
+struct MasterView: View {
+    var body: some View {
+        Form {
+            Group {
+                Section(header: Text("Single-Parameter")) {
+                    NavigationLink("Scrubber",
+                                   destination: ScrubberDemoView())
+                    NavigationLink("Old",
+                                   destination: OldContentView())
+                }
+            }
+        }.navigationTitle("Controls")
+    }
+}
+
+struct OldContentView: View {
     @State var pitchBend: Float = 0.5
     @State var modulation: Float = 0
 
@@ -41,8 +71,8 @@ struct ContentView: View {
                 }
                 Scrubber(playhead: $playhead)
                     .frame(height: proxy.size.height / 10)
-                IndexedSlider(index: $index, count: 5)
-                    .frame(height: proxy.size.height / 10)
+//                IndexedSlider(index: $index, count: 5)
+//                    .frame(height: proxy.size.height / 10)
             }
         }
     }

@@ -23,7 +23,6 @@ class SingleTouchViewIOS: UIView {
         averagePoint = CGPoint(x: averagePoint.x / CGFloat(touchArray.count),
                                y: averagePoint.y / CGFloat(touchArray.count))
 
-        print(averagePoint)
         return averagePoint
     }
 
