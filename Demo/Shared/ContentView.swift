@@ -26,7 +26,7 @@ struct MasterView: View {
                     NavigationLink("Scrubber",
                                    destination: ScrubberDemoView())
                     NavigationLink("Simple Knob",
-                                   destination: SimpleKnobDemoView())
+                                   destination: SmallKnobDemoView())
                     NavigationLink("Indexed Slider",
                                    destination: IndexedSliderDemoView())
                     NavigationLink("Pitch/Mod Wheel",

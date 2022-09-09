@@ -44,7 +44,6 @@ struct XYPadDemoView: View {
             }
         }
         .navigationTitle("XYPad")
-        .toolbar { Text("") }
         .padding()
     }
 }

@@ -32,7 +32,6 @@ struct ScrubberDemoView: View {
             }
         }
         .navigationTitle("Scrubber")
-        .toolbar { Text("") }
         .padding()
     }
 }

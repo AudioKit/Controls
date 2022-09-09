@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct SimpleKnob: View {
+public struct SmallKnob: View {
     @Binding var value: Float
     var range: ClosedRange<Float> = 0.0 ... 1.0
 
@@ -26,7 +26,7 @@ public struct SimpleKnob: View {
                     .rotationEffect(Angle(radians: normalizedValue * 1.6 * .pi + 0.2 * .pi))
                     .offset(x: -sin(normalizedValue * 1.6 * .pi + 0.2 * .pi) * geo.size.width / 2.0 * 0.75,
                             y: cos(normalizedValue * 1.6 * .pi + 0.2 * .pi) * geo.size.height / 2.0 * 0.75)
-            }
+            }.drawingGroup() // Drawing groups improve antialiasing of rotated indicator
         }
         .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
 
@@ -34,7 +34,7 @@ public struct SimpleKnob: View {
 }
 
 
-extension SimpleKnob {
+extension SmallKnob {
     internal init(value: Binding<Float>,
                   backgroundColor: Color,
                   foregroundColor: Color) {
@@ -46,7 +46,7 @@ extension SimpleKnob {
 
     /// Modifer to change the background color of the slider
     /// - Parameter backgroundColor: background color
-    public func backgroundColor(_ backgroundColor: Color) -> SimpleKnob {
+    public func backgroundColor(_ backgroundColor: Color) -> SmallKnob {
         return .init(value: _value,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor)
@@ -54,7 +54,7 @@ extension SimpleKnob {
 
     /// Modifer to change the foreground color of the slider
     /// - Parameter foregroundColor: foreground color
-    public func foregroundColor(_ foregroundColor: Color) -> SimpleKnob {
+    public func foregroundColor(_ foregroundColor: Color) -> SmallKnob {
         return .init(value: _value,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor)

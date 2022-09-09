@@ -30,7 +30,6 @@ struct IndexedSliderDemoView: View {
             }
         }
         .navigationTitle("Indexed Slider")
-        .toolbar { Text("") }
         .padding()
     }
 }

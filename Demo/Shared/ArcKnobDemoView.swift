@@ -22,7 +22,6 @@ struct ArcKnobDemoView: View {
             }
         }
         .navigationTitle("Arc Knob")
-        .toolbar { Text("") }
         .padding()
     }
 }

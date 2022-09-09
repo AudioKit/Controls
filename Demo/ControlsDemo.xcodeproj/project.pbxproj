@@ -23,8 +23,8 @@
 		F1D9CD3328A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
 		F1FAF67928CA79620072BCB9 /* IndexedSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */; };
 		F1FAF67A28CA79620072BCB9 /* IndexedSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */; };
-		F1FAF67C28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67B28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift */; };
-		F1FAF67D28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67B28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift */; };
+		F1FAF67C28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */; };
+		F1FAF67D28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */; };
 		F1FAF67F28CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */; };
 		F1FAF68028CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */; };
 		F1FAF68228CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */; };
@@ -47,7 +47,7 @@
 		F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D9CD2D28A5D9EF00C2B893 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedSliderDemoView.swift; sourceTree = "<group>"; };
-		F1FAF67B28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleKnobDemoView.swift; sourceTree = "<group>"; };
+		F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallKnobDemoView.swift; sourceTree = "<group>"; };
 		F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickDemoView.swift; sourceTree = "<group>"; };
 		F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcKnobDemoView.swift; sourceTree = "<group>"; };
 		F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDemoView.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 				F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */,
 				F13848EB28C9F212003531F0 /* PitchModWheelDemoView.swift */,
 				F155153728C96F6900E64E43 /* ScrubberDemoView.swift */,
-				F1FAF67B28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift */,
+				F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */,
 				F155153A28C9C48400E64E43 /* XYPadDemoView.swift */,
 				F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */,
 			);
@@ -248,7 +248,7 @@
 				F1FAF68828CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */,
 				F13848EC28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */,
 				F1FAF67F28CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */,
-				F1FAF67C28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift in Sources */,
+				F1FAF67C28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */,
 				F155153B28C9C48400E64E43 /* XYPadDemoView.swift in Sources */,
 				F1D9CD3028A5D9EF00C2B893 /* ContentView.swift in Sources */,
 				F1FAF68228CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */,
@@ -265,7 +265,7 @@
 				F1FAF68928CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */,
 				F13848ED28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */,
 				F1FAF68028CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */,
-				F1FAF67D28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift in Sources */,
+				F1FAF67D28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */,
 				F155153C28C9C48400E64E43 /* XYPadDemoView.swift in Sources */,
 				F1D9CD3128A5D9EF00C2B893 /* ContentView.swift in Sources */,
 				F1FAF68328CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */,

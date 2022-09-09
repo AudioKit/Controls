@@ -41,7 +41,6 @@ struct JoystickDemoView: View {
             }
         }
         .navigationTitle("Joystick")
-        .toolbar { Text("") }
         .padding()
     }
 }

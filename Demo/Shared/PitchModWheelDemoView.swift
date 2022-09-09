@@ -33,7 +33,6 @@ struct PitchModWheelDemoView: View {
             }
         }
         .navigationTitle("Pitch/Mod Wheel")
-        .toolbar { Text("") }
         .padding()
     }
 }

@@ -1,25 +1,27 @@
 import Controls
 import SwiftUI
 
-struct SimpleKnobDemoView: View {
+struct SmallKnobDemoView: View {
     @State var value: Float = 0.33
 
     var body: some View {
         GeometryReader { proxy in
             VStack(alignment: .leading, spacing: 40) {
+                Text("This Knob allows you to start the touch point inside the knob")
+                Text("and then change its value by both vertical and horizontal drag.")
+
                 VStack(alignment: .center) {
-                    SimpleKnob(value: $value)
+                    SmallKnob(value: $value)
                         .backgroundColor(.yellow)
                         .foregroundColor(.blue)
-                    SimpleKnob(value: $value)
+                    SmallKnob(value: $value)
                         .backgroundColor(.orange)
                         .foregroundColor(.red)
-                    SimpleKnob(value: $value)
+                    SmallKnob(value: $value)
                 }
             }
         }
         .navigationTitle("Simple Knob")
-        .toolbar { Text("") }
         .padding()
     }
 }
