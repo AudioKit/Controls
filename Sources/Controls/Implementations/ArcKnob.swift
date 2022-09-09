@@ -2,7 +2,6 @@ import SwiftUI
 
 public struct ArcKnob: View {
     @Binding var value: Float
-    var rangeDegrees = 270.0
     var text = ""
 
     var backgroundColor: Color = .gray
@@ -10,9 +9,13 @@ public struct ArcKnob: View {
 
     @State var isShowingValue = false
     var range: ClosedRange<Float> = 0.0 ... 1.0
+    var origin: Float = 0.0
 
-    public init(_ text: String, value: Binding<Float>, range: ClosedRange<Float> = 0 ... 100) {
+    public init(_ text: String, value: Binding<Float>,
+                range: ClosedRange<Float> = 0 ... 100,
+                origin: Float = 0) {
         _value = value
+        self.origin = origin
         self.text = text
         self.range = range
     }
@@ -21,15 +24,47 @@ public struct ArcKnob: View {
         min(proxy.size.width, proxy.size.height)
     }
 
+    let minimumAngle = Angle(degrees: 45)
+    let maximumAngle = Angle(degrees: 315)
+    var angleRange: CGFloat {
+        CGFloat(maximumAngle.degrees - minimumAngle.degrees)
+    }
+
+    var nondimValue: Float {
+        (value - range.lowerBound) / (range.upperBound - range.lowerBound)
+    }
+
+    var originLocation: Float {
+        (origin - range.lowerBound) / (range.upperBound - range.lowerBound)
+    }
+
+
+    var trimFrom: CGFloat {
+        if value >= origin {
+            return minimumAngle.degrees / 360 + CGFloat(originLocation) * angleRange / 360.0
+        } else {
+            return (minimumAngle.degrees + CGFloat(nondimValue) * angleRange) / 360.0
+        }
+    }
+
+    var trimTo: CGFloat {
+        if value >= origin {
+            return (minimumAngle.degrees +  CGFloat(nondimValue) * angleRange) / 360.0 + 0.0001
+        } else {
+            return (minimumAngle.degrees + CGFloat(originLocation) * angleRange) / 360.0
+        }
+    }
+
     public var body: some View {
         Control(value: $value, in: range,
-                geometry: .angle(angularRange: Angle(degrees: 45) ... Angle(degrees: 315)),
+                geometry: .angle(angularRange: minimumAngle ... maximumAngle),
                 onStarted: { isShowingValue = true },
                 onEnded: { isShowingValue = false }) { geo in
             ZStack(alignment: .center) {
                 Circle()
-                    .trim(from: 45.0 / 360.0, to: 315.0 / 360.0)
-                    .rotation(.degrees(-rangeDegrees))
+                    .trim(from: minimumAngle.degrees / 360.0, to: maximumAngle.degrees / 360.0)
+
+                    .rotation(.degrees(-270))
                     .stroke(backgroundColor,
                             style: StrokeStyle(lineWidth: dim(geo) / 10,
                                                lineCap: .round))
@@ -38,8 +73,8 @@ public struct ArcKnob: View {
 
                 // Stroke value trim of knob
                 Circle()
-                    .trim(from: 45 / 360.0, to: (45 + Double(value) / 100.0 * rangeDegrees) / 360.0)
-                    .rotation(.degrees(-rangeDegrees))
+                    .trim(from: trimFrom, to: trimTo)
+                    .rotation(.degrees(-270))
                     .stroke(foregroundColor,
                             style: StrokeStyle(lineWidth: dim(geo) / 10,
                                                lineCap: .round))

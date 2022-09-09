@@ -60,9 +60,9 @@ public enum ControlGeometry {
             }
         case let .angle(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation, rect: rect)
-            let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
+            let width = angularRange.upperBound.degrees - angularRange.lowerBound.degrees
 
-            temp = Float((polar.angle.radians - angularRange.lowerBound.radians) / width)
+            temp = Float((polar.angle.degrees - angularRange.lowerBound.degrees) / width)
 
         case .angularDrag(angularRange: _):
             if oldValue != .zero {
@@ -85,7 +85,7 @@ public enum ControlGeometry {
 
         // Convert to polar
         let radius = max(0.0, min(1.0, sqrt(pow(deltaX, 2) + pow(deltaY, 2))))
-        var theta = atan(deltaY / deltaX)
+        var theta = atan((point.y - rect.midY) / (point.x - rect.midX))
 
         // Rotate to clockwise polar from -y axis (most like a knob)
         theta += .pi * (deltaX > 0 ? 1.5 : 0.5)
