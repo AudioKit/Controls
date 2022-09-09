@@ -1,6 +1,6 @@
 # Controls
 
-<img src="Sources/Controls/Controls.docc/Resources/demo.png" alt="Demo">
+![controls](https://user-images.githubusercontent.com/13122/189453406-442979fb-aa7b-4adb-ae0f-d3c56eaa5ac0.png)
 
 User interface elements including knobs, sliders, XYPads, and more, all built off the same generic controls.
 
