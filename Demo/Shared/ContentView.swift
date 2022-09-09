@@ -38,6 +38,10 @@ struct MasterView: View {
                     NavigationLink("XY Pad",
                                    destination: XYPadDemoView())
                 }
+                Section(header: Text("Multiple Controls")) {
+                    NavigationLink("Keyboard",
+                                   destination: KeyboardDemoView())
+                }
             }
         }.navigationTitle("Controls")
     }

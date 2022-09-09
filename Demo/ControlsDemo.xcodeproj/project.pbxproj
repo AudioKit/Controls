@@ -29,6 +29,10 @@
 		F1FAF68028CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */; };
 		F1FAF68228CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */; };
 		F1FAF68328CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */; };
+		F1FAF68628CADE650072BCB9 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F1FAF68528CADE650072BCB9 /* Keyboard */; };
+		F1FAF68828CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */; };
+		F1FAF68928CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */; };
+		F1FAF68B28CADEFC0072BCB9 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F1FAF68A28CADEFC0072BCB9 /* Keyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +50,7 @@
 		F1FAF67B28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleKnobDemoView.swift; sourceTree = "<group>"; };
 		F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoystickDemoView.swift; sourceTree = "<group>"; };
 		F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcKnobDemoView.swift; sourceTree = "<group>"; };
+		F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDemoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1AF69D528A986E700472E04 /* Controls in Frameworks */,
+				F1FAF68628CADE650072BCB9 /* Keyboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1AF69D728A986F500472E04 /* Controls in Frameworks */,
+				F1FAF68B28CADEFC0072BCB9 /* Keyboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +93,7 @@
 				F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */,
 				F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */,
 				F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */,
+				F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */,
 				F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */,
 				F13848EB28C9F212003531F0 /* PitchModWheelDemoView.swift */,
 				F155153728C96F6900E64E43 /* ScrubberDemoView.swift */,
@@ -146,6 +154,7 @@
 			name = "ControlsDemo (iOS)";
 			packageProductDependencies = (
 				F1AF69D428A986E700472E04 /* Controls */,
+				F1FAF68528CADE650072BCB9 /* Keyboard */,
 			);
 			productName = "ControlsDemo (iOS)";
 			productReference = F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */;
@@ -166,6 +175,7 @@
 			name = "ControlsDemo (macOS)";
 			packageProductDependencies = (
 				F1AF69D628A986F500472E04 /* Controls */,
+				F1FAF68A28CADEFC0072BCB9 /* Keyboard */,
 			);
 			productName = "ControlsDemo (macOS)";
 			productReference = F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */;
@@ -198,6 +208,9 @@
 				Base,
 			);
 			mainGroup = F1D9CD1828A5D9EE00C2B893;
+			packageReferences = (
+				F1FAF68428CADE650072BCB9 /* XCRemoteSwiftPackageReference "Keyboard" */,
+			);
 			productRefGroup = F1D9CD2628A5D9EF00C2B893 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1FAF68828CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */,
 				F13848EC28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */,
 				F1FAF67F28CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */,
 				F1FAF67C28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift in Sources */,
@@ -248,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1FAF68928CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */,
 				F13848ED28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */,
 				F1FAF68028CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */,
 				F1FAF67D28CAA2BB0072BCB9 /* SimpleKnobDemoView.swift in Sources */,
@@ -521,6 +536,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		F1FAF68428CADE650072BCB9 /* XCRemoteSwiftPackageReference "Keyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/Keyboard.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		F1AF69D428A986E700472E04 /* Controls */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -529,6 +555,16 @@
 		F1AF69D628A986F500472E04 /* Controls */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Controls;
+		};
+		F1FAF68528CADE650072BCB9 /* Keyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1FAF68428CADE650072BCB9 /* XCRemoteSwiftPackageReference "Keyboard" */;
+			productName = Keyboard;
+		};
+		F1FAF68A28CADEFC0072BCB9 /* Keyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1FAF68428CADE650072BCB9 /* XCRemoteSwiftPackageReference "Keyboard" */;
+			productName = Keyboard;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
