@@ -12,15 +12,19 @@ struct KeyboardDemoView: View {
     @State var x: Float = 0.5
     @State var y: Float = 0.5
     
-    @State var octaveRange = 0
+    @State var octaveRange = 1
     @State var layoutType = 0
 
-    @State var filter: Float = 0.33
-    @State var resonance: Float = 0.66
-    @State var volume: Float = 0.8
+    @State var filter: Float = 33
+    @State var resonance: Float = 66
+    @State var volume: Float = 80
     @State var pan: Float = 0
 
-    var lowestNote = 48
+    @State var smallKnobValue: Float = 0.5
+
+    @State var ribbon: Float = 0
+
+    @State var lowestNote = 48
     var hightestNote: Int {
         (octaveRange + 1) * 12 + lowestNote
     }
@@ -69,15 +73,27 @@ struct KeyboardDemoView: View {
                         IndexedSlider(index: $octaveRange, labels: ["1", "2", "3"])
                             .backgroundColor(.gray.opacity(0.5))
                             .foregroundColor(.white.opacity(0.5))
-                            .cornerRadius(20)
+                            .cornerRadius(10)
+
+                        Text("Detune:")
+                        SmallKnob(value: $smallKnobValue)
+                            .backgroundColor(.gray.opacity(0.5))
+                            .foregroundColor(.white.opacity(0.5))
                         Text("Layout:")
                             .padding(.leading, 140)
                         IndexedSlider(index: $layoutType, labels: ["Piano", "Isomorphic", "Guitar"])
                             .backgroundColor(.gray.opacity(0.5))
                             .foregroundColor(.white.opacity(0.5))
-                            .cornerRadius(20)
+                            .cornerRadius(10)
                     }
                     .frame(height: 30)
+                    Ribbon(position: $ribbon)
+                        .backgroundColor(.gray.opacity(0.5))
+                        .foregroundColor(.white.opacity(0.5))
+                        .cornerRadius(5)
+                        .frame(height: 15)
+                        .padding(.leading, 140)
+
                     HStack {
                         PitchModWheel(type: .pitch, value: $pitchBend)
                             .backgroundColor(.gray.opacity(0.5))
@@ -94,6 +110,7 @@ struct KeyboardDemoView: View {
                 }
             }
         }
+        .navigationTitle("Keyboard Demo")
     }
 }
 

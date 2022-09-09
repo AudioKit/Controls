@@ -1,8 +1,8 @@
 import SwiftUI
 
 /// Horizontal slider bar
-public struct Scrubber: View {
-    @Binding var playhead: Float
+public struct Ribbon: View {
+    @Binding var position: Float
 
     var backgroundColor: Color = .gray
     var foregroundColor: Color = .red
@@ -10,34 +10,34 @@ public struct Scrubber: View {
     var indicatorPadding: CGFloat = 0.07
 
     /// Initialize with the minimum description
-    /// - Parameter playhead: Normalized position of the slider
-    public init(playhead: Binding<Float>) {
-        _playhead = playhead
+    /// - Parameter position: Normalized position of the slider
+    public init(position: Binding<Float>) {
+        _position = position
     }
 
-    func playheadWidth(_ proxy: GeometryProxy) -> CGFloat {
+    func positionWidth(_ proxy: GeometryProxy) -> CGFloat {
         proxy.size.height * (1 - 2 * indicatorPadding)
     }
 
     public var body: some View {
-        Control(value: $playhead, geometry: .horizontalPoint) { geo in
+        Control(value: $position, geometry: .horizontalPoint) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
                 RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(foregroundColor)
-                    .squareFrame(playheadWidth(geo))
-                    .offset(x: CGFloat(playhead) * (geo.size.width - geo.size.height))
+                    .squareFrame(positionWidth(geo))
+                    .offset(x: CGFloat(position) * (geo.size.width - geo.size.height))
                     .padding(indicatorPadding * geo.size.height)
             }
         }
     }
 }
 
-extension Scrubber {
-    internal init(playhead: Binding<Float>,
+extension Ribbon {
+    internal init(position: Binding<Float>,
                   backgroundColor: Color,
                   foregroundColor: Color,
                   cornerRadius: CGFloat) {
-        self._playhead = playhead
+        self._position = position
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius
@@ -46,8 +46,8 @@ extension Scrubber {
 
     /// Modifer to change the background color of the slider
     /// - Parameter backgroundColor: background color
-    public func backgroundColor(_ backgroundColor: Color) -> Scrubber {
-        return .init(playhead: _playhead,
+    public func backgroundColor(_ backgroundColor: Color) -> Ribbon {
+        return .init(position: _position,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
                      cornerRadius: cornerRadius)
@@ -55,8 +55,8 @@ extension Scrubber {
 
     /// Modifer to change the foreground color of the slider
     /// - Parameter foregroundColor: foreground color
-    public func foregroundColor(_ foregroundColor: Color) -> Scrubber {
-        return .init(playhead: _playhead,
+    public func foregroundColor(_ foregroundColor: Color) -> Ribbon {
+        return .init(position: _position,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
                      cornerRadius: cornerRadius)
@@ -64,8 +64,8 @@ extension Scrubber {
 
     /// Modifer to change the corner radius of the slider bar and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular scrubber indicator)
-    public func cornerRadius(_ cornerRadius: CGFloat) -> Scrubber {
-        return .init(playhead: _playhead,
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Ribbon {
+        return .init(position: _position,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
                      cornerRadius: cornerRadius)

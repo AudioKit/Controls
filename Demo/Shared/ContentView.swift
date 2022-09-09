@@ -23,8 +23,8 @@ struct MasterView: View {
                 Section(header: Text("Single-Parameter")) {
                     NavigationLink("Arc Knob",
                                    destination: ArcKnobDemoView())
-                    NavigationLink("Scrubber",
-                                   destination: ScrubberDemoView())
+                    NavigationLink("Ribbon",
+                                   destination: RibbonDemoView())
                     NavigationLink("Simple Knob",
                                    destination: SmallKnobDemoView())
                     NavigationLink("Indexed Slider",

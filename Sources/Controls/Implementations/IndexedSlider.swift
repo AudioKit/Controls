@@ -21,6 +21,17 @@ public struct IndexedSlider: View {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .foregroundColor(backgroundColor)
                 ZStack {
+                    ForEach(0..<labels.count, id: \.self) { i in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .foregroundColor(foregroundColor.opacity(0.15))
+                            Text(labels[i])
+                        }.padding(indicatorPadding * geo.size.height)
+                        .frame(width: geo.size.width / CGFloat(labels.count))
+                        .offset(x: CGFloat(i) * geo.size.width / CGFloat(labels.count))
+                    }
+                }
+                ZStack {
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .foregroundColor(foregroundColor)
                     Text(labels[index])

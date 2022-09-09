@@ -6,11 +6,11 @@ struct SmallKnobDemoView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            VStack(alignment: .leading, spacing: 40) {
+            VStack(alignment: .leading, spacing: 10) {
                 Text("This Knob allows you to start the touch point inside the knob")
                 Text("and then change its value by both vertical and horizontal drag.")
 
-                VStack(alignment: .center) {
+                HStack(alignment: .center, spacing: 50) {
                     SmallKnob(value: $value)
                         .backgroundColor(.yellow)
                         .foregroundColor(.blue)
