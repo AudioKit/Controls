@@ -2,8 +2,7 @@
 
 <img src="demo.png" alt="Demo">
 
-This repository aims to be a repository of somewhat customizable UI controls. 
-These include knobs, sliders, XYPads, and more, all built off the same generic controls
+User interface elements including knobs, sliders, XYPads, and more, all built off the same generic controls.
 
 ## Generic Controls
 
@@ -19,7 +18,7 @@ rectilinear and polar coordinate variations. See the API for more details.
 
 ## Implementations
 
-These are example of how to use the generic controls. They are somewhat customizable, so you 
+These are examples of how to use the generic controls. They are somewhat customizable, so you 
 can easier use them directly or use them as a template for creating your own custom controls.
 
 Single-parameter controls:
