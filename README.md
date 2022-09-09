@@ -1,6 +1,6 @@
 # Controls
 
-![controls](https://user-images.githubusercontent.com/13122/189453406-442979fb-aa7b-4adb-ae0f-d3c56eaa5ac0.png)
+![controls](https://user-images.githubusercontent.com/13122/189456340-a5e263e7-c922-4deb-9504-e523a8aef821.png)
 
 User interface elements including knobs, sliders, XYPads, and more, all built off the same generic controls.
 
