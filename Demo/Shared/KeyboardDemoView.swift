@@ -22,7 +22,7 @@ struct KeyboardDemoView: View {
 
     var lowestNote = 48
     var hightestNote: Int {
-        (octaveRange + 2) * 12 + lowestNote
+        (octaveRange + 1) * 12 + lowestNote
     }
 
     var layout: KeyboardLayout {
@@ -66,7 +66,7 @@ struct KeyboardDemoView: View {
                     HStack {
                         Text("Octaves:")
                             .padding(.leading, 140)
-                        IndexedSlider(index: $octaveRange, labels: ["2", "3", "4"])
+                        IndexedSlider(index: $octaveRange, labels: ["1", "2", "3"])
                             .backgroundColor(.gray.opacity(0.5))
                             .foregroundColor(.white.opacity(0.5))
                             .cornerRadius(20)
