@@ -1,22 +1,26 @@
-# Controls
-
-<img src="Sources/Controls/Controls.docc/Resources/demo.png" alt="Demo">
+# ``Controls``
 
 User interface elements including knobs, sliders, XYPads, and more, all built off the same generic controls.
 
-## Generic Controls
+## Overview
+
+Code is hosted on Github: [](https://github.com/AudioKit/Controls/)
+
+![Demo Screenshot](demo)
+
+### Generic Controls
 
 Two types of controls allow you to drag on a UI element and control either one or two parameters.
 
 * Control - draggable control that can affect one value by planar motion, either horizontally, vertically, or both.
 * Two Parameter Control - draggable control that can affect two indepent paramters.
 
-## Control Geometries
+### Control Geometries
 
 For both types of controls, there are a wide variety of ways to react to dragging, including
 rectilinear and polar coordinate variations. See the API for more details.
 
-## Implementations
+### Implementations
 
 These are examples of how to use the generic controls. They are somewhat customizable, so you 
 can easier use them directly or use them as a template for creating your own custom controls.
@@ -34,15 +38,14 @@ Two-parameter controls:
 * Joystick - polar coordinate control
 * XYPad - XY control that doesn't snap
     
-## Installation
+### Installation
 
 Installation is done with Swift Package Manager. Be sure to tie your code to a version number
 and not just a branch, because the API for these controls will change as necessary.  
 
-## Documentation
 
-The docs are hosted on the [AudioKit.io website](https://www.audiokit.io/Controls/)
+## Topics
 
-## Sponsorship
+### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
 
-[Sponsor me on Github](https://github.com/sponsors/aure) and I'll create a control for you. 
+- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->

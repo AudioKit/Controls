@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Knob in which you control the value by moving in a circular shape
 public struct ArcKnob: View {
     @Binding var value: Float
     var text = ""
@@ -8,9 +9,15 @@ public struct ArcKnob: View {
     var foregroundColor: Color = .red
 
     @State var isShowingValue = false
-    var range: ClosedRange<Float> = 0.0 ... 1.0
-    var origin: Float = 0.0
+    var range: ClosedRange<Float>
+    var origin: Float = 0
 
+    /// Initialize the knob
+    /// - Parameters:
+    ///   - text: Default text that shows when the value is not shown
+    ///   - value: Bound value that is being controlled
+    ///   - range: Range of values
+    ///   - origin: Center point from which to draw the arc, usually zero but can be 50% for pan
     public init(_ text: String, value: Binding<Float>,
                 range: ClosedRange<Float> = 0 ... 100,
                 origin: Float = 0) {
@@ -104,7 +111,7 @@ extension ArcKnob {
     }
 
 
-    /// Modifer to change the background color of the slider
+    /// Modifer to change the background color of the knob
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> ArcKnob {
         return .init(text: text,
@@ -114,7 +121,7 @@ extension ArcKnob {
                      foregroundColor: foregroundColor)
     }
 
-    /// Modifer to change the foreground color of the slider
+    /// Modifer to change the foreground color of the knob
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> ArcKnob {
         return .init(text: text,
