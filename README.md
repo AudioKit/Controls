@@ -39,6 +39,11 @@ Two-parameter controls:
 Installation is done with Swift Package Manager. Be sure to tie your code to a version number
 and not just a branch, because the API for these controls will change as necessary.  
 
+## Demo
+
+Included with the package is a demo project (pictured above) and a playground to help you 
+get up and running quickly.
+
 ## Documentation
 
 The docs are hosted on the [AudioKit.io website](https://www.audiokit.io/Controls/)
