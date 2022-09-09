@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// XY control that doesn't snap
 public struct XYPad: View {
     @Binding var x: Float
     @Binding var y: Float
@@ -9,6 +10,10 @@ public struct XYPad: View {
     var cornerRadius: CGFloat = 0
     var indicatorPadding: CGFloat = 0.07
 
+    /// Initiale the control with two parameters
+    /// - Parameters:
+    ///   - x: horizontal parameter 0-1
+    ///   - y: vertical parameter 0-1
     public init(x: Binding<Float>, y: Binding<Float>) {
         _x = x
         _y = y

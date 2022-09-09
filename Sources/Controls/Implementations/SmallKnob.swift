@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Knob in which you start by tapping in its bound and change the value by either horizontal or vertical motion
 public struct SmallKnob: View {
     @Binding var value: Float
     var range: ClosedRange<Float> = 0.0 ... 1.0
@@ -7,6 +8,10 @@ public struct SmallKnob: View {
     var backgroundColor: Color = .gray
     var foregroundColor: Color = .red
 
+    /// Initialize the knob with a bound value and range
+    /// - Parameters:
+    ///   - value: value being controlled
+    ///   - range: range of the value
     public init(value: Binding<Float>, range: ClosedRange<Float> = 0.0 ... 1.0) {
         _value = value
         self.range = range
@@ -44,7 +49,7 @@ extension SmallKnob {
     }
 
 
-    /// Modifer to change the background color of the slider
+    /// Modifer to change the background color of the knob
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> SmallKnob {
         return .init(value: _value,
@@ -52,7 +57,7 @@ extension SmallKnob {
                      foregroundColor: foregroundColor)
     }
 
-    /// Modifer to change the foreground color of the slider
+    /// Modifer to change the foreground color of the knob
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> SmallKnob {
         return .init(value: _value,

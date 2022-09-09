@@ -1,10 +1,15 @@
 import SwiftUI
 
+/// Wheel type, defining whether or not to snap to the center
 public enum WheelType {
+    /// Snapped to the center
     case pitch
+
+    /// Default 0, bottom
     case mod
 }
 
+/// Pitch and modulation wheel for a keyboard
 public struct PitchModWheel: View {
     var type: WheelType
 
@@ -23,6 +28,10 @@ public struct PitchModWheel: View {
         geo.size.height - geo.size.width
     }
 
+    /// Initial the wheel with a type and bound value
+    /// - Parameters:
+    ///   - type: Wheel type
+    ///   - value: value to control
     public init(type: WheelType, value: Binding<Float>) {
         self.type = type
         _location = value
@@ -59,7 +68,7 @@ extension PitchModWheel {
     }
 
 
-    /// Modifer to change the background color of the slider
+    /// Modifer to change the background color of the wheel
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> PitchModWheel {
         return .init(type: type,
@@ -69,7 +78,7 @@ extension PitchModWheel {
                      cornerRadius: cornerRadius)
     }
 
-    /// Modifer to change the foreground color of the slider
+    /// Modifer to change the foreground color of the wheel
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> PitchModWheel {
         return .init(type: type,
@@ -79,8 +88,8 @@ extension PitchModWheel {
                      cornerRadius: cornerRadius)
     }
 
-    /// Modifer to change the corner radius of the slider bar and the indicator
-    /// - Parameter cornerRadius: radius (make very high for a circular scrubber indicator)
+    /// Modifer to change the corner radius of the wheel and the indicator
+    /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> PitchModWheel {
         return .init(type: type,
                      location: _location,

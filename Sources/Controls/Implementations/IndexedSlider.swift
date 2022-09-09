@@ -81,7 +81,7 @@ extension IndexedSlider {
     }
 
     /// Modifer to change the corner radius of the slider bar and the indicator
-    /// - Parameter cornerRadius: radius (make very high for a circular scrubber indicator)
+    /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> IndexedSlider {
         return .init(index: _index,
                      labels: labels,
