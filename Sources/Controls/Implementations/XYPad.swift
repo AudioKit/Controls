@@ -31,18 +31,17 @@ public struct XYPad: View {
                     let viewport = CGRect(origin: .zero, size: size)
                     let indicatorRect = CGRect(origin: .zero, size: CGSize(width: viewport.width / 10,
                                                                            height: viewport.height / 10))
+
+                    let activeWidth = viewport.size.width - indicatorRect.size.width
+                    let activeHeight = viewport.size.height - indicatorRect.size.height
+
                     let offsetRect = indicatorRect
-                        .offset(by: CGSize(width: max(0,
-                                                      min(viewport.size.width - indicatorRect.size.width,
-                                                          CGFloat(x) * viewport.size.width - indicatorRect.width / 2)),
-                                           height: max(0,
-                                                       min(viewport.size.height - indicatorRect.height,
-                                                       (1 - CGFloat(y)) * viewport.size.height - indicatorRect.height / 2))))
+                        .offset(by: CGSize(width: activeWidth * CGFloat(x),
+                                           height: activeHeight * (1 - CGFloat(y))))
                     let cr = min(indicatorRect.height / 2, cornerRadius)
                     let ind = Path(roundedRect: offsetRect, cornerRadius: cr)
 
                     cx.fill(ind, with: .color(foregroundColor))
-
                 }
             }.padding(10)
         }
