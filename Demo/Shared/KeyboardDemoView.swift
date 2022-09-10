@@ -95,12 +95,12 @@ struct KeyboardDemoView: View {
                         .padding(.leading, 140)
 
                     HStack {
-                        PitchModWheel(type: .pitch, value: $pitchBend)
+                        PitchWheel(value: $pitchBend)
                             .backgroundColor(.gray.opacity(0.5))
                             .foregroundColor(.white.opacity(0.5))
                             .cornerRadius(10)
                             .frame(width: 60)
-                        PitchModWheel(type: .mod, value: $modulation)
+                        ModWheel(value: $modulation)
                             .backgroundColor(.gray.opacity(0.5))
                             .foregroundColor(.white.opacity(0.5))
                             .cornerRadius(10)
