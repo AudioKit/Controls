@@ -10,12 +10,13 @@ final class ControlsTests: XCTestCase {
 
         let rect = CGRect(x: 0, y: 0, width: 100, height: 100)
         (value1, value2) = geometry.calculateValuePair(value1: value1,
-                                                      range1: 0 ... 100,
-                                                      value2: value2,
-                                                      range2: -100 ... 0,
-                                                      from: CGPoint(x: rect.midX, y: rect.midY),
-                                                      to: CGPoint(x: rect.maxX, y: rect.minY),
-                                                      inRect: rect)
+                                                       range1: 0 ... 100,
+                                                       value2: value2,
+                                                       range2: -100 ... 0,
+                                                       from: CGPoint(x: rect.midX, y: rect.midY),
+                                                       to: CGPoint(x: rect.maxX, y: rect.minY),
+                                                       inRect: rect,
+                                                       padding: .zero)
 
         XCTAssertEqual(value1, 100)
         XCTAssertEqual(value2, 0)

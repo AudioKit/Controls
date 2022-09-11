@@ -8,7 +8,7 @@ public struct Ribbon: View {
     var foregroundColor: Color = .red
     var cornerRadius: CGFloat = 0
     var indicatorPadding: CGFloat = 0.07
-    var indicatorWidth: CGFloat = 100
+    var indicatorWidth: CGFloat = 40
 
     /// Initialize with the minimum description
     /// - Parameter position: Normalized position of the ribbon
