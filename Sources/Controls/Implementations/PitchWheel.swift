@@ -52,11 +52,13 @@ extension PitchWheel {
     internal init(location: Binding<Float>,
                   backgroundColor: Color,
                   foregroundColor: Color,
-                  cornerRadius: CGFloat) {
+                  cornerRadius: CGFloat,
+                  indicatorHeight: CGFloat) {
         self._location = location
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius
+        self.indicatorHeight = indicatorHeight
     }
 
 
@@ -66,7 +68,8 @@ extension PitchWheel {
         return .init(location: _location,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorHeight: indicatorHeight)
     }
 
     /// Modifer to change the foreground color of the wheel
@@ -75,7 +78,8 @@ extension PitchWheel {
         return .init(location: _location,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorHeight: indicatorHeight)
     }
 
     /// Modifer to change the corner radius of the wheel and the indicator
@@ -84,6 +88,17 @@ extension PitchWheel {
         return .init(location: _location,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorHeight: indicatorHeight)
+    }
+
+    /// Modifier to change the size of the indicator
+    /// - Parameter indicatorHeight: preferred height
+    public func indicatorHeight(_ indicatorHeight: CGFloat) -> PitchWheel {
+        return .init(location: _location,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius,
+                     indicatorHeight: indicatorHeight)
     }
 }

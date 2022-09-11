@@ -39,11 +39,13 @@ extension Ribbon {
     internal init(position: Binding<Float>,
                   backgroundColor: Color,
                   foregroundColor: Color,
-                  cornerRadius: CGFloat) {
+                  cornerRadius: CGFloat,
+                  indicatorWidth: CGFloat) {
         self._position = position
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius
+        self.indicatorWidth = indicatorWidth
     }
 
 
@@ -53,7 +55,8 @@ extension Ribbon {
         return .init(position: _position,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorWidth: indicatorWidth)
     }
 
     /// Modifer to change the foreground color of the ribbon
@@ -62,7 +65,8 @@ extension Ribbon {
         return .init(position: _position,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorWidth: indicatorWidth)
     }
 
     /// Modifer to change the corner radius of the ribbon bar and the indicator
@@ -71,6 +75,17 @@ extension Ribbon {
         return .init(position: _position,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorWidth: indicatorWidth)
+    }
+
+    /// Modifier to change the size of the indicator
+    /// - Parameter indicatorWidth: preferred width
+    public func indicatorWidth(_ indicatorWidth: CGFloat) -> Ribbon {
+        return .init(position: _position,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius,
+                     indicatorWidth: indicatorWidth)
     }
 }

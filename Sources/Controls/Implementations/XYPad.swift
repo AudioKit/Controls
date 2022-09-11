@@ -43,7 +43,7 @@ public struct XYPad: View {
 
                     cx.fill(ind, with: .color(foregroundColor))
                 }
-            }.padding(indicatorSize.width * indicatorPadding)
+            }.padding(indicatorSize.height * indicatorPadding)
         }
     }
 }
@@ -53,12 +53,14 @@ extension XYPad {
                   y: Binding<Float>,
                   backgroundColor: Color,
                   foregroundColor: Color,
-                  cornerRadius: CGFloat) {
+                  cornerRadius: CGFloat,
+                  indicatorSize: CGSize) {
         self._x = x
         self._y = y
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius
+        self.indicatorSize = indicatorSize
     }
 
 
@@ -68,7 +70,8 @@ extension XYPad {
         return .init(x: _x, y: _y,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorSize: indicatorSize)
     }
 
     /// Modifer to change the foreground color of the xy pad
@@ -77,7 +80,8 @@ extension XYPad {
         return .init(x: _x, y: _y,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorSize: indicatorSize)
     }
 
     /// Modifer to change the corner radius of the xy pad and the indicator
@@ -86,6 +90,17 @@ extension XYPad {
         return .init(x: _x, y: _y,
                      backgroundColor: backgroundColor,
                      foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius)
+                     cornerRadius: cornerRadius,
+                     indicatorSize: indicatorSize)
+    }
+
+    /// Modifer to change the size of the indicator
+    /// - Parameter indicatorSize: size of the indicator
+    public func indicatorSize(_ indicatorSize: CGSize) -> XYPad {
+        return .init(x: _x, y: _y,
+                     backgroundColor: backgroundColor,
+                     foregroundColor: foregroundColor,
+                     cornerRadius: cornerRadius,
+                     indicatorSize: indicatorSize)
     }
 }

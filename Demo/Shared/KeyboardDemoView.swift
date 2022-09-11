@@ -53,6 +53,7 @@ struct KeyboardDemoView: View {
                             .backgroundColor(.gray.opacity(0.5))
                             .foregroundColor(.white.opacity(0.5))
                             .cornerRadius(20)
+                            .indicatorSize(CGSize(width: 15, height: 15))
                             .squareFrame(140)
                         ArcKnob("FIL", value: $filter)
                             .backgroundColor(.gray.opacity(0.5))

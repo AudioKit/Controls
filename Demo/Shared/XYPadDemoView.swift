@@ -29,11 +29,13 @@ struct XYPadDemoView: View {
                         XYPad(x: $x, y: $y)
                             .foregroundColor(.white.opacity(0.5))
                             .cornerRadius(10)
+                            .indicatorSize(CGSize(width: 60, height: 60))
                             .squareFrame(proxy.size.height / 3)
                         VStack{
                             XYPad(x: $x, y: $y)
                                 .backgroundColor(.primary)
                                 .foregroundColor(.accentColor)
+                                .indicatorSize(CGSize(width: 120, height: 50))
                                 .cornerRadius(20)
                                 .squareFrame(proxy.size.height / 3)
 

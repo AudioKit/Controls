@@ -26,7 +26,8 @@ struct RibbonDemoView: View {
                                height: proxy.size.height / 10)
                     Ribbon(position: $position)
                         .foregroundColor(.white.opacity(0.5))
-                        .cornerRadius(20)
+                        .cornerRadius(100)
+                        .indicatorWidth(200)
                         .frame(height: proxy.size.height / 10)
                 }
             }
