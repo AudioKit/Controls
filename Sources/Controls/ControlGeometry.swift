@@ -29,34 +29,37 @@ public enum ControlGeometry {
                         in range: ClosedRange<Float> = 0 ... 1,
                         from oldValue: CGPoint,
                         to touchLocation: CGPoint,
-                        inRect rect: CGRect) -> Float
+                        inRect rect: CGRect,
+                        padding: CGSize) -> Float
     {
         guard touchLocation != .zero else { return value }
 
         var temp = (value - range.lowerBound) / (range.upperBound - range.lowerBound)
 
-        switch self {
+        let x = touchLocation.x - padding.width
+        let y = touchLocation.y - padding.height
 
+        switch self {
         case .horizontalPoint:
-            temp = Float(touchLocation.x / rect.size.width)
+            temp = Float(x / (rect.size.width - 2 * padding.width))
 
         case .verticalPoint:
-            temp = Float(1.0 - touchLocation.y / rect.size.height)
+            temp = Float(1.0 - y / (rect.size.height - 2 * padding.height))
 
         case let .horizontalDrag(xSensitivity: xSensitivity):
             if oldValue != .zero {
-                temp += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
+                temp += Float((touchLocation.x - oldValue.x) * xSensitivity / (rect.size.width - 2 * padding.width))
             }
 
         case let .verticalDrag(ySensitivity: ySensitivity):
             if oldValue != .zero {
-                temp -= Float((touchLocation.y - oldValue.y) * ySensitivity / rect.size.height)
+                temp -= Float((touchLocation.y - oldValue.y) * ySensitivity / (rect.size.height - 2 * padding.height))
             }
 
         case let .twoDimensionalDrag(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
             if oldValue != .zero {
-                temp += Float((touchLocation.x - oldValue.x) * xSensitivity / rect.size.width)
-                temp -= Float((touchLocation.y - oldValue.y) * ySensitivity / rect.size.height)
+                temp += Float((touchLocation.x - oldValue.x) * xSensitivity / (rect.size.width - 2 * padding.width))
+                temp -= Float((touchLocation.y - oldValue.y) * ySensitivity / (rect.size.height - 2 * padding.height))
             }
         case let .angle(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation, rect: rect)
@@ -75,6 +78,7 @@ public enum ControlGeometry {
         // Bound and convert to range
         let newValue = max(0.0, min(1.0, temp)) * (range.upperBound - range.lowerBound) + range.lowerBound
 
+        print(newValue)
         return newValue
     }
 

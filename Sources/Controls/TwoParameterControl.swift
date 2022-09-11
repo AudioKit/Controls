@@ -10,6 +10,7 @@ public struct TwoParameterControl<Content: View>: View {
     @Binding var value2: Float
     var range1: ClosedRange<Float>
     var range2: ClosedRange<Float>
+    var padding: CGSize
 
     @State var hasStarted = false
     @State var rect: CGRect = .zero
@@ -21,7 +22,8 @@ public struct TwoParameterControl<Content: View>: View {
                                                            range2: range2,
                                                            from: oldValue,
                                                            to: touchLocation,
-                                                           inRect: rect)
+                                                           inRect: rect,
+                                                           padding: padding)
         }
     }
 
@@ -38,6 +40,7 @@ public struct TwoParameterControl<Content: View>: View {
                 value2: Binding<Float>,
                 range2: ClosedRange<Float> = 0 ... 1,
                 geometry: PlanarGeometry = .rectilinear,
+                padding: CGSize = .zero,
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping (GeometryProxy) -> Content)
@@ -50,6 +53,7 @@ public struct TwoParameterControl<Content: View>: View {
         self.onStarted = onStarted
         self.onEnded = onEnded
         self.content = content
+        self.padding = padding
     }
 
     public var body: some View {

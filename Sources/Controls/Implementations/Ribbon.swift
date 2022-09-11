@@ -8,6 +8,7 @@ public struct Ribbon: View {
     var foregroundColor: Color = .red
     var cornerRadius: CGFloat = 0
     var indicatorPadding: CGFloat = 0.07
+    var indicatorWidth: CGFloat = 100
 
     /// Initialize with the minimum description
     /// - Parameter position: Normalized position of the ribbon
@@ -15,17 +16,19 @@ public struct Ribbon: View {
         _position = position
     }
 
-    func positionWidth(_ proxy: GeometryProxy) -> CGFloat {
-        proxy.size.height * (1 - 2 * indicatorPadding)
+    func maxOffset(_ geo: GeometryProxy) -> CGFloat {
+        geo.size.width - indicatorWidth - 2 * indicatorPadding * geo.size.height
     }
 
     public var body: some View {
-        Control(value: $position, geometry: .horizontalPoint) { geo in
+        Control(value: $position,
+                geometry: .horizontalPoint,
+                padding: CGSize(width: indicatorWidth / 2, height: 0)) { geo in
             ZStack(alignment: .bottomLeading) {
                 RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
                 RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(foregroundColor)
-                    .squareFrame(positionWidth(geo))
-                    .offset(x: CGFloat(position) * (geo.size.width - geo.size.height))
+                    .frame(width: indicatorWidth)
+                    .offset(x: CGFloat(position) * maxOffset(geo))
                     .padding(indicatorPadding * geo.size.height)
             }
         }

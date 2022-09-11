@@ -24,17 +24,21 @@ public enum PlanarGeometry {
                             range2: ClosedRange<Float> = 0 ... 1,
                             from oldValue: CGPoint,
                             to touchLocation: CGPoint,
-                            inRect rect: CGRect) -> (Float, Float)
+                            inRect rect: CGRect,
+                            padding: CGSize) -> (Float, Float)
     {
         guard touchLocation != .zero else { return (value1, value2) }
 
         var temp1 = (value1 - range1.lowerBound) / (range1.upperBound - range1.lowerBound)
         var temp2 = (value2 - range2.lowerBound) / (range2.upperBound - range2.lowerBound)
 
+        let x = touchLocation.x - padding.width
+        let y = touchLocation.y - padding.height
+
         switch self {
         case .rectilinear:
-            temp1 = Float(touchLocation.x / rect.size.width)
-            temp2 = Float(1.0 - touchLocation.y / rect.size.height)
+            temp1 = Float(x / (rect.size.width - 2 * padding.width))
+            temp2 = Float(1.0 - y / (rect.size.height - 2 * padding.height))
 
         case let .relativeRectilinear(xSensitivity: xSensitivity, ySensitivity: ySensitivity):
             guard oldValue != .zero else { return (value1, value2) }
@@ -44,7 +48,6 @@ public enum PlanarGeometry {
         case let .polar(angularRange: angularRange):
             let polar = polarCoordinate(point: touchLocation, rect: rect)
             let width = angularRange.upperBound.radians - angularRange.lowerBound.radians
-
             temp1 = polar.radius
             temp2 = Float((polar.angle.radians - angularRange.lowerBound.radians) / width)
 

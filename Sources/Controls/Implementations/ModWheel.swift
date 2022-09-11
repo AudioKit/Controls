@@ -8,13 +8,10 @@ public struct ModWheel: View {
     var foregroundColor: Color = .red
     var cornerRadius: CGFloat = 0
     var indicatorPadding: CGFloat = 0.07
-
-    func thumbHeight(_ geo: GeometryProxy) -> CGFloat {
-        geo.size.width - 2 * indicatorPadding * geo.size.width
-    }
+    var indicatorHeight: CGFloat = 40
 
     func maxOffset(_ geo: GeometryProxy) -> CGFloat {
-        geo.size.height - geo.size.width
+        geo.size.height - indicatorHeight - 2 * indicatorPadding * geo.size.width
     }
 
     /// Initial the wheel with a type and bound value
@@ -25,11 +22,12 @@ public struct ModWheel: View {
 
     public var body: some View {
         Control(value: $location,
-                geometry: .verticalDrag()) { geo in
+                geometry: .verticalDrag(),
+                padding: CGSize(width: 0, height: indicatorHeight / 2)) { geo in
             ZStack(alignment: .bottom) {
                 RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
                 RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(foregroundColor)
-                    .frame(height: thumbHeight(geo))
+                    .frame(height: indicatorHeight)
                     .offset(y: -(maxOffset(geo) * CGFloat(location)))
                     .padding(indicatorPadding * geo.size.width)
             }.animation(.spring(response: 0.2), value: location)

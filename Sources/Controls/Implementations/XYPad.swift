@@ -8,7 +8,8 @@ public struct XYPad: View {
     var backgroundColor: Color = .gray
     var foregroundColor: Color = .red
     var cornerRadius: CGFloat = 0
-    var indicatorPadding: CGFloat = 0.07
+    var indicatorPadding: CGFloat = 0.2
+    var indicatorSize: CGSize = CGSize(width: 40, height: 40)
 
     /// Initiale the control with two parameters
     /// - Parameters:
@@ -19,18 +20,17 @@ public struct XYPad: View {
         _y = y
     }
 
-    func indicatorSize(_ proxy: GeometryProxy) -> CGFloat {
-        max(proxy.size.width, proxy.size.height) / 10.0  * (1 - 2 * indicatorPadding)
-    }
-
     public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
-            TwoParameterControl(value1: $x, value2: $y, geometry: .rectilinear) { geo in
+            TwoParameterControl(value1: $x, value2: $y,
+                                geometry: .rectilinear,
+                                padding: CGSize(width: indicatorSize.width / 2,
+                                                height: indicatorSize.height / 2)
+            ) { geo in
                 Canvas { cx, size in
                     let viewport = CGRect(origin: .zero, size: size)
-                    let indicatorRect = CGRect(origin: .zero, size: CGSize(width: viewport.width / 10,
-                                                                           height: viewport.height / 10))
+                    let indicatorRect = CGRect(origin: .zero, size: indicatorSize)
 
                     let activeWidth = viewport.size.width - indicatorRect.size.width
                     let activeHeight = viewport.size.height - indicatorRect.size.height
@@ -43,7 +43,7 @@ public struct XYPad: View {
 
                     cx.fill(ind, with: .color(foregroundColor))
                 }
-            }.padding(10)
+            }.padding(indicatorSize.width * indicatorPadding)
         }
     }
 }

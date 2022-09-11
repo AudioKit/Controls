@@ -8,6 +8,7 @@ public struct Control<Content: View>: View {
     var onEnded: () -> Void
     @Binding var value: Float
     var range: ClosedRange<Float>
+    var padding: CGSize
 
     @State var hasStarted = false
     @State var rect: CGRect = .zero
@@ -17,7 +18,8 @@ public struct Control<Content: View>: View {
                                             in: range,
                                             from: oldValue,
                                             to: touchLocation,
-                                            inRect: rect)
+                                            inRect: rect,
+                                            padding: padding)
         }
     }
 
@@ -32,6 +34,7 @@ public struct Control<Content: View>: View {
     public init(value: Binding<Float>,
                 in range: ClosedRange<Float> = 0 ... 1,
                 geometry: ControlGeometry = .twoDimensionalDrag(),
+                padding: CGSize = .zero,
                 onStarted: @escaping () -> Void = {},
                 onEnded: @escaping () -> Void = {},
                 @ViewBuilder content: @escaping (GeometryProxy) -> Content)
@@ -42,6 +45,7 @@ public struct Control<Content: View>: View {
         self.onStarted = onStarted
         self.onEnded = onEnded
         self.content = content
+        self.padding = padding
     }
 
     public var body: some View {

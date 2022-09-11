@@ -23,7 +23,7 @@ struct PitchModWheelDemoView: View {
                     Spacer()
                     PitchWheel(value: $pitchBend)
                         .foregroundColor(.black.opacity(0.5))
-                        .cornerRadius(1000)
+                        .cornerRadius(10)
                         .frame(width: proxy.size.width / 10)
                     ModWheel(value: $modulation)
                         .foregroundColor(.white.opacity(0.5))
