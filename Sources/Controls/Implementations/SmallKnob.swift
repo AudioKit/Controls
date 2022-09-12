@@ -23,7 +23,7 @@ public struct SmallKnob: View {
 
     public var body: some View {
         Control(value: $value, in: range,
-                geometry: .twoDimensionalDrag(xSensitivity: 0.1, ySensitivity: 0.1)) { geo in
+                geometry: .twoDimensionalDrag(xSensitivity: 1, ySensitivity: 1)) { geo in
             ZStack(alignment: .center) {
                 Ellipse().foregroundColor(backgroundColor)
                 Rectangle().foregroundColor(foregroundColor)
