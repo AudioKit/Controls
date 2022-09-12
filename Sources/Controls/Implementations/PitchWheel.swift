@@ -26,7 +26,9 @@ public struct PitchWheel: View {
                     onEnded: { location = 0.5 }) { geo in
                 Canvas { cx, size in
                     let viewport = CGRect(origin: .zero, size: size)
-                    let indicatorRect = CGRect(origin: .zero, size: CGSize(width: geo.size.width - geo.size.width * indicatorPadding * 2 , height: indicatorHeight))
+                    let indicatorRect = CGRect(origin: .zero,
+                                               size: CGSize(width: geo.size.width - geo.size.width * indicatorPadding * 2,
+                                                            height: indicatorHeight - geo.size.width * indicatorPadding * 2))
 
                     let activeHeight = viewport.size.height - indicatorRect.size.height
 

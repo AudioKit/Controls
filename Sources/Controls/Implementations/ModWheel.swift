@@ -10,10 +10,6 @@ public struct ModWheel: View {
     var indicatorPadding: CGFloat = 0.07
     var indicatorHeight: CGFloat = 40
 
-    func maxOffset(_ geo: GeometryProxy) -> CGFloat {
-        geo.size.height - indicatorHeight - 2 * indicatorPadding * geo.size.width
-    }
-
     /// Initial the wheel with a type and bound value
     /// - Parameter value: value to control
     public init(value: Binding<Float>) {
@@ -21,16 +17,30 @@ public struct ModWheel: View {
     }
 
     public var body: some View {
-        Control(value: $location,
-                geometry: .verticalDrag(),
-                padding: CGSize(width: 0, height: indicatorHeight / 2)) { geo in
-            ZStack(alignment: .bottom) {
-                RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
-                RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(foregroundColor)
-                    .frame(height: indicatorHeight)
-                    .offset(y: -(maxOffset(geo) * CGFloat(location)))
-                    .padding(indicatorPadding * geo.size.width)
-            }.animation(.spring(response: 0.2), value: location)
+        ZStack {
+            RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
+            Control(value: $location,
+                    geometry: .verticalDrag(),
+                    padding: CGSize(width: 0, height: indicatorHeight / 2)) { geo in
+                Canvas { cx, size in
+                    let viewport = CGRect(origin: .zero, size: size)
+                    let indicatorRect = CGRect(origin: .zero,
+                                               size: CGSize(width: geo.size.width - geo.size.width * indicatorPadding * 2,
+                                                            height: indicatorHeight - geo.size.width * indicatorPadding * 2))
+
+                    let activeHeight = viewport.size.height - indicatorRect.size.height
+
+                    let offsetRect = indicatorRect
+                        .offset(by: CGSize(width: 0,
+                                           height: activeHeight * (1 - CGFloat(location))))
+                    let cr = min(indicatorRect.height / 2, cornerRadius)
+                    let ind = Path(roundedRect: offsetRect, cornerRadius: cr)
+
+                    cx.fill(ind, with: .color(foregroundColor))
+                }
+                .animation(.spring(response: 0.2), value: location)
+                .padding(geo.size.width * indicatorPadding)
+            }
         }
     }
 }
