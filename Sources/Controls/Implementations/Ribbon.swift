@@ -16,20 +16,29 @@ public struct Ribbon: View {
         _position = position
     }
 
-    func maxOffset(_ geo: GeometryProxy) -> CGFloat {
-        geo.size.width - indicatorWidth - 2 * indicatorPadding * geo.size.height
-    }
-
     public var body: some View {
-        Control(value: $position,
-                geometry: .horizontalPoint,
-                padding: CGSize(width: indicatorWidth / 2, height: 0)) { geo in
-            ZStack(alignment: .bottomLeading) {
-                RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
-                RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(foregroundColor)
-                    .frame(width: indicatorWidth)
-                    .offset(x: CGFloat(position) * maxOffset(geo))
-                    .padding(indicatorPadding * geo.size.height)
+        ZStack {
+            RoundedRectangle(cornerRadius: cornerRadius).foregroundColor(backgroundColor)
+            Control(value: $position,
+                    geometry: .horizontalPoint,
+                    padding: CGSize(width: indicatorWidth / 2, height: 0)) { geo in
+                Canvas { cx, size in
+                    let viewport = CGRect(origin: .zero, size: size)
+                    let indicatorRect = CGRect(origin: .zero,
+                                               size: CGSize(width: indicatorWidth - geo.size.height * indicatorPadding * 2,
+                                                            height: geo.size.height - geo.size.height * indicatorPadding * 2))
+
+                    let activeWidth = viewport.size.width - indicatorRect.size.width
+
+                    let offsetRect = indicatorRect
+                        .offset(by: CGSize(width: activeWidth * ( CGFloat(position)),
+                                           height: 0))
+                    let cr = min(indicatorRect.height / 2, cornerRadius)
+                    let ind = Path(roundedRect: offsetRect, cornerRadius: cr)
+
+                    cx.fill(ind, with: .color(foregroundColor))
+                }
+                .padding(geo.size.height * indicatorPadding)
             }
         }
     }
