@@ -45,56 +45,35 @@ public struct Ribbon: View {
 }
 
 extension Ribbon {
-    internal init(position: Binding<Float>,
-                  backgroundColor: Color,
-                  foregroundColor: Color,
-                  cornerRadius: CGFloat,
-                  indicatorWidth: CGFloat) {
-        self._position = position
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
-        self.cornerRadius = cornerRadius
-        self.indicatorWidth = indicatorWidth
-    }
-
-
     /// Modifer to change the background color of the ribbon
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> Ribbon {
-        return .init(position: _position,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorWidth: indicatorWidth)
+        var copy = self
+        copy.backgroundColor = backgroundColor
+        return copy
     }
 
     /// Modifer to change the foreground color of the ribbon
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> Ribbon {
-        return .init(position: _position,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorWidth: indicatorWidth)
+        var copy = self
+        copy.foregroundColor = foregroundColor
+        return copy
     }
 
-    /// Modifer to change the corner radius of the ribbon bar and the indicator
+    /// Modifer to change the corner radius of the ribbon and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> Ribbon {
-        return .init(position: _position,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorWidth: indicatorWidth)
+        var copy = self
+        copy.cornerRadius = cornerRadius
+        return copy
     }
 
     /// Modifier to change the size of the indicator
     /// - Parameter indicatorWidth: preferred width
     public func indicatorWidth(_ indicatorWidth: CGFloat) -> Ribbon {
-        return .init(position: _position,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorWidth: indicatorWidth)
+        var copy = self
+        copy.indicatorWidth = indicatorWidth
+        return copy
     }
 }

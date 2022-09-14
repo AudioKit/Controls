@@ -40,28 +40,19 @@ public struct SmallKnob: View {
 
 
 extension SmallKnob {
-    internal init(value: Binding<Float>,
-                  backgroundColor: Color,
-                  foregroundColor: Color) {
-        self._value = value
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
-    }
-
-
     /// Modifer to change the background color of the knob
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> SmallKnob {
-        return .init(value: _value,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
+        var copy = self
+        copy.backgroundColor = backgroundColor
+        return copy
     }
 
     /// Modifer to change the foreground color of the knob
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> SmallKnob {
-        return .init(value: _value,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
+        var copy = self
+        copy.foregroundColor = foregroundColor
+        return copy
     }
 }

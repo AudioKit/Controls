@@ -37,37 +37,19 @@ public struct Joystick: View {
 }
 
 extension Joystick {
-    internal init(radius: Binding<Float>,
-                  angle: Binding<Float>,
-                  backgroundColor: Color,
-                  foregroundColor: Color) {
-        self._radius = radius
-        self._angle = angle
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
-    }
-
     /// Modifer to change the background color of the joystick
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> Joystick {
-        return .init(radius: _radius, angle: _angle,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
+        var copy = self
+        copy.backgroundColor = backgroundColor
+        return copy
     }
 
     /// Modifer to change the foreground color of the joystick
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> Joystick {
-        return .init(radius: _radius, angle: _angle,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
-    }
-
-    /// Modifer to change the corner radius of thejoystick and the indicator
-    /// - Parameter cornerRadius: radius (make very high for a circular indicator)
-    public func cornerRadius(_ cornerRadius: CGFloat) -> Joystick {
-        return .init(radius: _radius, angle: _angle,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
+        var copy = self
+        copy.foregroundColor = foregroundColor
+        return copy
     }
 }

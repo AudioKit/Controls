@@ -51,56 +51,35 @@ public struct PitchWheel: View {
 }
 
 extension PitchWheel {
-    internal init(location: Binding<Float>,
-                  backgroundColor: Color,
-                  foregroundColor: Color,
-                  cornerRadius: CGFloat,
-                  indicatorHeight: CGFloat) {
-        self._location = location
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
-        self.cornerRadius = cornerRadius
-        self.indicatorHeight = indicatorHeight
-    }
-
-
     /// Modifer to change the background color of the wheel
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> PitchWheel {
-        return .init(location: _location,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorHeight: indicatorHeight)
+        var copy = self
+        copy.backgroundColor = backgroundColor
+        return copy
     }
 
     /// Modifer to change the foreground color of the wheel
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> PitchWheel {
-        return .init(location: _location,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorHeight: indicatorHeight)
+        var copy = self
+        copy.foregroundColor = foregroundColor
+        return copy
     }
 
     /// Modifer to change the corner radius of the wheel and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> PitchWheel {
-        return .init(location: _location,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorHeight: indicatorHeight)
+        var copy = self
+        copy.cornerRadius = cornerRadius
+        return copy
     }
 
     /// Modifier to change the size of the indicator
     /// - Parameter indicatorHeight: preferred height
     public func indicatorHeight(_ indicatorHeight: CGFloat) -> PitchWheel {
-        return .init(location: _location,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorHeight: indicatorHeight)
+        var copy = self
+        copy.indicatorHeight = indicatorHeight
+        return copy
     }
 }

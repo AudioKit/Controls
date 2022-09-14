@@ -49,58 +49,35 @@ public struct XYPad: View {
 }
 
 extension XYPad {
-    internal init(x: Binding<Float>,
-                  y: Binding<Float>,
-                  backgroundColor: Color,
-                  foregroundColor: Color,
-                  cornerRadius: CGFloat,
-                  indicatorSize: CGSize) {
-        self._x = x
-        self._y = y
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
-        self.cornerRadius = cornerRadius
-        self.indicatorSize = indicatorSize
-    }
-
-
     /// Modifer to change the background color of the xy pad
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> XYPad {
-        return .init(x: _x, y: _y,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorSize: indicatorSize)
+        var copy = self
+        copy.backgroundColor = backgroundColor
+        return copy
     }
 
     /// Modifer to change the foreground color of the xy pad
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> XYPad {
-        return .init(x: _x, y: _y,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorSize: indicatorSize)
+        var copy = self
+        copy.foregroundColor = foregroundColor
+        return copy
     }
 
     /// Modifer to change the corner radius of the xy pad and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> XYPad {
-        return .init(x: _x, y: _y,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorSize: indicatorSize)
+        var copy = self
+        copy.cornerRadius = cornerRadius
+        return copy
     }
 
     /// Modifer to change the size of the indicator
     /// - Parameter indicatorSize: size of the indicator
     public func indicatorSize(_ indicatorSize: CGSize) -> XYPad {
-        return .init(x: _x, y: _y,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor,
-                     cornerRadius: cornerRadius,
-                     indicatorSize: indicatorSize)
+        var copy = self
+        copy.indicatorSize = indicatorSize
+        return copy
     }
 }

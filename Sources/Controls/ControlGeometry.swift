@@ -78,7 +78,6 @@ public enum ControlGeometry {
         // Bound and convert to range
         let newValue = max(0.0, min(1.0, temp)) * (range.upperBound - range.lowerBound) + range.lowerBound
 
-        print(newValue)
         return newValue
     }
 

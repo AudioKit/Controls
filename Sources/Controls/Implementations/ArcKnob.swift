@@ -98,36 +98,19 @@ public struct ArcKnob: View {
 
 
 extension ArcKnob {
-    internal init(text: String,
-                  value: Binding<Float>,
-                  range: ClosedRange<Float> = 0.0 ... 1.0,
-                  backgroundColor: Color,
-                  foregroundColor: Color) {
-        self._value = value
-        self.text = text
-        self.range = range
-        self.backgroundColor = backgroundColor
-        self.foregroundColor = foregroundColor
-    }
-
-
     /// Modifer to change the background color of the knob
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> ArcKnob {
-        return .init(text: text,
-                     value: _value,
-                     range: range,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
+        var copy = self
+        copy.backgroundColor = backgroundColor
+        return copy
     }
 
     /// Modifer to change the foreground color of the knob
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> ArcKnob {
-        return .init(text: text,
-                     value: _value,
-                     range: range,
-                     backgroundColor: backgroundColor,
-                     foregroundColor: foregroundColor)
+        var copy = self
+        copy.foregroundColor = foregroundColor
+        return copy
     }
 }
