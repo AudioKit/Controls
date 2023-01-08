@@ -98,7 +98,7 @@ public struct ArcKnob: View {
 
 
 extension ArcKnob {
-    /// Modifer to change the background color of the knob
+    /// Modifier to change the background color of the knob
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> ArcKnob {
         var copy = self
@@ -106,7 +106,7 @@ extension ArcKnob {
         return copy
     }
 
-    /// Modifer to change the foreground color of the knob
+    /// Modifier to change the foreground color of the knob
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> ArcKnob {
         var copy = self

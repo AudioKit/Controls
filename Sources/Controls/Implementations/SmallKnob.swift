@@ -40,7 +40,7 @@ public struct SmallKnob: View {
 
 
 extension SmallKnob {
-    /// Modifer to change the background color of the knob
+    /// Modifier to change the background color of the knob
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> SmallKnob {
         var copy = self
@@ -48,7 +48,7 @@ extension SmallKnob {
         return copy
     }
 
-    /// Modifer to change the foreground color of the knob
+    /// Modifier to change the foreground color of the knob
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> SmallKnob {
         var copy = self

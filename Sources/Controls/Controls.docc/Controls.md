@@ -13,7 +13,7 @@ Code is hosted on Github: [](https://github.com/AudioKit/Controls/)
 Two types of controls allow you to drag on a UI element and control either one or two parameters.
 
 * Control - draggable control that can affect one value by planar motion, either horizontally, vertically, or both.
-* Two Parameter Control - draggable control that can affect two indepent paramters.
+* Two Parameter Control - draggable control that can affect two independent parameters.
 
 ### Control Geometries
 
@@ -27,7 +27,7 @@ can easier use them directly or use them as a template for creating your own cus
 
 Single-parameter controls:
 
-* ArcKnob - knob controled by dragging along a circular path
+* ArcKnob - knob controlled by dragging along a circular path
 * IndexedSlider - slider that controls an integer parameter and snaps to increments
 * PitchModWheel - vertical slider than can be a pitch wheel or mod wheel
 * Ribbon - horizontal slider

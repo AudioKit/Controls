@@ -45,7 +45,7 @@ public struct Ribbon: View {
 }
 
 extension Ribbon {
-    /// Modifer to change the background color of the ribbon
+    /// Modifier to change the background color of the ribbon
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> Ribbon {
         var copy = self
@@ -53,7 +53,7 @@ extension Ribbon {
         return copy
     }
 
-    /// Modifer to change the foreground color of the ribbon
+    /// Modifier to change the foreground color of the ribbon
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> Ribbon {
         var copy = self
@@ -61,7 +61,7 @@ extension Ribbon {
         return copy
     }
 
-    /// Modifer to change the corner radius of the ribbon and the indicator
+    /// Modifier to change the corner radius of the ribbon and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> Ribbon {
         var copy = self

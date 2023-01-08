@@ -11,7 +11,7 @@ public struct XYPad: View {
     var indicatorPadding: CGFloat = 0.2
     var indicatorSize: CGSize = CGSize(width: 40, height: 40)
 
-    /// Initiale the control with two parameters
+    /// Initiate the control with two parameters
     /// - Parameters:
     ///   - x: horizontal parameter 0-1
     ///   - y: vertical parameter 0-1
@@ -49,7 +49,7 @@ public struct XYPad: View {
 }
 
 extension XYPad {
-    /// Modifer to change the background color of the xy pad
+    /// Modifier to change the background color of the xy pad
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> XYPad {
         var copy = self
@@ -57,7 +57,7 @@ extension XYPad {
         return copy
     }
 
-    /// Modifer to change the foreground color of the xy pad
+    /// Modifier to change the foreground color of the xy pad
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> XYPad {
         var copy = self
@@ -65,7 +65,7 @@ extension XYPad {
         return copy
     }
 
-    /// Modifer to change the corner radius of the xy pad and the indicator
+    /// Modifier to change the corner radius of the xy pad and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> XYPad {
         var copy = self
@@ -73,7 +73,7 @@ extension XYPad {
         return copy
     }
 
-    /// Modifer to change the size of the indicator
+    /// Modifier to change the size of the indicator
     /// - Parameter indicatorSize: size of the indicator
     public func indicatorSize(_ indicatorSize: CGSize) -> XYPad {
         var copy = self

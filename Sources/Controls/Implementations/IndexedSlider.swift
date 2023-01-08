@@ -47,7 +47,7 @@ public struct IndexedSlider: View {
 }
 
 extension IndexedSlider {
-    /// Modifer to change the background color of the slider
+    /// Modifier to change the background color of the slider
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> IndexedSlider {
         var copy = self
@@ -55,7 +55,7 @@ extension IndexedSlider {
         return copy
     }
 
-    /// Modifer to change the foreground color of the slider
+    /// Modifier to change the foreground color of the slider
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> IndexedSlider {
         var copy = self
@@ -63,7 +63,7 @@ extension IndexedSlider {
         return copy
     }
 
-    /// Modifer to change the corner radius of the slider bar and the indicator
+    /// Modifier to change the corner radius of the slider bar and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> IndexedSlider {
         var copy = self
