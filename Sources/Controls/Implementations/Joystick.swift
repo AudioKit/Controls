@@ -37,7 +37,7 @@ public struct Joystick: View {
 }
 
 extension Joystick {
-    /// Modifer to change the background color of the joystick
+    /// Modifier to change the background color of the joystick
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> Joystick {
         var copy = self
@@ -45,7 +45,7 @@ extension Joystick {
         return copy
     }
 
-    /// Modifer to change the foreground color of the joystick
+    /// Modifier to change the foreground color of the joystick
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> Joystick {
         var copy = self

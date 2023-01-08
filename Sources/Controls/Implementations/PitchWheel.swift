@@ -51,7 +51,7 @@ public struct PitchWheel: View {
 }
 
 extension PitchWheel {
-    /// Modifer to change the background color of the wheel
+    /// Modifier to change the background color of the wheel
     /// - Parameter backgroundColor: background color
     public func backgroundColor(_ backgroundColor: Color) -> PitchWheel {
         var copy = self
@@ -59,7 +59,7 @@ extension PitchWheel {
         return copy
     }
 
-    /// Modifer to change the foreground color of the wheel
+    /// Modifier to change the foreground color of the wheel
     /// - Parameter foregroundColor: foreground color
     public func foregroundColor(_ foregroundColor: Color) -> PitchWheel {
         var copy = self
@@ -67,7 +67,7 @@ extension PitchWheel {
         return copy
     }
 
-    /// Modifer to change the corner radius of the wheel and the indicator
+    /// Modifier to change the corner radius of the wheel and the indicator
     /// - Parameter cornerRadius: radius (make very high for a circular indicator)
     public func cornerRadius(_ cornerRadius: CGFloat) -> PitchWheel {
         var copy = self
