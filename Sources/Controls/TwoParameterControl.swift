@@ -77,7 +77,7 @@ public struct TwoParameterControl<Content: View>: View {
             .onAppear {
                 rect = proxy.frame(in: .local)
             }
-            .onChange(of: proxy.size) { newValue in
+            .onChange(of: proxy.size) {
                 rect = proxy.frame(in: .local)
             }
         }
