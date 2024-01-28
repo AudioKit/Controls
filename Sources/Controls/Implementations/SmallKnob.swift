@@ -21,6 +21,15 @@ public struct SmallKnob: View {
         Double((value - range.lowerBound) / (range.upperBound - range.lowerBound))
     }
 
+    var offsetX: CGFloat {
+        -sin(normalizedValue * 1.6 * .pi + 0.2 * .pi) / 2.0 * 0.75
+    }
+
+    var offsetY: CGFloat {
+        cos(normalizedValue * 1.6 * .pi + 0.2 * .pi) / 2.0 * 0.75
+    }
+
+
     public var body: some View {
         Control(value: $value, in: range,
                 geometry: .twoDimensionalDrag(xSensitivity: 1, ySensitivity: 1)) { geo in
@@ -29,8 +38,7 @@ public struct SmallKnob: View {
                 Rectangle().foregroundColor(foregroundColor)
                     .frame(width: geo.size.width / 20, height: geo.size.height / 4)
                     .rotationEffect(Angle(radians: normalizedValue * 1.6 * .pi + 0.2 * .pi))
-                    .offset(x: -sin(normalizedValue * 1.6 * .pi + 0.2 * .pi) * geo.size.width / 2.0 * 0.75,
-                            y: cos(normalizedValue * 1.6 * .pi + 0.2 * .pi) * geo.size.height / 2.0 * 0.75)
+                    .offset(x: offsetX * Double(geo.size.width), y: offsetY * Double(geo.size.height))
             }.drawingGroup() // Drawing groups improve antialiasing of rotated indicator
         }
         .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fit)
