@@ -40,7 +40,8 @@ public struct IndexedSlider: View {
                 .offset(x: CGFloat(index) * geo.size.width / CGFloat(labels.count))
                 .animation(.easeOut, value: index)
             }
-        }.onChange(of: normalValue) {
+        }
+        .onChange(of: normalValue) { _ in
             index = Int(normalValue * 0.99 * Float(labels.count))
         }
     }
