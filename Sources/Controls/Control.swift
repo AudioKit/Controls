@@ -69,7 +69,7 @@ public struct Control<Content: View>: View {
             .onAppear {
                 rect = proxy.frame(in: .local)
             }
-            .onChange(of: proxy.size) {
+            .onChange(of: proxy.size) { _ in
                 rect = proxy.frame(in: .local)
             }
         }
