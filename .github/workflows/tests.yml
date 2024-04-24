@@ -10,29 +10,23 @@ on:
 jobs:
   swift_test:
     name: Test
-    uses: AudioKit/ci/.github/workflows/swift_test.yml@main
-    with:
-      scheme: Controls
-      platforms: iOS macOS
-
-  build_demo:
-    name: Build ${{ matrix.scheme }} (Xcode ${{ matrix.xcode_version }})
-    runs-on: macos-13
-    needs: [swift_test]
-    strategy:
-      # Disabling fail-fast ensures that the job will run all configurations of the matrix, even if one fails.
-      fail-fast: false
-      matrix:
-        scheme:
-          - ControlsDemo (iOS)
-          - ControlsDemo (macOS)
+    runs-on: macos-latest
     steps:
+      - name: Check out Controls
+        uses: actions/checkout@v4
+      - name: Test Controls
+        run: swift test -c release
+
+  # Build the demo projects.
+  build_demo:
+    name: Build Demo
+    runs-on: macos-latest
+    needs: [swift_test]
+    steps:
+      - name: Check out Controls
+        uses: actions/checkout@v4
       - name: Build Demo
-        uses: AudioKit/ci/.github/actions/build-demo@main
-        with:
-          project: Demo/ControlsDemo.xcodeproj
-          scheme: ${{ matrix.scheme }}
-          xcode_version: ${{ matrix.xcode_version }}
+        run: xcodebuild build -project Demo/ControlsDemo.xcodeproj -scheme ControlsDemo -destination "name=My Mac"
 
   # Send notification to Discord on failure.
   send_notification:

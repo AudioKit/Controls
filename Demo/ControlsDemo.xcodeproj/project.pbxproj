@@ -8,31 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		F13848EC28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13848EB28C9F212003531F0 /* PitchModWheelDemoView.swift */; };
-		F13848ED28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13848EB28C9F212003531F0 /* PitchModWheelDemoView.swift */; };
 		F155153828C96F6900E64E43 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153728C96F6900E64E43 /* RibbonDemoView.swift */; };
-		F155153928C96F6900E64E43 /* RibbonDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153728C96F6900E64E43 /* RibbonDemoView.swift */; };
 		F155153B28C9C48400E64E43 /* XYPadDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153A28C9C48400E64E43 /* XYPadDemoView.swift */; };
-		F155153C28C9C48400E64E43 /* XYPadDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F155153A28C9C48400E64E43 /* XYPadDemoView.swift */; };
 		F1AF69D528A986E700472E04 /* Controls in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69D428A986E700472E04 /* Controls */; };
-		F1AF69D728A986F500472E04 /* Controls in Frameworks */ = {isa = PBXBuildFile; productRef = F1AF69D628A986F500472E04 /* Controls */; };
 		F1D9CD2E28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */; };
-		F1D9CD2F28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1E28A5D9EE00C2B893 /* ControlsDemoApp.swift */; };
 		F1D9CD3028A5D9EF00C2B893 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */; };
-		F1D9CD3128A5D9EF00C2B893 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */; };
 		F1D9CD3228A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
-		F1D9CD3328A5D9EF00C2B893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */; };
 		F1FAF67928CA79620072BCB9 /* IndexedSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */; };
-		F1FAF67A28CA79620072BCB9 /* IndexedSliderDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */; };
 		F1FAF67C28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */; };
-		F1FAF67D28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */; };
 		F1FAF67F28CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */; };
-		F1FAF68028CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF67E28CAA4B80072BCB9 /* JoystickDemoView.swift */; };
 		F1FAF68228CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */; };
-		F1FAF68328CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68128CAA83B0072BCB9 /* ArcKnobDemoView.swift */; };
 		F1FAF68628CADE650072BCB9 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F1FAF68528CADE650072BCB9 /* Keyboard */; };
 		F1FAF68828CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */; };
-		F1FAF68928CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FAF68728CADEC40072BCB9 /* KeyboardDemoView.swift */; };
-		F1FAF68B28CADEFC0072BCB9 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F1FAF68A28CADEFC0072BCB9 /* Keyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +31,6 @@
 		F1D9CD1F28A5D9EE00C2B893 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F1D9CD2028A5D9EF00C2B893 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControlsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1D9CD2D28A5D9EF00C2B893 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		F1FAF67828CA79620072BCB9 /* IndexedSliderDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexedSliderDemoView.swift; sourceTree = "<group>"; };
 		F1FAF67B28CAA2BB0072BCB9 /* SmallKnobDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallKnobDemoView.swift; sourceTree = "<group>"; };
@@ -60,15 +46,6 @@
 			files = (
 				F1AF69D528A986E700472E04 /* Controls in Frameworks */,
 				F1FAF68628CADE650072BCB9 /* Keyboard in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1D9CD2828A5D9EF00C2B893 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F1AF69D728A986F500472E04 /* Controls in Frameworks */,
-				F1FAF68B28CADEFC0072BCB9 /* Keyboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */,
-				F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,9 +115,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F1D9CD2428A5D9EF00C2B893 /* ControlsDemo (iOS) */ = {
+		F1D9CD2428A5D9EF00C2B893 /* ControlsDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (iOS)" */;
+			buildConfigurationList = F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo" */;
 			buildPhases = (
 				F1D9CD2128A5D9EF00C2B893 /* Sources */,
 				F1D9CD2228A5D9EF00C2B893 /* Frameworks */,
@@ -151,34 +127,13 @@
 			);
 			dependencies = (
 			);
-			name = "ControlsDemo (iOS)";
+			name = ControlsDemo;
 			packageProductDependencies = (
 				F1AF69D428A986E700472E04 /* Controls */,
 				F1FAF68528CADE650072BCB9 /* Keyboard */,
 			);
 			productName = "ControlsDemo (iOS)";
 			productReference = F1D9CD2528A5D9EF00C2B893 /* ControlsDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
-		F1D9CD2A28A5D9EF00C2B893 /* ControlsDemo (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F1D9CD3928A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (macOS)" */;
-			buildPhases = (
-				F1D9CD2728A5D9EF00C2B893 /* Sources */,
-				F1D9CD2828A5D9EF00C2B893 /* Frameworks */,
-				F1D9CD2928A5D9EF00C2B893 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ControlsDemo (macOS)";
-			packageProductDependencies = (
-				F1AF69D628A986F500472E04 /* Controls */,
-				F1FAF68A28CADEFC0072BCB9 /* Keyboard */,
-			);
-			productName = "ControlsDemo (macOS)";
-			productReference = F1D9CD2B28A5D9EF00C2B893 /* ControlsDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,9 +147,6 @@
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					F1D9CD2428A5D9EF00C2B893 = {
-						CreatedOnToolsVersion = 13.4.1;
-					};
-					F1D9CD2A28A5D9EF00C2B893 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -215,8 +167,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1D9CD2428A5D9EF00C2B893 /* ControlsDemo (iOS) */,
-				F1D9CD2A28A5D9EF00C2B893 /* ControlsDemo (macOS) */,
+				F1D9CD2428A5D9EF00C2B893 /* ControlsDemo */,
 			);
 		};
 /* End PBXProject section */
@@ -227,14 +178,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1D9CD3228A5D9EF00C2B893 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1D9CD2928A5D9EF00C2B893 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F1D9CD3328A5D9EF00C2B893 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,23 +198,6 @@
 				F1D9CD2E28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */,
 				F1FAF67928CA79620072BCB9 /* IndexedSliderDemoView.swift in Sources */,
 				F155153828C96F6900E64E43 /* RibbonDemoView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1D9CD2728A5D9EF00C2B893 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F1FAF68928CADEC40072BCB9 /* KeyboardDemoView.swift in Sources */,
-				F13848ED28C9F212003531F0 /* PitchModWheelDemoView.swift in Sources */,
-				F1FAF68028CAA4B80072BCB9 /* JoystickDemoView.swift in Sources */,
-				F1FAF67D28CAA2BB0072BCB9 /* SmallKnobDemoView.swift in Sources */,
-				F155153C28C9C48400E64E43 /* XYPadDemoView.swift in Sources */,
-				F1D9CD3128A5D9EF00C2B893 /* ContentView.swift in Sources */,
-				F1FAF68328CAA83B0072BCB9 /* ArcKnobDemoView.swift in Sources */,
-				F1D9CD2F28A5D9EF00C2B893 /* ControlsDemoApp.swift in Sources */,
-				F1FAF67A28CA79620072BCB9 /* IndexedSliderDemoView.swift in Sources */,
-				F155153928C96F6900E64E43 /* RibbonDemoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +320,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W69ZP8S5F;
@@ -413,9 +340,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
 				PRODUCT_NAME = ControlsDemo;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -424,6 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9W69ZP8S5F;
@@ -443,70 +375,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
 				PRODUCT_NAME = ControlsDemo;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		F1D9CD3A28A5D9EF00C2B893 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 9W69ZP8S5F;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
-				PRODUCT_NAME = ControlsDemo;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		F1D9CD3B28A5D9EF00C2B893 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 9W69ZP8S5F;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.draggable.ControlsDemo;
-				PRODUCT_NAME = ControlsDemo;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -522,20 +398,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (iOS)" */ = {
+		F1D9CD3628A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1D9CD3728A5D9EF00C2B893 /* Debug */,
 				F1D9CD3828A5D9EF00C2B893 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F1D9CD3928A5D9EF00C2B893 /* Build configuration list for PBXNativeTarget "ControlsDemo (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F1D9CD3A28A5D9EF00C2B893 /* Debug */,
-				F1D9CD3B28A5D9EF00C2B893 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -558,16 +425,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Controls;
 		};
-		F1AF69D628A986F500472E04 /* Controls */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Controls;
-		};
 		F1FAF68528CADE650072BCB9 /* Keyboard */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F1FAF68428CADE650072BCB9 /* XCRemoteSwiftPackageReference "Keyboard" */;
-			productName = Keyboard;
-		};
-		F1FAF68A28CADEFC0072BCB9 /* Keyboard */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F1FAF68428CADE650072BCB9 /* XCRemoteSwiftPackageReference "Keyboard" */;
 			productName = Keyboard;
