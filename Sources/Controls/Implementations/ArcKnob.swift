@@ -91,6 +91,9 @@ public struct ArcKnob: View {
                     .frame(width: dim(geo) * 0.8)
                     .font(Font.system(size: dim(geo) * 0.2, weight: .bold))
                     .foregroundColor(backgroundColor)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+
             }
         }
     }
