@@ -7,6 +7,7 @@ public struct ArcKnob: View {
 
     var backgroundColor: Color = .gray
     var foregroundColor: Color = .red
+    var textColor: Color = .gray
 
     @State var isShowingValue = false
     var range: ClosedRange<Float>
@@ -90,7 +91,7 @@ public struct ArcKnob: View {
                 Text("\(isShowingValue ? "\(Int(value))" : text)")
                     .frame(width: dim(geo) * 0.8)
                     .font(Font.system(size: dim(geo) * 0.2, weight: .bold))
-                    .foregroundColor(backgroundColor)
+                    .foregroundColor(textColor)
                     .minimumScaleFactor(0.5)
                     .lineLimit(1)
 
